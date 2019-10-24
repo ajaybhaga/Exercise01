@@ -1,0 +1,44 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/dev/git/MayaBrain/genotype.cpp
+iostream
+-
+string
+-
+cassert
+-
+fstream
+-
+stdlib.h
+-
+stdio.h
+-
+cstring
+-
+genotype.h
+C:/dev/git/MayaBrain/genotype.h
+random_d.h
+C:/dev/git/MayaBrain/random_d.h
+
+C:/dev/git/MayaBrain/genotype.h
+
+C:/dev/git/MayaBrain/main.cpp
+iostream
+-
+random_d.h
+C:/dev/git/MayaBrain/random_d.h
+genotype.h
+C:/dev/git/MayaBrain/genotype.h
+
+C:/dev/git/MayaBrain/random_d.h
+functional
+-
+random
+-
+
