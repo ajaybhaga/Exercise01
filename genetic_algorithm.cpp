@@ -38,33 +38,49 @@ void GeneticAlgorithm::Start() {
 
     running = true;
     InitializePopulation(currentPopulation);
-
-
+    Evaluation(currentPopulation);
 }
 
 void GeneticAlgorithm::EvaluationFinished() {
+    // Calculate fitness from evaluation
+    FitnessCalculationMethod(currentPopulation);
 
+    // Sort population if flag was set
+    if (sortPopulation) {
+        // TODO sort currentPopulation;
+    }
+
+    // Fire fitness calculation finished event
+    if (fitnessCalculationFinished) {
+        FitnessCalculationMethod(currentPopulation);
+    }
+
+    // Check termination criterion
+    if (TerminationCriterion != NULL && TerminationCriterion(currentPopulation)) {
+        Terminate();
+        return;
+    }
 }
 
 void GeneticAlgorithm::Terminate() {
 
 }
 
-void GeneticAlgorithm::DefaultPopulationInitialization(std::vector<Genotype> population) {
+void GeneticAlgorithm::DefaultPopulationInitialization(std::list<Genotype> population) {
 
     //        foreach (Genotype genotype in population)
 
     // Set parameters to random values in set range
-    for(std::vector<Genotype>::iterator it = population.begin(); it != population.end(); ++it) {
+    for(std::list<Genotype>::iterator it = population.begin(); it != population.end(); ++it) {
         /* std::cout << *it; ... */
     }
 }
 
-void GeneticAlgorithm::AsyncEvaluation(std::vector<Genotype> currentPopulation) {
+void GeneticAlgorithm::AsyncEvaluation(std::list<Genotype> currentPopulation) {
 
 }
 
-void GeneticAlgorithm::DefaultFitnessCalculation(std::vector<Genotype> currentPopulation) {
+void GeneticAlgorithm::DefaultFitnessCalculation(std::list<Genotype> currentPopulation) {
 
 }
 
@@ -87,5 +103,9 @@ void GeneticAlgorithm::CompleteCrossover(Genotype parent1, Genotype parent2, flo
 
 void GeneticAlgorithm::MutateGenotype(Genotype genotype, float mutationProb, float mutationAmount) {
 
+}
+
+bool GeneticAlgorithm::DefaultTermination(std::list<Genotype> currentPopulation) {
+    return false;
 }
 

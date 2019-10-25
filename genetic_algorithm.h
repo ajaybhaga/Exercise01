@@ -20,23 +20,24 @@ public:
     void EvaluationFinished();
     void Terminate();
 
-    static void DefaultPopulationInitialization(std::vector<Genotype> population);
-    static void AsyncEvaluation(std::vector<Genotype> currentPopulation);
-    static void DefaultFitnessCalculation(std::vector<Genotype> currentPopulation);
+    static void DefaultPopulationInitialization(std::list<Genotype> population);
+    static void AsyncEvaluation(std::list<Genotype> currentPopulation);
+    static void DefaultFitnessCalculation(std::list<Genotype> currentPopulation);
     static std::list<Genotype> DefaultSelectionOperator(std::list<Genotype> currentPopulation);
     static std::list<Genotype> DefaultRecombinationOperator(std::list<Genotype> intermediatePopulation, int newPopulationSize);
     static void DefaultMutationOperator(std::list<Genotype> newPopulation);
     static void CompleteCrossover(Genotype parent1, Genotype parent2, float swapChance, Genotype* offspring1, Genotype* offspring2);
     static void MutateGenotype(Genotype genotype, float mutationProb, float mutationAmount);
+    static bool DefaultTermination(std::list<Genotype> currentPopulation);
 
     // Use to initialize the initial population.
-    typedef std::function<void (std::vector<Genotype> initialPopulation)> InitializationOperator;
+    typedef std::function<void (std::list<Genotype> initialPopulation)> InitializationOperator;
 
     // Used to evaluate (or start the evaluation process of) the current population.
-    typedef std::function<void (std::vector<Genotype> currentPopulation)> EvaluationOperator;
+    typedef std::function<void (std::list<Genotype> currentPopulation)> EvaluationOperator;
 
     // Used to calculate the fitness value of each genotype of the current population.
-    typedef std::function<void (std::vector<Genotype> currentPopulation)> FitnessCalculation;
+    typedef std::function<void (std::list<Genotype> currentPopulation)> FitnessCalculation;
 
     // Used to select genotypes of the current population and create the intermediate population.
     typedef std::function<std::list<Genotype> (std::list<Genotype> currentPopulation)> SelectionOperator;
@@ -75,7 +76,7 @@ public:
     SelectionOperator Selection = DefaultSelectionOperator;
     RecombinationOperator Recombination = DefaultRecombinationOperator;
     MutationOperator Mutation = DefaultMutationOperator;
-    CheckTerminationCriterion TerminationCriterion = NULL;
+    CheckTerminationCriterion TerminationCriterion = DefaultTermination;
 
     // The amount of genotypes in a population.
     int populationSize;
@@ -89,8 +90,10 @@ public:
     // Whether the genetic algorithm is currently running.
     bool running;
 
+    bool fitnessCalculationFinished;
+
 private:
-    std::vector<Genotype, std::allocator<Genotype>> currentPopulation;
+    std::list<Genotype> currentPopulation;
 };
 
 #endif //EANN_SIMPLE_GENETIC_ALGORITHM_H
