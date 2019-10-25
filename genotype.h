@@ -5,6 +5,8 @@
 #ifndef EANN_SIMPLE_GENOTYPE_H
 #define EANN_SIMPLE_GENOTYPE_H
 
+#include <string>
+
 class Genotype {
 public:
 

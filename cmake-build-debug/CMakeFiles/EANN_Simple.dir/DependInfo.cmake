@@ -4,10 +4,11 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "C:/dev/git/MayaBrain/genotype.cpp" "C:/dev/git/MayaBrain/cmake-build-debug/CMakeFiles/EANN_Simple.dir/genotype.cpp.obj"
-  "C:/dev/git/MayaBrain/main.cpp" "C:/dev/git/MayaBrain/cmake-build-debug/CMakeFiles/EANN_Simple.dir/main.cpp.obj"
+  "/Users/badzindagi/dev/MayaBrain/genetic_algorithm.cpp" "/Users/badzindagi/dev/MayaBrain/cmake-build-debug/CMakeFiles/EANN_Simple.dir/genetic_algorithm.cpp.o"
+  "/Users/badzindagi/dev/MayaBrain/genotype.cpp" "/Users/badzindagi/dev/MayaBrain/cmake-build-debug/CMakeFiles/EANN_Simple.dir/genotype.cpp.o"
+  "/Users/badzindagi/dev/MayaBrain/main.cpp" "/Users/badzindagi/dev/MayaBrain/cmake-build-debug/CMakeFiles/EANN_Simple.dir/main.cpp.o"
   )
-set(CMAKE_CXX_COMPILER_ID "GNU")
+set(CMAKE_CXX_COMPILER_ID "Clang")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH

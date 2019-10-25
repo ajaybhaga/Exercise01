@@ -3,4 +3,4 @@ project(EANN_Simple)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(EANN_Simple main.cpp genotype.cpp genotype.h random_d.h)
+add_executable(EANN_Simple main.cpp genotype.cpp genotype.h random_d.h genetic_algorithm.cpp genetic_algorithm.h)

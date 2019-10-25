@@ -1,10 +1,9 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/EANN_Simple.dir/genotype.cpp.obj"
-  "CMakeFiles/EANN_Simple.dir/main.cpp.obj"
-  "EANN_Simple.exe"
-  "EANN_Simple.exe.manifest"
+  "CMakeFiles/EANN_Simple.dir/genetic_algorithm.cpp.o"
+  "CMakeFiles/EANN_Simple.dir/genotype.cpp.o"
+  "CMakeFiles/EANN_Simple.dir/main.cpp.o"
+  "EANN_Simple"
   "EANN_Simple.pdb"
-  "libEANN_Simple.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.

@@ -1,6 +1,8 @@
 //
 // Genotype represents one member of population
 //
+// Based on design of Samuel Arzt (March 2017)
+//
 
 #include <iostream>
 #include <string>
@@ -13,6 +15,10 @@
 #include "genotype.h"
 #include "random_d.h"
 
+//#define TRAINING_DATA_DIR "~/dev/MayaBrain/data/"
+
+#define TRAINING_DATA_DIR "data/"
+
 Genotype::Genotype() {
     parameterCount = 0;
 }
@@ -24,11 +30,6 @@ Genotype::Genotype(float* parameters, int parameterCount) {
         this->parameterCount = 0;
     } else {
         this->parameterCount = parameterCount;
-
-//        parameterCount  = sizeof(parameters)/sizeof(parameters[0]);
-//        parameterCount  = sizeof(parameters)/sizeof(parameters[0]);
-
-
     }
     fitness = 0;
 }
@@ -64,7 +65,7 @@ float* Genotype::GetParameterCopy() {
 
 void Genotype::SaveToFile(const char* filePath) {
 
-        std::string dirPath = "C:\\dev\\git\\trainingData\\";
+        std::string dirPath = TRAINING_DATA_DIR;
         std::string fullPath = dirPath + filePath;
 
         GenotypeFile *file = new GenotypeFile();
@@ -79,7 +80,7 @@ void Genotype::SaveToFile(const char* filePath) {
         std::ofstream outfile(fullPath, std::ios::binary);
         outfile.write(reinterpret_cast<char*>(&file->record), sizeof(file->record));
 
-        std::cout << "Writing file: " << std::endl;
+        std::cout << "Writing file: " <<  fullPath << std::endl;
         std::cout << "[agentName: "
                   << file->record.agentName
                   << ", evaluation: "
@@ -96,7 +97,7 @@ void Genotype::SaveToFile(const char* filePath) {
 }
 
 Genotype* Genotype::LoadFromFile(const char* filePath) {
-    std::string dirPath = "C:\\dev\\git\\trainingData\\";
+    std::string dirPath = TRAINING_DATA_DIR;
     std::string fullPath = dirPath + filePath;
     std::ifstream dimensionsInFile;
 
@@ -104,9 +105,9 @@ Genotype* Genotype::LoadFromFile(const char* filePath) {
 
     // Read struct data from file
     std::ifstream infile(fullPath, std::ios::binary);
-    infile.read( reinterpret_cast<char*>(&file->record), sizeof(file->record));
+    infile.read(reinterpret_cast<char*>(&file->record), sizeof(file->record));
 
-    std::cout << "Loading file: " << std::endl;
+    std::cout << "Loading file: " << fullPath << std::endl;
     std::cout << "[agentName: "
         << file->record.agentName
             << ", evaluation: "
@@ -119,8 +120,15 @@ Genotype* Genotype::LoadFromFile(const char* filePath) {
             << file->record.parameters
             << "]" << std::endl;
 
-    std::cout <<  "Genotype has been successfully loaded." << std::endl;
+    std::cout << "Genotype has been successfully loaded." << std::endl;
     dimensionsInFile.close();
+
+    Genotype* genotype = new Genotype();
+    genotype->evaluation = file->record.evaluation;
+    genotype->fitness = file->record.fitness;
+    genotype->parameterCount = file->record.parameterCount;
+    genotype->parameters = file->record.parameters;
+    return genotype;
 }
 
 float Genotype::getParameter(int index) {

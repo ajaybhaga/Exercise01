@@ -6,10 +6,14 @@
 
 #IncludeRegexTransform: 
 
-C:/dev/git/MayaBrain/genotype.cpp
+/Users/badzindagi/dev/MayaBrain/genetic_algorithm.cpp
+genetic_algorithm.h
+/Users/badzindagi/dev/MayaBrain/genetic_algorithm.h
 iostream
 -
 string
+-
+list
 -
 cassert
 -
@@ -21,22 +25,22 @@ stdio.h
 -
 cstring
 -
-genotype.h
-C:/dev/git/MayaBrain/genotype.h
-random_d.h
-C:/dev/git/MayaBrain/random_d.h
 
-C:/dev/git/MayaBrain/genotype.h
-
-C:/dev/git/MayaBrain/main.cpp
-iostream
+/Users/badzindagi/dev/MayaBrain/genetic_algorithm.h
+vector
 -
-random_d.h
-C:/dev/git/MayaBrain/random_d.h
+list
+-
 genotype.h
-C:/dev/git/MayaBrain/genotype.h
+/Users/badzindagi/dev/MayaBrain/genotype.h
+random_d.h
+/Users/badzindagi/dev/MayaBrain/random_d.h
 
-C:/dev/git/MayaBrain/random_d.h
+/Users/badzindagi/dev/MayaBrain/genotype.h
+string
+-
+
+/Users/badzindagi/dev/MayaBrain/random_d.h
 functional
 -
 random

@@ -1,3 +1,1 @@
-"C:\Program Files\JetBrains\CLion 2019.2.4\bin\cmake\win\bin\cmake.exe" -E remove -f CMakeFiles\EANN_Simple.dir/objects.a
-C:\PROGRA~1\MINGW-~1\X86_64~1.0-W\mingw64\bin\ar.exe cr CMakeFiles\EANN_Simple.dir/objects.a @CMakeFiles\EANN_Simple.dir\objects1.rsp
-C:\PROGRA~1\MINGW-~1\X86_64~1.0-W\mingw64\bin\G__~1.EXE -g   -Wl,--whole-archive CMakeFiles\EANN_Simple.dir/objects.a -Wl,--no-whole-archive  -o EANN_Simple.exe -Wl,--out-implib,libEANN_Simple.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\EANN_Simple.dir\linklibs.rsp
+/usr/local/Cellar/llvm/9.0.0/bin/clang++  -g -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/EANN_Simple.dir/main.cpp.o CMakeFiles/EANN_Simple.dir/genotype.cpp.o CMakeFiles/EANN_Simple.dir/genetic_algorithm.cpp.o  -o EANN_Simple 
