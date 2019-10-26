@@ -1,6 +1,13 @@
 //
 // Genotype represents one member of population
 //
+//
+// C++ Implementation by Ajay Bhaga
+//
+// Modified Genetic Algorithm
+// Based on design of Samuel Arzt (March 2017)
+//
+
 
 #ifndef EANN_SIMPLE_GENOTYPE_H
 #define EANN_SIMPLE_GENOTYPE_H
