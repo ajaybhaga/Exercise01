@@ -20,13 +20,14 @@ public:
     Genotype();
     Genotype(float* parameters, int parameterCount);
     ~Genotype();
-    void SetRandomParameters(float minValue, float maxValue);
-    float* GetParameterCopy();
-    void SaveToFile(const char* filePath);
-    Genotype* LoadFromFile(const char* filePath);
+    void setRandomParameters(float minValue, float maxValue);
+    float* getParameterCopy();
+    void saveToFile(const char* filePath);
+    Genotype* loadFromFile(const char* filePath);
     float getParameter(int index);
-    Genotype* GenerateRandom(int parameterCount, float minValue, float maxValue);
-    void OutputToConsole();
+    void setParameter(int index, float value);
+    Genotype* generateRandom(int parameterCount, float minValue, float maxValue);
+    void outputToConsole();
 
     float evaluation;
     float fitness;

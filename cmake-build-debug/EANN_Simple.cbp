@@ -80,6 +80,18 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/agent.cpp">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/agent.h">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/evolution_manager.cpp">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/evolution_manager.h">
+			<Option target="EANN_Simple"/>
+		</Unit>
 		<Unit filename="/Users/badzindagi/dev/MayaBrain/genetic_algorithm.cpp">
 			<Option target="EANN_Simple"/>
 		</Unit>
@@ -90,6 +102,12 @@
 			<Option target="EANN_Simple"/>
 		</Unit>
 		<Unit filename="/Users/badzindagi/dev/MayaBrain/genotype.h">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/listener.cpp">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/listener.h">
 			<Option target="EANN_Simple"/>
 		</Unit>
 		<Unit filename="/Users/badzindagi/dev/MayaBrain/main.cpp">

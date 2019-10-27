@@ -96,11 +96,53 @@ CMakeFiles/EANN_Simple.dir/genetic_algorithm.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EANN_Simple.dir/genetic_algorithm.cpp.s"
 	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/badzindagi/dev/MayaBrain/genetic_algorithm.cpp -o CMakeFiles/EANN_Simple.dir/genetic_algorithm.cpp.s
 
+CMakeFiles/EANN_Simple.dir/evolution_manager.cpp.o: CMakeFiles/EANN_Simple.dir/flags.make
+CMakeFiles/EANN_Simple.dir/evolution_manager.cpp.o: ../evolution_manager.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/badzindagi/dev/MayaBrain/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/EANN_Simple.dir/evolution_manager.cpp.o"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/EANN_Simple.dir/evolution_manager.cpp.o -c /Users/badzindagi/dev/MayaBrain/evolution_manager.cpp
+
+CMakeFiles/EANN_Simple.dir/evolution_manager.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/EANN_Simple.dir/evolution_manager.cpp.i"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/badzindagi/dev/MayaBrain/evolution_manager.cpp > CMakeFiles/EANN_Simple.dir/evolution_manager.cpp.i
+
+CMakeFiles/EANN_Simple.dir/evolution_manager.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EANN_Simple.dir/evolution_manager.cpp.s"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/badzindagi/dev/MayaBrain/evolution_manager.cpp -o CMakeFiles/EANN_Simple.dir/evolution_manager.cpp.s
+
+CMakeFiles/EANN_Simple.dir/agent.cpp.o: CMakeFiles/EANN_Simple.dir/flags.make
+CMakeFiles/EANN_Simple.dir/agent.cpp.o: ../agent.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/badzindagi/dev/MayaBrain/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/EANN_Simple.dir/agent.cpp.o"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/EANN_Simple.dir/agent.cpp.o -c /Users/badzindagi/dev/MayaBrain/agent.cpp
+
+CMakeFiles/EANN_Simple.dir/agent.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/EANN_Simple.dir/agent.cpp.i"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/badzindagi/dev/MayaBrain/agent.cpp > CMakeFiles/EANN_Simple.dir/agent.cpp.i
+
+CMakeFiles/EANN_Simple.dir/agent.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EANN_Simple.dir/agent.cpp.s"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/badzindagi/dev/MayaBrain/agent.cpp -o CMakeFiles/EANN_Simple.dir/agent.cpp.s
+
+CMakeFiles/EANN_Simple.dir/listener.cpp.o: CMakeFiles/EANN_Simple.dir/flags.make
+CMakeFiles/EANN_Simple.dir/listener.cpp.o: ../listener.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/badzindagi/dev/MayaBrain/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/EANN_Simple.dir/listener.cpp.o"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/EANN_Simple.dir/listener.cpp.o -c /Users/badzindagi/dev/MayaBrain/listener.cpp
+
+CMakeFiles/EANN_Simple.dir/listener.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/EANN_Simple.dir/listener.cpp.i"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/badzindagi/dev/MayaBrain/listener.cpp > CMakeFiles/EANN_Simple.dir/listener.cpp.i
+
+CMakeFiles/EANN_Simple.dir/listener.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EANN_Simple.dir/listener.cpp.s"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/badzindagi/dev/MayaBrain/listener.cpp -o CMakeFiles/EANN_Simple.dir/listener.cpp.s
+
 # Object files for target EANN_Simple
 EANN_Simple_OBJECTS = \
 "CMakeFiles/EANN_Simple.dir/main.cpp.o" \
 "CMakeFiles/EANN_Simple.dir/genotype.cpp.o" \
-"CMakeFiles/EANN_Simple.dir/genetic_algorithm.cpp.o"
+"CMakeFiles/EANN_Simple.dir/genetic_algorithm.cpp.o" \
+"CMakeFiles/EANN_Simple.dir/evolution_manager.cpp.o" \
+"CMakeFiles/EANN_Simple.dir/agent.cpp.o" \
+"CMakeFiles/EANN_Simple.dir/listener.cpp.o"
 
 # External object files for target EANN_Simple
 EANN_Simple_EXTERNAL_OBJECTS =
@@ -108,9 +150,12 @@ EANN_Simple_EXTERNAL_OBJECTS =
 EANN_Simple: CMakeFiles/EANN_Simple.dir/main.cpp.o
 EANN_Simple: CMakeFiles/EANN_Simple.dir/genotype.cpp.o
 EANN_Simple: CMakeFiles/EANN_Simple.dir/genetic_algorithm.cpp.o
+EANN_Simple: CMakeFiles/EANN_Simple.dir/evolution_manager.cpp.o
+EANN_Simple: CMakeFiles/EANN_Simple.dir/agent.cpp.o
+EANN_Simple: CMakeFiles/EANN_Simple.dir/listener.cpp.o
 EANN_Simple: CMakeFiles/EANN_Simple.dir/build.make
 EANN_Simple: CMakeFiles/EANN_Simple.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/badzindagi/dev/MayaBrain/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable EANN_Simple"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/badzindagi/dev/MayaBrain/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable EANN_Simple"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/EANN_Simple.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -44,7 +44,7 @@ Genotype::~Genotype() {
     delete[] parameters;
 }
 
-void Genotype::SetRandomParameters(float minValue, float maxValue) {
+void Genotype::setRandomParameters(float minValue, float maxValue) {
     assert(minValue < maxValue);
 
     // create the random number generator:
@@ -57,7 +57,7 @@ void Genotype::SetRandomParameters(float minValue, float maxValue) {
     }
 }
 
-float* Genotype::GetParameterCopy() {
+float* Genotype::getParameterCopy() {
 
     float* copy = new float[parameterCount];
     for (int i = 0; i < parameterCount; i++) {
@@ -67,7 +67,7 @@ float* Genotype::GetParameterCopy() {
     return copy;
 }
 
-void Genotype::SaveToFile(const char* filePath) {
+void Genotype::saveToFile(const char* filePath) {
 
         std::string dirPath = TRAINING_DATA_DIR;
         std::string fullPath = dirPath + filePath;
@@ -100,7 +100,7 @@ void Genotype::SaveToFile(const char* filePath) {
         std::cout << "Genotype record has been successfully saved." << std::endl;
 }
 
-Genotype* Genotype::LoadFromFile(const char* filePath) {
+Genotype* Genotype::loadFromFile(const char* filePath) {
     std::string dirPath = TRAINING_DATA_DIR;
     std::string fullPath = dirPath + filePath;
     std::ifstream dimensionsInFile;
@@ -143,19 +143,25 @@ float Genotype::getParameter(int index) {
     }
 }
 
-Genotype* Genotype::GenerateRandom(int parameterCount, float minValue, float maxValue) {
+Genotype* Genotype::generateRandom(int parameterCount, float minValue, float maxValue) {
 
     if (parameterCount == 0) {
         return new Genotype(new float[0], 0);
     }
 
     Genotype* randomGenotype = new Genotype(new float[parameterCount], parameterCount);
-    randomGenotype->SetRandomParameters(minValue, maxValue);
+    randomGenotype->setRandomParameters(minValue, maxValue);
     return randomGenotype;
 }
 
-void Genotype::OutputToConsole() {
+void Genotype::outputToConsole() {
     for (int i = 0; i < parameterCount; i++) {
         std::cout << "parameters[" << i << "] -> " << parameters[i] << std::endl;
+    }
+}
+
+void Genotype::setParameter(int index, float value) {
+    if (parameters) {
+        parameters[index] = value;
     }
 }

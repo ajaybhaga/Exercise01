@@ -37,19 +37,20 @@ public:
     GeneticAlgorithm(int genotypeParamCount, int populationSize);
     ~GeneticAlgorithm();
 
-    void Start();
-    void EvaluationFinished();
-    void Terminate();
+    void start();
+    void fitnessCalculationFinished(std::list<Genotype> currentPopulation, std::function<void> callback);
+    void evaluationFinished();
+    void terminate();
 
-    static void DefaultPopulationInitialization(std::list<Genotype> population);
-    static void AsyncEvaluation(std::list<Genotype> currentPopulation);
-    static void DefaultFitnessCalculation(std::list<Genotype> currentPopulation);
-    static std::list<Genotype>* DefaultSelectionOperator(std::list<Genotype> currentPopulation);
-    static std::list<Genotype>* DefaultRecombinationOperator(std::list<Genotype> intermediatePopulation, int newPopulationSize);
-    static void DefaultMutationOperator(std::list<Genotype> newPopulation);
-    static void CompleteCrossover(Genotype parent1, Genotype parent2, float swapChance, Genotype* offspring1, Genotype* offspring2);
-    static void MutateGenotype(Genotype genotype, float mutationProb, float mutationAmount);
-    static bool DefaultTermination(std::list<Genotype> currentPopulation);
+    static void defaultPopulationInitialization(std::list<Genotype> population);
+    static void asyncEvaluation(std::list<Genotype> currentPopulation);
+    static void defaultFitnessCalculation(std::list<Genotype> currentPopulation);
+    static std::list<Genotype>* defaultSelectionOperator(std::list<Genotype> currentPopulation);
+    static std::list<Genotype> defaultRecombinationOperator(std::list<Genotype> intermediatePopulation, int newPopulationSize);
+    static void defaultMutationOperator(std::list<Genotype> newPopulation);
+    static void completeCrossover(Genotype parent1, Genotype parent2, float swapChance, Genotype* offspring1, Genotype* offspring2);
+    static void mutateGenotype(Genotype genotype, float mutationProb, float mutationAmount);
+    static bool defaultTermination(std::list<Genotype> currentPopulation);
 
     // Use to initialize the initial population.
     typedef std::function<void (std::list<Genotype> initialPopulation)> InitializationOperator;
@@ -64,22 +65,22 @@ public:
     typedef std::function<std::list<Genotype>* (std::list<Genotype> currentPopulation)> SelectionOperator;
 
     // Used to recombine the intermediate population to generate a new population.
-    typedef std::function<std::list<Genotype>* (std::list<Genotype> intermediatePopulation, int newPopulationSize)> RecombinationOperator;
+    typedef std::function<std::list<Genotype> (std::list<Genotype> intermediatePopulation, int newPopulationSize)> RecombinationOperator;
 
     // Used to mutate the new population.
     typedef std::function<void (std::list<Genotype> newPopulation)> MutationOperator;
 
-    // Used to check whether any termination criterion has been met.
+        // Used to check whether any termination criterion has been met.
     typedef std::function<bool (std::list<Genotype> currentPopulation)> CheckTerminationCriterion;
 
     // Operators
-    InitializationOperator InitializePopulation = DefaultPopulationInitialization;
-    EvaluationOperator Evaluation = AsyncEvaluation;
-    FitnessCalculation FitnessCalculationMethod = DefaultFitnessCalculation;
-    SelectionOperator Selection = DefaultSelectionOperator;
-    RecombinationOperator Recombination = DefaultRecombinationOperator;
-    MutationOperator Mutation = DefaultMutationOperator;
-    CheckTerminationCriterion TerminationCriterion = DefaultTermination;
+    InitializationOperator InitializePopulation = defaultPopulationInitialization;
+    EvaluationOperator Evaluation = asyncEvaluation;
+    FitnessCalculation FitnessCalculationMethod = defaultFitnessCalculation;
+    SelectionOperator Selection = defaultSelectionOperator;
+    RecombinationOperator Recombination = defaultRecombinationOperator;
+    MutationOperator Mutation = defaultMutationOperator;
+    CheckTerminationCriterion TerminationCriterion = defaultTermination;
 
     // The amount of genotypes in a population.
     int populationSize;
@@ -93,7 +94,6 @@ public:
     // Whether the genetic algorithm is currently running.
     bool running;
 
-    bool fitnessCalculationFinished;
     bool algorithmTerminated;
 
 private:
