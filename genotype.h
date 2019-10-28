@@ -18,12 +18,12 @@ class Genotype {
 public:
 
     Genotype();
-    Genotype(float* parameters, int parameterCount);
+    Genotype(float *parameters, int parameterCount);
     ~Genotype();
     void setRandomParameters(float minValue, float maxValue);
     float* getParameterCopy();
-    void saveToFile(const char* filePath);
-    Genotype* loadFromFile(const char* filePath);
+    void saveToFile(const char *filePath);
+    Genotype* loadFromFile(const char *filePath);
     float getParameter(int index);
     void setParameter(int index, float value);
     Genotype* generateRandom(int parameterCount, float minValue, float maxValue);

@@ -54,7 +54,7 @@ void GeneticAlgorithm::evaluationFinished() {
     }
 
     // Fire fitness calculation finished event
-    fitnessCalculationFinished();
+    fitnessCalculationFinished(currentPopulation);
 
     // Check termination criterion
     if (TerminationCriterion != NULL && TerminationCriterion(currentPopulation)) {
@@ -63,10 +63,10 @@ void GeneticAlgorithm::evaluationFinished() {
     }
 
     // Apply selection
-    std::list<Genotype>* intermediatePopulation = Selection(currentPopulation);
+    std::list<Genotype> *intermediatePopulation = Selection(currentPopulation);
 
     // Apply recombination
-    std::list<Genotype>* newPopulation = Recombination(*intermediatePopulation, populationSize);
+    std::list<Genotype> *newPopulation = Recombination(*intermediatePopulation, populationSize);
 
     // Apply mutation
     Mutation(*newPopulation);
@@ -89,7 +89,7 @@ void GeneticAlgorithm::defaultPopulationInitialization(std::list<Genotype> popul
     // Set parameters to random values in set range
     for (std::list<Genotype>::iterator it = population.begin(); it != population.end(); ++it) {
         /* std::cout << *it; ... */
-        it->SetRandomParameters(DefInitParamMin, DefInitParamMax);
+        it->setRandomParameters(DefInitParamMin, DefInitParamMax);
     }
 }
 
@@ -132,19 +132,19 @@ std::list<Genotype>* GeneticAlgorithm::defaultSelectionOperator(std::list<Genoty
 }
 
 // Simply crosses the first with the second genotype of the intermediate population until the new population is of desired size.
-std::list<Genotype> GeneticAlgorithm::defaultRecombinationOperator(std::list<Genotype> intermediatePopulation, int newPopulationSize) {
+std::list<Genotype> *GeneticAlgorithm::defaultRecombinationOperator(std::list<Genotype> intermediatePopulation, int newPopulationSize) {
 
     if (intermediatePopulation.size() < 2) {
         std::cout << "Intermediate population size must be greater than 2 for this operator.";
-        return NULL;
+        return nullptr;
     }
 
-    std::list<Genotype>* newPopulation = new std::list<Genotype>();
+    std::list<Genotype> *newPopulation = new std::list<Genotype>();
 
     if (newPopulation->size() < newPopulationSize) {
 
-        Genotype* offspring1;
-        Genotype* offspring2;
+        Genotype *offspring1;
+        Genotype *offspring2;
 
         // Get first 2 list items (top 2)
         size_t n = 2;
@@ -177,7 +177,7 @@ std::list<Genotype> GeneticAlgorithm::defaultRecombinationOperator(std::list<Gen
         }
     }
 
-    return *newPopulation;
+    return newPopulation;
 }
 
 void GeneticAlgorithm::defaultMutationOperator(std::list<Genotype> newPopulation) {
@@ -189,7 +189,7 @@ void GeneticAlgorithm::defaultMutationOperator(std::list<Genotype> newPopulation
 
         for (Genotype& genotype : newPopulation) {
             if (rd() < DefMutationPerc) {
-                MutateGenotype(genotype, DefMutationProb, DefMutationAmount);
+                mutateGenotype(genotype, DefMutationProb, DefMutationAmount);
             }
         }
 
@@ -204,8 +204,8 @@ void GeneticAlgorithm::completeCrossover(Genotype parent1, Genotype parent2, flo
 
     // Initialize new parameter vectors
     int parameterCount = parent1.parameterCount;
-    float* off1Parameters = new float[parameterCount];
-    float* off2Parameters = new float[parameterCount];
+    float *off1Parameters = new float[parameterCount];
+    float *off2Parameters = new float[parameterCount];
 
     // Iterate over all parameters randomly swapping
     for (int i = 0; i < parameterCount; i++) {
@@ -221,8 +221,8 @@ void GeneticAlgorithm::completeCrossover(Genotype parent1, Genotype parent2, flo
         }
     }
 
-    Genotype* offspring1_out = new Genotype(off1Parameters, parameterCount);
-    Genotype* offspring2_out = new Genotype(off2Parameters, parameterCount);
+    Genotype *offspring1_out = new Genotype(off1Parameters, parameterCount);
+    Genotype *offspring2_out = new Genotype(off2Parameters, parameterCount);
 
     offspring1 = offspring1_out;
     offspring2 = offspring2_out;
@@ -244,5 +244,9 @@ void GeneticAlgorithm::mutateGenotype(Genotype genotype, float mutationProb, flo
 
 bool GeneticAlgorithm::defaultTermination(std::list<Genotype> currentPopulation) {
     return false;
+}
+
+void GeneticAlgorithm::fitnessCalculationFinished(std::list<Genotype> currentPopulation) {
+
 }
 

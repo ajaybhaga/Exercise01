@@ -9,10 +9,9 @@
 #include <iostream>
 #include <ctime>
 
-i
-
 EvolutionManager::EvolutionManager() {
-    std::list<Agent>* agents = new std::list<Agent>();
+    std::list<Agent> *agents = new std::list<Agent>();
+    instance = 0;
 }
 
 EvolutionManager::~EvolutionManager() {
@@ -51,13 +50,15 @@ void EvolutionManager::startEvolution() {
         geneticAlgorithm->Mutation = mutateAllButBestTwo;
     }
 
+    // TODO: EvolutionManager - implement conditions below, based on action -> event
     //allAgentsDied +=
-    geneticAlgorithm->EvaluationFinished();
-    // TODO: why the add?
+//    geneticAlgorithm->EvaluationFinished();
+//    all agents died then evaluation finished
+//    AllAgentsDied += geneticAlgorithm.EvaluationFinished;
 
     char buffer[80];
     time_t rawtime;
-    struct tm * timeinfo;
+    struct tm *timeinfo;
     time (&rawtime);
     timeinfo = localtime(&rawtime);
 
@@ -67,11 +68,20 @@ void EvolutionManager::startEvolution() {
         std::string str(buffer);
         statisticsFileName = std::string("Evaluation - ") + buffer;
         writeStatisticsFileStart();
-        geneticAlgorithm->fitnessCalculationFinished(pop);
-
+//        geneticAlgorithm->fitnessCalculationFinished(pop);
+        // on FitnessCalculationFinished then WriteStatisticsToFile
     }
 
+    // on FitnessCalculationFinished then CheckForTrackFinished
 
+    //Restart logic
+    if (restartAfter > 0)
+    {
+     //   on geneticAlgorithm.TerminationCriterion then CheckGenerationTermination;
+     //   on geneticAlgorithm.AlgorithmTerminated then OnGATermination;
+    }
+
+    geneticAlgorithm->start();
 }
 
 void EvolutionManager::writeStatisticsFileStart() {
@@ -120,4 +130,12 @@ void EvolutionManager::mutateAllButBestTwo(std::list<Genotype> newPopulation) {
 
 void EvolutionManager::mutateAll(std::list<Genotype> newPopulation) {
 
+}
+
+EvolutionManager *EvolutionManager::GetInstance() {
+
+    if (instance == 0) {
+        instance = new EvolutionManager();
+    }
+    return instance;
 }

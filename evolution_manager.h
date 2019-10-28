@@ -19,7 +19,7 @@
 class EvolutionManager {
 public:
 
-    EvolutionManager();
+    static EvolutionManager *GetInstance();
     ~EvolutionManager();
 
     int getGenerationCount();
@@ -45,6 +45,9 @@ public:
 
 private:
 
+    static EvolutionManager *instance;
+    EvolutionManager();
+
     // Whether or not the results of each generation shall be written to file.
     bool saveStatistics = false;
     std::string statisticsFileName;
@@ -66,9 +69,9 @@ private:
     int* FNNTopology;
 
     // The current population agents.
-    std::list<Agent>* agents;
+    std::list<Agent> *agents;
 
-    GeneticAlgorithm* geneticAlgorithm;
+    GeneticAlgorithm *geneticAlgorithm;
 };
 
 #endif //EANN_SIMPLE_EVOLUTION_MANAGER_H

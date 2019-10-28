@@ -38,17 +38,17 @@ public:
     ~GeneticAlgorithm();
 
     void start();
-    void fitnessCalculationFinished(std::list<Genotype> currentPopulation, std::function<void> callback);
+    void fitnessCalculationFinished(std::list<Genotype> currentPopulation);
     void evaluationFinished();
     void terminate();
 
     static void defaultPopulationInitialization(std::list<Genotype> population);
     static void asyncEvaluation(std::list<Genotype> currentPopulation);
     static void defaultFitnessCalculation(std::list<Genotype> currentPopulation);
-    static std::list<Genotype>* defaultSelectionOperator(std::list<Genotype> currentPopulation);
-    static std::list<Genotype> defaultRecombinationOperator(std::list<Genotype> intermediatePopulation, int newPopulationSize);
+    static std::list<Genotype> *defaultSelectionOperator(std::list<Genotype> currentPopulation);
+    static std::list<Genotype> *defaultRecombinationOperator(std::list<Genotype> intermediatePopulation, int newPopulationSize);
     static void defaultMutationOperator(std::list<Genotype> newPopulation);
-    static void completeCrossover(Genotype parent1, Genotype parent2, float swapChance, Genotype* offspring1, Genotype* offspring2);
+    static void completeCrossover(Genotype parent1, Genotype parent2, float swapChance, Genotype *offspring1, Genotype *offspring2);
     static void mutateGenotype(Genotype genotype, float mutationProb, float mutationAmount);
     static bool defaultTermination(std::list<Genotype> currentPopulation);
 
@@ -62,10 +62,10 @@ public:
     typedef std::function<void (std::list<Genotype> currentPopulation)> FitnessCalculation;
 
     // Used to select genotypes of the current population and create the intermediate population.
-    typedef std::function<std::list<Genotype>* (std::list<Genotype> currentPopulation)> SelectionOperator;
+    typedef std::function<std::list<Genotype> *(std::list<Genotype> currentPopulation)> SelectionOperator;
 
     // Used to recombine the intermediate population to generate a new population.
-    typedef std::function<std::list<Genotype> (std::list<Genotype> intermediatePopulation, int newPopulationSize)> RecombinationOperator;
+    typedef std::function<std::list<Genotype> *(std::list<Genotype> intermediatePopulation, int newPopulationSize)> RecombinationOperator;
 
     // Used to mutate the new population.
     typedef std::function<void (std::list<Genotype> newPopulation)> MutationOperator;
