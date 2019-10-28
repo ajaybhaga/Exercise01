@@ -33,21 +33,21 @@ void EvolutionManager::startEvolution() {
     geneticAlgorithm = new GeneticAlgorithm(0, populationSize);
     genotypesSaved = 0;
 
-    geneticAlgorithm->Evaluation = startEvaluation;
+    geneticAlgorithm->evaluation = startEvaluation;
 
     if (elitistSelection) {
 
         // Second configuration
-        geneticAlgorithm->Selection = geneticAlgorithm->defaultSelectionOperator;
-        geneticAlgorithm->Recombination = randomRecombination;
-        geneticAlgorithm->Mutation = mutateAllButBestTwo;
+        geneticAlgorithm->selection = geneticAlgorithm->defaultSelectionOperator;
+        geneticAlgorithm->recombination = randomRecombination;
+        geneticAlgorithm->mutation = mutateAllButBestTwo;
 
     } else {
 
         // First configuration
-        geneticAlgorithm->Selection = remainderStochasticSampling;
-        geneticAlgorithm->Recombination = randomRecombination;
-        geneticAlgorithm->Mutation = mutateAllButBestTwo;
+        geneticAlgorithm->selection = remainderStochasticSampling;
+        geneticAlgorithm->recombination = randomRecombination;
+        geneticAlgorithm->mutation = mutateAllButBestTwo;
     }
 
     // TODO: EvolutionManager - implement conditions below, based on action -> event

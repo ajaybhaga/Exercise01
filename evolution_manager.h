@@ -37,7 +37,7 @@ public:
     static void mutateAllButBestTwo(std::list<Genotype> newPopulation);
     static void mutateAll(std::list<Genotype> newPopulation);
 
-    // The amount of agents that are currently alive.
+        // The amount of agents that are currently alive.
     int agentsAliveCount = 0;
 
     // Event for when all agents have died.

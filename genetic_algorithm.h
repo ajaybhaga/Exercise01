@@ -74,13 +74,13 @@ public:
     typedef std::function<bool (std::list<Genotype> currentPopulation)> CheckTerminationCriterion;
 
     // Operators
-    InitializationOperator InitializePopulation = defaultPopulationInitialization;
-    EvaluationOperator Evaluation = asyncEvaluation;
-    FitnessCalculation FitnessCalculationMethod = defaultFitnessCalculation;
-    SelectionOperator Selection = defaultSelectionOperator;
-    RecombinationOperator Recombination = defaultRecombinationOperator;
-    MutationOperator Mutation = defaultMutationOperator;
-    CheckTerminationCriterion TerminationCriterion = defaultTermination;
+    InitializationOperator initializePopulation = defaultPopulationInitialization;
+    EvaluationOperator evaluation = asyncEvaluation;
+    FitnessCalculation fitnessCalculationMethod = defaultFitnessCalculation;
+    SelectionOperator selection = defaultSelectionOperator;
+    RecombinationOperator recombination = defaultRecombinationOperator;
+    MutationOperator mutation = defaultMutationOperator;
+    CheckTerminationCriterion terminationCriterion = defaultTermination;
 
     // The amount of genotypes in a population.
     int populationSize;

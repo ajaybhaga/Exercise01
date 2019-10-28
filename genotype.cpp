@@ -12,9 +12,6 @@
 #include <string>
 #include <cassert>
 #include <fstream>      // std::ifstream, std::ofstream
-#include <stdlib.h>     /* atoi */
-#include <stdio.h>
-#include <cstring>
 
 #include "genotype.h"
 #include "random_d.h"
@@ -27,7 +24,7 @@ Genotype::Genotype() {
     parameterCount = 0;
 }
 
-Genotype::Genotype(float* parameters, int parameterCount) {
+Genotype::Genotype(float *parameters, int parameterCount) {
 
     this->parameters = parameters;
     if (!parameters) {
@@ -57,9 +54,9 @@ void Genotype::setRandomParameters(float minValue, float maxValue) {
     }
 }
 
-float* Genotype::getParameterCopy() {
+float *Genotype::getParameterCopy() {
 
-    float* copy = new float[parameterCount];
+    float *copy = new float[parameterCount];
     for (int i = 0; i < parameterCount; i++) {
         copy[i] = parameters[i];
     }
@@ -100,7 +97,7 @@ void Genotype::saveToFile(const char* filePath) {
         std::cout << "Genotype record has been successfully saved." << std::endl;
 }
 
-Genotype* Genotype::loadFromFile(const char* filePath) {
+Genotype *Genotype::loadFromFile(const char* filePath) {
     std::string dirPath = TRAINING_DATA_DIR;
     std::string fullPath = dirPath + filePath;
     std::ifstream dimensionsInFile;

@@ -23,10 +23,10 @@ public:
     void setRandomParameters(float minValue, float maxValue);
     float* getParameterCopy();
     void saveToFile(const char *filePath);
-    Genotype* loadFromFile(const char *filePath);
+    Genotype *loadFromFile(const char *filePath);
     float getParameter(int index);
     void setParameter(int index, float value);
-    Genotype* generateRandom(int parameterCount, float minValue, float maxValue);
+    Genotype *generateRandom(int parameterCount, float minValue, float maxValue);
     void outputToConsole();
 
     float evaluation;

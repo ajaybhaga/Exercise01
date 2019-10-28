@@ -13,10 +13,12 @@ vector
 -
 list
 -
-genotype.h
-/Users/badzindagi/dev/MayaBrain/genotype.h
 random_d.h
 /Users/badzindagi/dev/MayaBrain/random_d.h
+genotype.h
+/Users/badzindagi/dev/MayaBrain/genotype.h
+neural_layer.h
+/Users/badzindagi/dev/MayaBrain/neural_layer.h
 
 /Users/badzindagi/dev/MayaBrain/evolution_manager.cpp
 evolution_manager.h
@@ -51,6 +53,20 @@ random_d.h
 /Users/badzindagi/dev/MayaBrain/genotype.h
 string
 -
+
+/Users/badzindagi/dev/MayaBrain/math_helper.h
+random_d.h
+/Users/badzindagi/dev/MayaBrain/random_d.h
+string
+-
+
+/Users/badzindagi/dev/MayaBrain/neural_layer.h
+random_d.h
+/Users/badzindagi/dev/MayaBrain/random_d.h
+string
+-
+math_helper.h
+/Users/badzindagi/dev/MayaBrain/math_helper.h
 
 /Users/badzindagi/dev/MayaBrain/random_d.h
 functional

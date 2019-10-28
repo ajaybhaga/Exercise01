@@ -113,6 +113,24 @@
 		<Unit filename="/Users/badzindagi/dev/MayaBrain/main.cpp">
 			<Option target="EANN_Simple"/>
 		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/math_helper.cpp">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/math_helper.h">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/neural_layer.cpp">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/neural_layer.h">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/neural_network.cpp">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/neural_network.h">
+			<Option target="EANN_Simple"/>
+		</Unit>
 		<Unit filename="/Users/badzindagi/dev/MayaBrain/random_d.h">
 			<Option target="EANN_Simple"/>
 		</Unit>

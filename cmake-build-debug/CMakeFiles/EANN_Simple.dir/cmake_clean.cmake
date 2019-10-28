@@ -5,6 +5,9 @@ file(REMOVE_RECURSE
   "CMakeFiles/EANN_Simple.dir/genotype.cpp.o"
   "CMakeFiles/EANN_Simple.dir/listener.cpp.o"
   "CMakeFiles/EANN_Simple.dir/main.cpp.o"
+  "CMakeFiles/EANN_Simple.dir/math_helper.cpp.o"
+  "CMakeFiles/EANN_Simple.dir/neural_layer.cpp.o"
+  "CMakeFiles/EANN_Simple.dir/neural_network.cpp.o"
   "EANN_Simple"
   "EANN_Simple.pdb"
 )

@@ -285,6 +285,87 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/EANN_Simple.dir/build.make CMakeFiles/EANN_Simple.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+math_helper.o: math_helper.cpp.o
+
+.PHONY : math_helper.o
+
+# target to build an object file
+math_helper.cpp.o:
+	$(MAKE) -f CMakeFiles/EANN_Simple.dir/build.make CMakeFiles/EANN_Simple.dir/math_helper.cpp.o
+.PHONY : math_helper.cpp.o
+
+math_helper.i: math_helper.cpp.i
+
+.PHONY : math_helper.i
+
+# target to preprocess a source file
+math_helper.cpp.i:
+	$(MAKE) -f CMakeFiles/EANN_Simple.dir/build.make CMakeFiles/EANN_Simple.dir/math_helper.cpp.i
+.PHONY : math_helper.cpp.i
+
+math_helper.s: math_helper.cpp.s
+
+.PHONY : math_helper.s
+
+# target to generate assembly for a file
+math_helper.cpp.s:
+	$(MAKE) -f CMakeFiles/EANN_Simple.dir/build.make CMakeFiles/EANN_Simple.dir/math_helper.cpp.s
+.PHONY : math_helper.cpp.s
+
+neural_layer.o: neural_layer.cpp.o
+
+.PHONY : neural_layer.o
+
+# target to build an object file
+neural_layer.cpp.o:
+	$(MAKE) -f CMakeFiles/EANN_Simple.dir/build.make CMakeFiles/EANN_Simple.dir/neural_layer.cpp.o
+.PHONY : neural_layer.cpp.o
+
+neural_layer.i: neural_layer.cpp.i
+
+.PHONY : neural_layer.i
+
+# target to preprocess a source file
+neural_layer.cpp.i:
+	$(MAKE) -f CMakeFiles/EANN_Simple.dir/build.make CMakeFiles/EANN_Simple.dir/neural_layer.cpp.i
+.PHONY : neural_layer.cpp.i
+
+neural_layer.s: neural_layer.cpp.s
+
+.PHONY : neural_layer.s
+
+# target to generate assembly for a file
+neural_layer.cpp.s:
+	$(MAKE) -f CMakeFiles/EANN_Simple.dir/build.make CMakeFiles/EANN_Simple.dir/neural_layer.cpp.s
+.PHONY : neural_layer.cpp.s
+
+neural_network.o: neural_network.cpp.o
+
+.PHONY : neural_network.o
+
+# target to build an object file
+neural_network.cpp.o:
+	$(MAKE) -f CMakeFiles/EANN_Simple.dir/build.make CMakeFiles/EANN_Simple.dir/neural_network.cpp.o
+.PHONY : neural_network.cpp.o
+
+neural_network.i: neural_network.cpp.i
+
+.PHONY : neural_network.i
+
+# target to preprocess a source file
+neural_network.cpp.i:
+	$(MAKE) -f CMakeFiles/EANN_Simple.dir/build.make CMakeFiles/EANN_Simple.dir/neural_network.cpp.i
+.PHONY : neural_network.cpp.i
+
+neural_network.s: neural_network.cpp.s
+
+.PHONY : neural_network.s
+
+# target to generate assembly for a file
+neural_network.cpp.s:
+	$(MAKE) -f CMakeFiles/EANN_Simple.dir/build.make CMakeFiles/EANN_Simple.dir/neural_network.cpp.s
+.PHONY : neural_network.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -312,6 +393,15 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... math_helper.o"
+	@echo "... math_helper.i"
+	@echo "... math_helper.s"
+	@echo "... neural_layer.o"
+	@echo "... neural_layer.i"
+	@echo "... neural_layer.s"
+	@echo "... neural_network.o"
+	@echo "... neural_network.i"
+	@echo "... neural_network.s"
 .PHONY : help
 
 

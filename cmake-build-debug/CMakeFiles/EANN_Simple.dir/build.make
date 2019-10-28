@@ -135,6 +135,45 @@ CMakeFiles/EANN_Simple.dir/listener.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EANN_Simple.dir/listener.cpp.s"
 	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/badzindagi/dev/MayaBrain/listener.cpp -o CMakeFiles/EANN_Simple.dir/listener.cpp.s
 
+CMakeFiles/EANN_Simple.dir/neural_layer.cpp.o: CMakeFiles/EANN_Simple.dir/flags.make
+CMakeFiles/EANN_Simple.dir/neural_layer.cpp.o: ../neural_layer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/badzindagi/dev/MayaBrain/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/EANN_Simple.dir/neural_layer.cpp.o"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/EANN_Simple.dir/neural_layer.cpp.o -c /Users/badzindagi/dev/MayaBrain/neural_layer.cpp
+
+CMakeFiles/EANN_Simple.dir/neural_layer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/EANN_Simple.dir/neural_layer.cpp.i"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/badzindagi/dev/MayaBrain/neural_layer.cpp > CMakeFiles/EANN_Simple.dir/neural_layer.cpp.i
+
+CMakeFiles/EANN_Simple.dir/neural_layer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EANN_Simple.dir/neural_layer.cpp.s"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/badzindagi/dev/MayaBrain/neural_layer.cpp -o CMakeFiles/EANN_Simple.dir/neural_layer.cpp.s
+
+CMakeFiles/EANN_Simple.dir/neural_network.cpp.o: CMakeFiles/EANN_Simple.dir/flags.make
+CMakeFiles/EANN_Simple.dir/neural_network.cpp.o: ../neural_network.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/badzindagi/dev/MayaBrain/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/EANN_Simple.dir/neural_network.cpp.o"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/EANN_Simple.dir/neural_network.cpp.o -c /Users/badzindagi/dev/MayaBrain/neural_network.cpp
+
+CMakeFiles/EANN_Simple.dir/neural_network.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/EANN_Simple.dir/neural_network.cpp.i"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/badzindagi/dev/MayaBrain/neural_network.cpp > CMakeFiles/EANN_Simple.dir/neural_network.cpp.i
+
+CMakeFiles/EANN_Simple.dir/neural_network.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EANN_Simple.dir/neural_network.cpp.s"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/badzindagi/dev/MayaBrain/neural_network.cpp -o CMakeFiles/EANN_Simple.dir/neural_network.cpp.s
+
+CMakeFiles/EANN_Simple.dir/math_helper.cpp.o: CMakeFiles/EANN_Simple.dir/flags.make
+CMakeFiles/EANN_Simple.dir/math_helper.cpp.o: ../math_helper.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/badzindagi/dev/MayaBrain/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/EANN_Simple.dir/math_helper.cpp.o"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/EANN_Simple.dir/math_helper.cpp.o -c /Users/badzindagi/dev/MayaBrain/math_helper.cpp
+
+CMakeFiles/EANN_Simple.dir/math_helper.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/EANN_Simple.dir/math_helper.cpp.i"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/badzindagi/dev/MayaBrain/math_helper.cpp > CMakeFiles/EANN_Simple.dir/math_helper.cpp.i
+
+CMakeFiles/EANN_Simple.dir/math_helper.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EANN_Simple.dir/math_helper.cpp.s"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/badzindagi/dev/MayaBrain/math_helper.cpp -o CMakeFiles/EANN_Simple.dir/math_helper.cpp.s
+
 # Object files for target EANN_Simple
 EANN_Simple_OBJECTS = \
 "CMakeFiles/EANN_Simple.dir/main.cpp.o" \
@@ -142,7 +181,10 @@ EANN_Simple_OBJECTS = \
 "CMakeFiles/EANN_Simple.dir/genetic_algorithm.cpp.o" \
 "CMakeFiles/EANN_Simple.dir/evolution_manager.cpp.o" \
 "CMakeFiles/EANN_Simple.dir/agent.cpp.o" \
-"CMakeFiles/EANN_Simple.dir/listener.cpp.o"
+"CMakeFiles/EANN_Simple.dir/listener.cpp.o" \
+"CMakeFiles/EANN_Simple.dir/neural_layer.cpp.o" \
+"CMakeFiles/EANN_Simple.dir/neural_network.cpp.o" \
+"CMakeFiles/EANN_Simple.dir/math_helper.cpp.o"
 
 # External object files for target EANN_Simple
 EANN_Simple_EXTERNAL_OBJECTS =
@@ -153,9 +195,12 @@ EANN_Simple: CMakeFiles/EANN_Simple.dir/genetic_algorithm.cpp.o
 EANN_Simple: CMakeFiles/EANN_Simple.dir/evolution_manager.cpp.o
 EANN_Simple: CMakeFiles/EANN_Simple.dir/agent.cpp.o
 EANN_Simple: CMakeFiles/EANN_Simple.dir/listener.cpp.o
+EANN_Simple: CMakeFiles/EANN_Simple.dir/neural_layer.cpp.o
+EANN_Simple: CMakeFiles/EANN_Simple.dir/neural_network.cpp.o
+EANN_Simple: CMakeFiles/EANN_Simple.dir/math_helper.cpp.o
 EANN_Simple: CMakeFiles/EANN_Simple.dir/build.make
 EANN_Simple: CMakeFiles/EANN_Simple.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/badzindagi/dev/MayaBrain/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable EANN_Simple"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/badzindagi/dev/MayaBrain/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable EANN_Simple"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/EANN_Simple.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

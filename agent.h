@@ -11,8 +11,9 @@
 #include <string>
 #include <vector>
 #include <list>
-#include "genotype.h"
 #include "random_d.h"
+#include "genotype.h"
+#include "neural_layer.h"
 
 class Agent {
 public:
@@ -20,7 +21,7 @@ public:
     Agent();
 
     //
-    Agent(Genotype genotype, NeuralLayer.ActivationFunction defaultActivation, int* topology);
+    Agent(Genotype genotype, NeuralLayer::ActivationFunction defaultActivation, int* topology);
     ~Agent();
     void reset();
     void kill();

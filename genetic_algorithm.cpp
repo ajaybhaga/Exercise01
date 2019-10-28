@@ -40,42 +40,43 @@ void GeneticAlgorithm::start() {
     // Init
     running = true;
     algorithmTerminated = false;
-    InitializePopulation(currentPopulation);
-    Evaluation(currentPopulation);
+    initializePopulation(currentPopulation);
+    evaluation(currentPopulation);
 }
 
 void GeneticAlgorithm::evaluationFinished() {
     // Calculate fitness from evaluation
-    FitnessCalculationMethod(currentPopulation);
+    fitnessCalculationMethod(currentPopulation);
 
     // Sort population if flag was set
     if (sortPopulation) {
-        // TODO sort currentPopulation;
+        // TODO: sort currentPopulation -> unsure if this sorting is correct;
+        currentPopulation.sort();
     }
 
     // Fire fitness calculation finished event
     fitnessCalculationFinished(currentPopulation);
 
     // Check termination criterion
-    if (TerminationCriterion != NULL && TerminationCriterion(currentPopulation)) {
+    if (terminationCriterion != NULL && terminationCriterion(currentPopulation)) {
         terminate();
         return;
     }
 
     // Apply selection
-    std::list<Genotype> *intermediatePopulation = Selection(currentPopulation);
+    std::list<Genotype> *intermediatePopulation = selection(currentPopulation);
 
     // Apply recombination
-    std::list<Genotype> *newPopulation = Recombination(*intermediatePopulation, populationSize);
+    std::list<Genotype> *newPopulation = recombination(*intermediatePopulation, populationSize);
 
     // Apply mutation
-    Mutation(*newPopulation);
+    mutation(*newPopulation);
 
     // Set current population to newly generated one and start evaluation again
     currentPopulation = *newPopulation;
     generationCount++;
 
-    Evaluation(currentPopulation);
+    evaluation(currentPopulation);
 }
 
 void GeneticAlgorithm::terminate() {
