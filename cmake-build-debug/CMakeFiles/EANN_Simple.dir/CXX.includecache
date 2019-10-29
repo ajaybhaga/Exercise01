@@ -6,10 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/Users/badzindagi/dev/MayaBrain/agent.cpp
-agent.h
-/Users/badzindagi/dev/MayaBrain/agent.h
-
 /Users/badzindagi/dev/MayaBrain/agent.h
 string
 -
@@ -23,10 +19,6 @@ genotype.h
 /Users/badzindagi/dev/MayaBrain/genotype.h
 neural_layer.h
 /Users/badzindagi/dev/MayaBrain/neural_layer.h
-event.h
-/Users/badzindagi/dev/MayaBrain/event.h
-
-/Users/badzindagi/dev/MayaBrain/event.cpp
 event.h
 /Users/badzindagi/dev/MayaBrain/event.h
 
@@ -45,13 +37,21 @@ evolution_manager.h
 /Users/badzindagi/dev/MayaBrain/evolution_manager.h
 iostream
 -
+fstream
+-
 ctime
+-
+filesystem
+-
+dirent.h
 -
 
 /Users/badzindagi/dev/MayaBrain/evolution_manager.h
 string
 -
 list
+-
+fstream
 -
 agent.h
 /Users/badzindagi/dev/MayaBrain/agent.h
@@ -61,26 +61,6 @@ event.h
 /Users/badzindagi/dev/MayaBrain/event.h
 genetic_algorithm.h
 /Users/badzindagi/dev/MayaBrain/genetic_algorithm.h
-
-/Users/badzindagi/dev/MayaBrain/genetic_algorithm.cpp
-genetic_algorithm.h
-/Users/badzindagi/dev/MayaBrain/genetic_algorithm.h
-iostream
--
-string
--
-list
--
-cassert
--
-fstream
--
-stdlib.h
--
-stdio.h
--
-cstring
--
 
 /Users/badzindagi/dev/MayaBrain/genetic_algorithm.h
 vector

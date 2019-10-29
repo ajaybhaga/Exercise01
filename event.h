@@ -43,6 +43,7 @@ public:
     Event &operator+=(const EventHandler &handler);
     Event &operator+=(const EventHandler::Func &handler);
     Event &operator-=(const EventHandler &handler);
+    Event &operator-=(const EventHandler::Func &handler);
 };
 
 #endif //EANN_SIMPLE_EVENT_H

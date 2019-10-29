@@ -10,10 +10,13 @@
 
 #include <string>
 #include <list>
+#include <fstream>
 #include "agent.h"
 #include "random_d.h"
 #include "event.h"
 #include "genetic_algorithm.h"
+
+#define TRAINING_DATA_DIR "data/"
 
 
 // Singleton class for managing the evolutionary processes.
@@ -28,7 +31,7 @@ public:
     static void writeStatisticsFileStart();
     static void writeStatisticsToFile();
     static void checkForTrackFinished();
-    static void checkGenerationTermination();
+    static bool checkGenerationTermination();
     static void onGATermination();
     void restartAlgorithm(float wait);
     static void startEvaluation(std::list<Genotype> currentPopulation);
@@ -56,9 +59,10 @@ private:
     // Whether or not the results of each generation shall be written to file.
     bool saveStatistics = false;
     std::string statisticsFileName;
+    std::ofstream statisticsFile;
 
     // How many of the first to finish the course should be saved to file
-    int saveFirstGenotype = 0;
+    int saveFirstNGenotype = 0;
     int genotypesSaved = 0;
 
     // Population size

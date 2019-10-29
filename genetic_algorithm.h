@@ -46,6 +46,9 @@ public:
     void evaluationFinished();
     void terminate();
 
+
+
+    // Static methods
     static void defaultPopulationInitialization(std::list<Genotype> population);
     static void asyncEvaluation(std::list<Genotype> currentPopulation);
     static void defaultFitnessCalculation(std::list<Genotype> currentPopulation);
@@ -56,7 +59,6 @@ public:
     static void completeCrossover(Genotype parent1, Genotype parent2, float swapChance, Genotype *offspring1, Genotype *offspring2);
     static void mutateGenotype(Genotype genotype, float mutationProb, float mutationAmount);
     static bool defaultTermination(std::list<Genotype> currentPopulation);
-
 
     // Use to initialize the initial population.
     typedef std::function<void (std::list<Genotype> initialPopulation)> InitializationOperator;
@@ -102,6 +104,8 @@ public:
 
 private:
     std::list<Genotype> currentPopulation;
+public:
+    const std::list<Genotype> &getCurrentPopulation() const;
 };
 
 #endif //EANN_SIMPLE_GENETIC_ALGORITHM_H

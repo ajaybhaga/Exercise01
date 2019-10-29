@@ -12,13 +12,8 @@
 #include <string>
 #include <cassert>
 #include <fstream>      // std::ifstream, std::ofstream
-
 #include "genotype.h"
 #include "random_d.h"
-
-//#define TRAINING_DATA_DIR "~/dev/MayaBrain/data/"
-
-#define TRAINING_DATA_DIR "data/"
 
 Genotype::Genotype() {
     parameterCount = 0;

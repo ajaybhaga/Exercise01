@@ -7,7 +7,20 @@
 
 #include "evolution_manager.h"
 #include <iostream>
+#include <fstream>
 #include <ctime>
+#include <filesystem>
+#include <dirent.h>
+
+namespace fs = std::__fs::filesystem;
+
+
+bool directoryExists(const char *dname){
+    DIR *di = opendir(dname); // open the directory
+    if(di) return true; // can open=>return true
+    else return false; // otherwise return false
+    closedir(di);
+}
 
 EvolutionManager::EvolutionManager() {
     std::list<Agent> *agents = new std::list<Agent>();
@@ -22,6 +35,9 @@ EvolutionManager *EvolutionManager::getInstance() {
 
     if (instance == 0) {
         instance = new EvolutionManager();
+        // Initialize
+        getInstance()->statisticsFileName = "stats.txt";
+
     }
     return instance;
 }
@@ -74,7 +90,7 @@ void EvolutionManager::startEvolution() {
     if (saveStatistics) {
         strftime(buffer,sizeof(buffer),"%d-%m-%Y %H:%M:%S",timeinfo);
         std::string str(buffer);
-        statisticsFileName = std::string("Evaluation - ") + buffer;
+        getInstance()->statisticsFileName = std::string("Evaluation - ") + buffer;
         writeStatisticsFileStart();
         geneticAlgorithm->fitnessCalculationFinished += writeStatisticsToFile;
     }
@@ -94,27 +110,72 @@ void EvolutionManager::startEvolution() {
 
 
 void EvolutionManager::writeStatisticsFileStart() {
+    std::string dirPath = TRAINING_DATA_DIR;
+    std::string fullPath = dirPath + getInstance()->statisticsFileName;
 
+    std::string outText;
+    std::string trackName = "default";
+
+    getInstance()->statisticsFile.open(fullPath);
+    if (getInstance()->statisticsFile.is_open())
+    {
+        outText += "Evaluation of a population with size: ";
+        outText += getInstance()->populationSize;
+        outText += ", on Track " + trackName + ".\n";
+        getInstance()->statisticsFile << outText;
+        getInstance()->statisticsFile.close();
+    }
 }
 
 void EvolutionManager::writeStatisticsToFile() {
 
+    std::string outText;
+
+    std::list<Genotype> currentPopulation = getInstance()->getGeneticAlgorithm()->getCurrentPopulation();
+    for (std::list<Genotype>::iterator it = currentPopulation.begin(); it != currentPopulation.end(); ++it) {
+        outText += "Generation Count -> ";
+        outText += getInstance()->getGeneticAlgorithm()->generationCount;
+        outText += "\n";
+        outText += "Genotype Evaluation: ";
+        outText += it->evaluation;
+        outText += "\n";
+    }
 }
 
+// Checks the current population and saves genotypes to a file if their evaluation is greater than or equal to 1.
 void EvolutionManager::checkForTrackFinished() {
 
+    if (getInstance()->genotypesSaved >= getInstance()->saveFirstNGenotype) return;
+
+    std::string saveFolder = getInstance()->statisticsFileName + "/";
+    std::list<Genotype> currentPopulation = getInstance()->getGeneticAlgorithm()->getCurrentPopulation();
+
+    for (std::list<Genotype>::iterator it = currentPopulation.begin(); it != currentPopulation.end(); ++it) {
+
+        if (it->evaluation >= 1) {
+
+            if (directoryExists(saveFolder.data())) {
+                fs::create_directory(saveFolder.data());
+//                std::ofstream("sandbox/file"); // create regular file
+            }
+
+        } else
+            return; // List should be sorted, so we can exit here.
+    }
 }
 
-void EvolutionManager::checkGenerationTermination() {
-
+bool EvolutionManager::checkGenerationTermination() {
+    return getInstance()->getGenerationCount() >= getInstance()->restartAfter;
 }
 
 void EvolutionManager::onGATermination() {
 
+    getInstance()->allAgentsDied -= evalFinished;
+    getInstance()->restartAlgorithm(5.0f);
 }
 
 void EvolutionManager::restartAlgorithm(float wait) {
-
+    std::invoke(startEvolution, 2);
 }
 
  void EvolutionManager::startEvaluation(std::list<Genotype> currentPopulation) {

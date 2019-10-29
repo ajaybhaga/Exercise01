@@ -14,6 +14,8 @@
 
 #include <string>
 
+#define TRAINING_DATA_DIR "data/"
+
 class Genotype {
 public:
 

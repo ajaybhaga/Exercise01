@@ -246,3 +246,7 @@ void GeneticAlgorithm::mutateGenotype(Genotype genotype, float mutationProb, flo
 bool GeneticAlgorithm::defaultTermination(std::list<Genotype> currentPopulation) {
     return false;
 }
+
+const std::list<Genotype> &GeneticAlgorithm::getCurrentPopulation() const {
+    return currentPopulation;
+}
