@@ -14,6 +14,7 @@
 #include "random_d.h"
 #include "genotype.h"
 #include "neural_layer.h"
+#include "event.h"
 
 class Agent {
 public:
@@ -34,7 +35,7 @@ public:
 //    NeuralNetwork ffn;
 
     // Flag when the agent died (stopped participating in the simulation).
-    bool agentDied;
+    Event agentDied;
 
     // Whether this agent is currently alive (actively participating in the simulation).
     bool isAlive();

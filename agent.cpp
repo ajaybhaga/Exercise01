@@ -11,7 +11,16 @@ Agent::Agent() {
 
 }
 
-Agent::Agent(Genotype genotype, NeuralLayer) {
+// Initializes a new agent from given genotype, constructing a new feed-forward neural network from
+// the parameters of the genotype.
+Agent::Agent(Genotype genotype, NeuralLayer::ActivationFunction defaultActivation, int *topology) {
+
+    alive = false;
+    this->genotype = genotype;
+//    ffn = new NeuralNetwork(topology);
+
+    // TODO: Finish implementation once Neural Network classes are implemented.
+
 
 }
 
@@ -27,6 +36,7 @@ void Agent::reset() {
 }
 
 void Agent::kill() {
+    agentDied();
     alive = false;
 }
 
@@ -38,3 +48,4 @@ int Agent::compareTo(Agent other) {
 bool Agent::isAlive() {
     return alive;
 }
+

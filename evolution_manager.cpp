@@ -11,16 +11,28 @@
 
 EvolutionManager::EvolutionManager() {
     std::list<Agent> *agents = new std::list<Agent>();
-    instance = 0;
 }
 
 EvolutionManager::~EvolutionManager() {
     delete[] agents;
 }
 
+
+EvolutionManager *EvolutionManager::getInstance() {
+
+    if (instance == 0) {
+        instance = new EvolutionManager();
+    }
+    return instance;
+}
+
 // The age of the current generation.
 int EvolutionManager::getGenerationCount() {
     return 0;
+}
+
+void EvolutionManager::evalFinished() {
+    EvolutionManager::getInstance()->getGeneticAlgorithm()->evaluationFinished();
 }
 
 void EvolutionManager::startEvolution() {
@@ -50,11 +62,7 @@ void EvolutionManager::startEvolution() {
         geneticAlgorithm->mutation = mutateAllButBestTwo;
     }
 
-    // TODO: EvolutionManager - implement conditions below, based on action -> event
-    //allAgentsDied +=
-//    geneticAlgorithm->EvaluationFinished();
-//    all agents died then evaluation finished
-//    AllAgentsDied += geneticAlgorithm.EvaluationFinished;
+    allAgentsDied += evalFinished;
 
     char buffer[80];
     time_t rawtime;
@@ -68,39 +76,40 @@ void EvolutionManager::startEvolution() {
         std::string str(buffer);
         statisticsFileName = std::string("Evaluation - ") + buffer;
         writeStatisticsFileStart();
-//        geneticAlgorithm->fitnessCalculationFinished(pop);
-        // on FitnessCalculationFinished then WriteStatisticsToFile
+        geneticAlgorithm->fitnessCalculationFinished += writeStatisticsToFile;
     }
 
-    // on FitnessCalculationFinished then CheckForTrackFinished
+    geneticAlgorithm->fitnessCalculationFinished += checkForTrackFinished;
 
     //Restart logic
-    if (restartAfter > 0)
-    {
-     //   on geneticAlgorithm.TerminationCriterion then CheckGenerationTermination;
-     //   on geneticAlgorithm.AlgorithmTerminated then OnGATermination;
+    if (restartAfter > 0) {
+
+        geneticAlgorithm->terminationCriterion += checkGenerationTermination;
+        geneticAlgorithm->algorithmTerminated += onGATermination;
+
     }
 
     geneticAlgorithm->start();
 }
 
+
 void EvolutionManager::writeStatisticsFileStart() {
 
 }
 
-void EvolutionManager::writeStatisticsToFile(std::list<Genotype> currentPopulation) {
+void EvolutionManager::writeStatisticsToFile() {
 
 }
 
-void EvolutionManager::checkForTrackFinished(std::list<Genotype> currentPopulation) {
+void EvolutionManager::checkForTrackFinished() {
 
 }
 
-bool EvolutionManager::checkGenerationTermination(std::list<Genotype> currentPopulation) {
-    return false;
+void EvolutionManager::checkGenerationTermination() {
+
 }
 
-void EvolutionManager::onGATermination(GeneticAlgorithm ga) {
+void EvolutionManager::onGATermination() {
 
 }
 
@@ -115,15 +124,6 @@ void EvolutionManager::onAgentDied(Agent agent) {
 
 }
 
-std::list<Genotype> EvolutionManager::remainderStochasticSampling(std::list<Genotype> currentPopulation) {
-    return std::list<Genotype>();
-}
-
-std::list<Genotype>
-EvolutionManager::randomRecombination(std::list<Genotype> intermediatePopulation, int newPopulationSize) {
-    return std::list<Genotype>();
-}
-
 void EvolutionManager::mutateAllButBestTwo(std::list<Genotype> newPopulation) {
 
 }
@@ -132,10 +132,14 @@ void EvolutionManager::mutateAll(std::list<Genotype> newPopulation) {
 
 }
 
-EvolutionManager *EvolutionManager::GetInstance() {
+std::list<Genotype> *EvolutionManager::randomRecombination(std::list<Genotype> intermediatePopulation, int newPopulationSize) {
+    return nullptr;
+}
 
-    if (instance == 0) {
-        instance = new EvolutionManager();
-    }
-    return instance;
+std::list<Genotype> *EvolutionManager::remainderStochasticSampling(std::list<Genotype> currentPopulation) {
+    return nullptr;
+}
+
+GeneticAlgorithm *EvolutionManager::getGeneticAlgorithm() {
+    return this->geneticAlgorithm;
 }

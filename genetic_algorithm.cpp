@@ -39,7 +39,6 @@ GeneticAlgorithm::~GeneticAlgorithm() {
 void GeneticAlgorithm::start() {
     // Init
     running = true;
-    algorithmTerminated = false;
     initializePopulation(currentPopulation);
     evaluation(currentPopulation);
 }
@@ -51,14 +50,14 @@ void GeneticAlgorithm::evaluationFinished() {
     // Sort population if flag was set
     if (sortPopulation) {
         // TODO: sort currentPopulation -> unsure if this sorting is correct;
-        currentPopulation.sort();
+       // currentPopulation.sort();
     }
 
     // Fire fitness calculation finished event
-    fitnessCalculationFinished(currentPopulation);
+    fitnessCalculationFinished();
 
     // Check termination criterion
-    if (terminationCriterion != NULL && terminationCriterion(currentPopulation)) {
+    if (checkTermination) {
         terminate();
         return;
     }
@@ -82,7 +81,8 @@ void GeneticAlgorithm::evaluationFinished() {
 void GeneticAlgorithm::terminate() {
 
     running = false;
-    algorithmTerminated = true;
+    algorithmTerminated();
+
 }
 
 void GeneticAlgorithm::defaultPopulationInitialization(std::list<Genotype> population) {
@@ -246,8 +246,3 @@ void GeneticAlgorithm::mutateGenotype(Genotype genotype, float mutationProb, flo
 bool GeneticAlgorithm::defaultTermination(std::list<Genotype> currentPopulation) {
     return false;
 }
-
-void GeneticAlgorithm::fitnessCalculationFinished(std::list<Genotype> currentPopulation) {
-
-}
-

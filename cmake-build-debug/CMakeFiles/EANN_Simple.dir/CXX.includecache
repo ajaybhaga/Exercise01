@@ -6,6 +6,10 @@
 
 #IncludeRegexTransform: 
 
+/Users/badzindagi/dev/MayaBrain/agent.cpp
+agent.h
+/Users/badzindagi/dev/MayaBrain/agent.h
+
 /Users/badzindagi/dev/MayaBrain/agent.h
 string
 -
@@ -19,6 +23,22 @@ genotype.h
 /Users/badzindagi/dev/MayaBrain/genotype.h
 neural_layer.h
 /Users/badzindagi/dev/MayaBrain/neural_layer.h
+event.h
+/Users/badzindagi/dev/MayaBrain/event.h
+
+/Users/badzindagi/dev/MayaBrain/event.cpp
+event.h
+/Users/badzindagi/dev/MayaBrain/event.h
+
+/Users/badzindagi/dev/MayaBrain/event.h
+functional
+-
+vector
+-
+memory
+-
+iostream
+-
 
 /Users/badzindagi/dev/MayaBrain/evolution_manager.cpp
 evolution_manager.h
@@ -37,8 +57,30 @@ agent.h
 /Users/badzindagi/dev/MayaBrain/agent.h
 random_d.h
 /Users/badzindagi/dev/MayaBrain/random_d.h
+event.h
+/Users/badzindagi/dev/MayaBrain/event.h
 genetic_algorithm.h
 /Users/badzindagi/dev/MayaBrain/genetic_algorithm.h
+
+/Users/badzindagi/dev/MayaBrain/genetic_algorithm.cpp
+genetic_algorithm.h
+/Users/badzindagi/dev/MayaBrain/genetic_algorithm.h
+iostream
+-
+string
+-
+list
+-
+cassert
+-
+fstream
+-
+stdlib.h
+-
+stdio.h
+-
+cstring
+-
 
 /Users/badzindagi/dev/MayaBrain/genetic_algorithm.h
 vector
@@ -47,6 +89,8 @@ list
 -
 genotype.h
 /Users/badzindagi/dev/MayaBrain/genotype.h
+event.h
+/Users/badzindagi/dev/MayaBrain/event.h
 random_d.h
 /Users/badzindagi/dev/MayaBrain/random_d.h
 

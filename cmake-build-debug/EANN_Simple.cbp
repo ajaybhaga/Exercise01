@@ -86,6 +86,12 @@
 		<Unit filename="/Users/badzindagi/dev/MayaBrain/agent.h">
 			<Option target="EANN_Simple"/>
 		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/event.cpp">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/event.h">
+			<Option target="EANN_Simple"/>
+		</Unit>
 		<Unit filename="/Users/badzindagi/dev/MayaBrain/evolution_manager.cpp">
 			<Option target="EANN_Simple"/>
 		</Unit>

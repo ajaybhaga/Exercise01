@@ -12,6 +12,7 @@
 #include <list>
 #include "agent.h"
 #include "random_d.h"
+#include "event.h"
 #include "genetic_algorithm.h"
 
 
@@ -19,33 +20,37 @@
 class EvolutionManager {
 public:
 
-    static EvolutionManager *GetInstance();
+    static EvolutionManager *getInstance();
     ~EvolutionManager();
 
     int getGenerationCount();
     void startEvolution();
-    void writeStatisticsFileStart();
-    void writeStatisticsToFile(std::list<Genotype> currentPopulation);
-    void checkForTrackFinished(std::list<Genotype> currentPopulation);
-    bool checkGenerationTermination(std::list<Genotype> currentPopulation);
-    void onGATermination(GeneticAlgorithm ga);
+    static void writeStatisticsFileStart();
+    static void writeStatisticsToFile();
+    static void checkForTrackFinished();
+    static void checkGenerationTermination();
+    static void onGATermination();
     void restartAlgorithm(float wait);
     static void startEvaluation(std::list<Genotype> currentPopulation);
     void onAgentDied(Agent agent);
-    static std::list<Genotype> remainderStochasticSampling(std::list<Genotype> currentPopulation);
-    static std::list<Genotype> randomRecombination(std::list<Genotype> intermediatePopulation, int newPopulationSize);
+    static std::list<Genotype> *remainderStochasticSampling(std::list<Genotype> currentPopulation);
+    static std::list<Genotype> *randomRecombination(std::list<Genotype> intermediatePopulation, int newPopulationSize);
     static void mutateAllButBestTwo(std::list<Genotype> newPopulation);
     static void mutateAll(std::list<Genotype> newPopulation);
+    GeneticAlgorithm *getGeneticAlgorithm();
+    static void evalFinished();
 
         // The amount of agents that are currently alive.
     int agentsAliveCount = 0;
 
     // Event for when all agents have died.
-    bool allAgentsDied = false;
+    Event allAgentsDied;
+
 
 private:
 
     static EvolutionManager *instance;
+    // private constructor to prevent instancing.
     EvolutionManager();
 
     // Whether or not the results of each generation shall be written to file.
@@ -73,5 +78,7 @@ private:
 
     GeneticAlgorithm *geneticAlgorithm;
 };
+
+EvolutionManager *EvolutionManager::instance = 0;
 
 #endif //EANN_SIMPLE_EVOLUTION_MANAGER_H

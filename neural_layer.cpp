@@ -72,12 +72,12 @@ double *NeuralLayer::processInputs(double *inputs) {
 
     for (int j = 0; j < this->outputCount; j++) {
         for (int i = 0; i < this->neuronCount; i++) {
-            sum[j] += biasedInputs[i] * this->weights[i][j];
+            sums[j] += biasedInputs[i] * this->weights[i][j];
         }
     }
 
     // Apply activation function to sum, if set
-    if (this->activationFunction) {
+    if (this->neuronActivationFunction) {
         for (int i = 0; i < this->outputCount; i++) {
             sums[i] = this->neuronActivationFunction(sums[i]);
         }
@@ -94,6 +94,6 @@ void NeuralLayer::setRandomWeights(double minValue, double maxValue) {
 
 }
 
-string NeuralLayer::toString() {
+std::string NeuralLayer::toString() {
     return nullptr;
 }
