@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/EANN_Simple.dir/agent.cpp.o"
+  "CMakeFiles/EANN_Simple.dir/agent_controller.cpp.o"
   "CMakeFiles/EANN_Simple.dir/event.cpp.o"
   "CMakeFiles/EANN_Simple.dir/evolution_manager.cpp.o"
   "CMakeFiles/EANN_Simple.dir/genetic_algorithm.cpp.o"

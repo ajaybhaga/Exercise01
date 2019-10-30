@@ -21,7 +21,6 @@ Agent::Agent(Genotype genotype, NeuralLayer::ActivationFunction defaultActivatio
 
     // TODO: Finish implementation once Neural Network classes are implemented.
 
-
 }
 
 Agent::~Agent() {

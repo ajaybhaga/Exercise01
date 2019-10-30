@@ -10,10 +10,19 @@
 #include <fstream>
 #include <ctime>
 #include <filesystem>
+#include <functional>
+#include <string>
+#include <map>
+
+#include <chrono> // std::chrono::microseconds
+#include <thread> // std::this_thread::sleep_for
+
+#include <stdio.h>
+#include <sys/stat.h>
+#include <sys/types.h>
 #include <dirent.h>
 
 namespace fs = std::__fs::filesystem;
-
 
 bool directoryExists(const char *dname){
     DIR *di = opendir(dname); // open the directory
@@ -23,11 +32,13 @@ bool directoryExists(const char *dname){
 }
 
 EvolutionManager::EvolutionManager() {
-    std::list<Agent> *agents = new std::list<Agent>();
 }
 
 EvolutionManager::~EvolutionManager() {
-    delete[] agents;
+
+    for (auto it = agents.begin(); it != agents.end(); ++it) {
+        delete &it;
+    }
 }
 
 
@@ -154,11 +165,27 @@ void EvolutionManager::checkForTrackFinished() {
 
         if (it->evaluation >= 1) {
 
+            // Check if directory exist
             if (directoryExists(saveFolder.data())) {
-                fs::create_directory(saveFolder.data());
-//                std::ofstream("sandbox/file"); // create regular file
-            }
 
+                // Create directory
+                const int dir_err = mkdir(saveFolder.data(), S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
+                if (-1 == dir_err)
+                {
+                    printf("Error creating directory!n");
+                    exit(1);
+                }
+
+                std::string a = saveFolder;
+                a += "Genotype - Finished as ";
+                a += (++(getInstance()->genotypesSaved));
+                a += ".txt";
+                it->saveToFile(a.data());
+
+//                std::ofstream("sandbox/file"); // create regular file
+
+                if (getInstance()->genotypesSaved >= getInstance()->saveFirstNGenotype) return;
+            }
         } else
             return; // List should be sorted, so we can exit here.
     }
@@ -174,11 +201,43 @@ void EvolutionManager::onGATermination() {
     getInstance()->restartAlgorithm(5.0f);
 }
 
+// Restart the algorithm after a specific wait time
 void EvolutionManager::restartAlgorithm(float wait) {
-    std::invoke(startEvolution, 2);
+
+    // ignore wait, use 2 seconds for now
+    using namespace std::chrono_literals;
+    std::cout << "Hello waiter\n" << std::flush;
+    auto start = std::chrono::high_resolution_clock::now();
+    std::this_thread::sleep_for(2s);
+    auto end = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double, std::milli> elapsed = end-start;
+    std::cout << "Waited " << elapsed.count() << " ms\n";
+
+    startEvolution();
 }
 
+// Starts the evaluation by first creating new agents from the current population and then restarting the track manager.
  void EvolutionManager::startEvaluation(std::list<Genotype> currentPopulation) {
+
+    // Create new agents from currentPopulation
+    getInstance()->agents.clear();
+    getInstance()->agentsAliveCount = 0;
+
+    for (auto it = currentPopulation.begin(); it != currentPopulation.end(); ++it) {
+        getInstance()->agents.emplace_back(new Agent(*it, MathHelper::softSignFunction, getInstance()->ffnTopology));
+    }
+
+    // TrackManager.Instance.setCarAmount(agents.Count);
+    // TODO: Retrieve agent controllers from track manager (this is where we tie into world actions).
+    for (auto it = getInstance()->agents.begin(); it != getInstance()->agents.end(); ++it) {
+
+        // Iterate through agent controller, update agent reference
+
+
+
+    }
+
+
 }
 
 void EvolutionManager::onAgentDied(Agent agent) {

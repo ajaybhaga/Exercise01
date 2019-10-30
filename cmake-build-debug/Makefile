@@ -150,6 +150,33 @@ agent.cpp.s:
 	$(MAKE) -f CMakeFiles/EANN_Simple.dir/build.make CMakeFiles/EANN_Simple.dir/agent.cpp.s
 .PHONY : agent.cpp.s
 
+agent_controller.o: agent_controller.cpp.o
+
+.PHONY : agent_controller.o
+
+# target to build an object file
+agent_controller.cpp.o:
+	$(MAKE) -f CMakeFiles/EANN_Simple.dir/build.make CMakeFiles/EANN_Simple.dir/agent_controller.cpp.o
+.PHONY : agent_controller.cpp.o
+
+agent_controller.i: agent_controller.cpp.i
+
+.PHONY : agent_controller.i
+
+# target to preprocess a source file
+agent_controller.cpp.i:
+	$(MAKE) -f CMakeFiles/EANN_Simple.dir/build.make CMakeFiles/EANN_Simple.dir/agent_controller.cpp.i
+.PHONY : agent_controller.cpp.i
+
+agent_controller.s: agent_controller.cpp.s
+
+.PHONY : agent_controller.s
+
+# target to generate assembly for a file
+agent_controller.cpp.s:
+	$(MAKE) -f CMakeFiles/EANN_Simple.dir/build.make CMakeFiles/EANN_Simple.dir/agent_controller.cpp.s
+.PHONY : agent_controller.cpp.s
+
 event.o: event.cpp.o
 
 .PHONY : event.o
@@ -405,6 +432,9 @@ help:
 	@echo "... agent.o"
 	@echo "... agent.i"
 	@echo "... agent.s"
+	@echo "... agent_controller.o"
+	@echo "... agent_controller.i"
+	@echo "... agent_controller.s"
 	@echo "... event.o"
 	@echo "... event.i"
 	@echo "... event.s"

@@ -73,8 +73,12 @@ Event &Event::operator+=(const EventHandler::Func &handler) {
     return *this;
 }
 
-
 Event &Event::operator-=(const EventHandler &handler) {
     this->removeHandler(handler);
+    return *this;
+}
+
+Event &Event::operator-=(const EventHandler::Func &handler) {
+    this->removeHandler(EventHandler{handler});
     return *this;
 }

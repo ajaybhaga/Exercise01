@@ -75,10 +75,10 @@ private:
     bool elitistSelection = false;
 
     // Topology of the agent's FNN
-    int* FNNTopology;
+    int* ffnTopology;
 
     // The current population agents.
-    std::list<Agent> *agents;
+    std::list<std::unique_ptr<Agent>> agents;
 
     GeneticAlgorithm *geneticAlgorithm;
 };
