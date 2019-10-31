@@ -16,14 +16,13 @@ NeuralNetwork::NeuralNetwork(int *topology, int numLayers) {
     weightCount = 0;
     for (int i = 0; i < numLayers; i++) {
         weightCount += (int) ((topology[i] + 1) * topology[i + 1]); // + 1 for bias node
-
-        // Initialize layers
-        *layers = new NeuralLayer[numLayers];
-        for (int i = 0; i < numLayers; i++) {
-            layers[i] = new NeuralLayer(topology[i], topology[i + 1]);
-        }
     }
 
+    // Initialize layers
+    layers = new NeuralLayer*[numLayers];
+    for (int i = 0; i < numLayers; i++) {
+        layers[i] = new NeuralLayer(topology[i], topology[i + 1]);
+    }
 }
 
 NeuralNetwork::~NeuralNetwork() {

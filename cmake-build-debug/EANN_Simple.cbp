@@ -146,6 +146,9 @@
 		<Unit filename="/Users/badzindagi/dev/MayaBrain/random_d.h">
 			<Option target="EANN_Simple"/>
 		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/shared_libs.h">
+			<Option target="EANN_Simple"/>
+		</Unit>
 		<Unit filename="/Users/badzindagi/dev/MayaBrain/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

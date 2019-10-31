@@ -13,6 +13,11 @@
 #define EANN_SIMPLE_GENOTYPE_H
 
 #include <string>
+#include <iostream>
+#include <string>
+#include <cassert>
+#include <fstream>      // std::ifstream, std::ofstream
+#include "random_d.h"
 
 #define TRAINING_DATA_DIR "data/"
 

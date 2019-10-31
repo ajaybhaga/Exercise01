@@ -40,11 +40,6 @@ public:
     // The amount of overall weights of the connections of this network.
     int weightCount;
 
-    // The amount of neurons in this layer.
-    int neuronCount;
-
-    // The amount of neurons this layer is connected to, i.e. the amount of neurons of the next layer.
-    int outputCount;
 
     int numLayers;
 

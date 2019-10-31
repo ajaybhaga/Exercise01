@@ -7,16 +7,6 @@
 
 #include "genetic_algorithm.h"
 
-#include <iostream>
-#include <string>
-#include <list>
-#include <cassert>
-#include <fstream>      // std::ifstream, std::ofstream
-#include <stdlib.h>     /* atoi */
-#include <stdio.h>
-#include <cstring>
-
-
 GeneticAlgorithm::GeneticAlgorithm(int genotypeParamCount, int populationSize) {
 
     this->populationSize = populationSize;
@@ -32,8 +22,6 @@ GeneticAlgorithm::GeneticAlgorithm(int genotypeParamCount, int populationSize) {
 
 GeneticAlgorithm::~GeneticAlgorithm() {
 
-    // Deallocate Heap memory
-//    delete[] parameters;
 }
 
 void GeneticAlgorithm::start() {
@@ -87,15 +75,20 @@ void GeneticAlgorithm::terminate() {
 
 void GeneticAlgorithm::defaultPopulationInitialization(std::list<Genotype> population) {
 
+    int popCount = 0;
     // Set parameters to random values in set range
     for (std::list<Genotype>::iterator it = population.begin(); it != population.end(); ++it) {
         /* std::cout << *it; ... */
         it->setRandomParameters(DefInitParamMin, DefInitParamMax);
+        std::cout << "Generating genotype [" << (popCount + 1) << "]." << std::endl;
+//        it->outputToConsole();
+        popCount++;
     }
 }
 
 void GeneticAlgorithm::asyncEvaluation(std::list<Genotype> currentPopulation) {
     // At this point the async evaluation should be started and after it is finished EvaluationFinished should be called
+    std::cout << "Reached async evaluation." << std::endl;
 }
 
 void GeneticAlgorithm::defaultFitnessCalculation(std::list<Genotype> currentPopulation) {

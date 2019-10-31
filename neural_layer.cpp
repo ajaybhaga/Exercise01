@@ -5,9 +5,7 @@
 // Based on design of Samuel Arzt (March 2017)
 //
 
-#include <stdlib.h>     /* abs */
 #include "neural_layer.h"
-
 
 NeuralLayer::NeuralLayer() {
 }
@@ -67,7 +65,7 @@ void NeuralLayer::setWeights(double *weights) {
 
 double *NeuralLayer::processInputs(double *inputs) {
 
-    // TODO: assert inputs where given xValues do not match layer input count
+    // TODO: Optionally, assert inputs where given xValues do not match layer input count - bad input will crash.
 
     // Calculate sum for each neuron from weighted inputs and bias
     double *sums = new double[this->outputCount];

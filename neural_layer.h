@@ -8,10 +8,10 @@
 #ifndef EANN_SIMPLE_NEURAL_LAYER_H
 #define EANN_SIMPLE_NEURAL_LAYER_H
 
-#include "random_d.h"
-
 #include <string>
+#include <stdlib.h>     /* abs */
 #include "math_helper.h"
+#include "random_d.h"
 
 class NeuralLayer {
 public:

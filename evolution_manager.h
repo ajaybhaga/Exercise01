@@ -8,17 +8,8 @@
 #ifndef EANN_SIMPLE_EVOLUTION_MANAGER_H
 #define EANN_SIMPLE_EVOLUTION_MANAGER_H
 
-#include <string>
-#include <list>
-#include <fstream>
-#include "agent.h"
+#include "shared_libs.h"
 #include "agent_controller.h"
-#include "random_d.h"
-#include "event.h"
-#include "genetic_algorithm.h"
-
-#define TRAINING_DATA_DIR "data/"
-
 
 // Singleton class for managing the evolutionary processes.
 class EvolutionManager {
@@ -27,29 +18,29 @@ public:
     static EvolutionManager *getInstance();
     ~EvolutionManager();
 
-    int getGenerationCount();
-    void startEvolution();
+    static int getGenerationCount();
+    static void startEvolution();
+    static void restartAlgorithm(float wait);
+    static GeneticAlgorithm *getGeneticAlgorithm();
+
     static void writeStatisticsFileStart();
     static void writeStatisticsToFile();
     static void checkForTrackFinished();
     static bool checkGenerationTermination();
     static void onGATermination();
-    void restartAlgorithm(float wait);
     static void startEvaluation(std::list<Genotype> currentPopulation);
     static void onAgentDied();
     static std::list<Genotype> *remainderStochasticSampling(std::list<Genotype> currentPopulation);
     static std::list<Genotype> *randomRecombination(std::list<Genotype> intermediatePopulation, int newPopulationSize);
     static void mutateAllButBestTwo(std::list<Genotype> newPopulation);
     static void mutateAll(std::list<Genotype> newPopulation);
-    GeneticAlgorithm *getGeneticAlgorithm();
     static void evalFinished();
 
-        // The amount of agents that are currently alive.
+    // The amount of agents that are currently alive.
     int agentsAliveCount = 0;
 
     // Event for when all agents have died.
     Event allAgentsDied;
-
 
 private:
 
@@ -86,7 +77,5 @@ private:
 
     GeneticAlgorithm *geneticAlgorithm;
 };
-
-EvolutionManager *EvolutionManager::instance = 0;
 
 #endif //EANN_SIMPLE_EVOLUTION_MANAGER_H

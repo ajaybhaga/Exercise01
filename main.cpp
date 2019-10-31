@@ -7,16 +7,18 @@
 // Based on design of Samuel Arzt (March 2017)
 //
 
+#include "evolution_manager.h"
 
-#include <iostream>
-#include "random_d.h"
-#include "genotype.h"
+EvolutionManager *EvolutionManager::instance = 0;
 
 int main() {
     std::cout << "MayaBrain" << std::endl;
 
-    auto genotype = new Genotype();
+    std::cout << "Evolution Manager -> starting..." << std::endl;
+    EvolutionManager::getInstance()->startEvolution();
 
+    // Test Case 1
+    auto genotype = new Genotype();
     std::cout << "Generating random genotype..." << std::endl;
     genotype = genotype->generateRandom(10, 0.4, 20.4);
     genotype->outputToConsole();

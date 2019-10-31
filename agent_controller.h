@@ -8,7 +8,7 @@
 #ifndef EANN_SIMPLE_AGENT_CONTROLLER_H
 #define EANN_SIMPLE_AGENT_CONTROLLER_H
 
-#include "agent.h"
+#include "shared_libs.h"
 
 class AgentController {
 public:

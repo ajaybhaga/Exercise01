@@ -6,21 +6,6 @@
 //
 
 #include "evolution_manager.h"
-#include <iostream>
-#include <fstream>
-#include <ctime>
-#include <filesystem>
-#include <functional>
-#include <string>
-#include <map>
-
-#include <chrono> // std::chrono::microseconds
-#include <thread> // std::this_thread::sleep_for
-
-#include <stdio.h>
-#include <sys/stat.h>
-#include <sys/types.h>
-#include <dirent.h>
 
 namespace fs = std::__fs::filesystem;
 
@@ -32,6 +17,7 @@ bool directoryExists(const char *dname){
 }
 
 EvolutionManager::EvolutionManager() {
+    saveStatistics = true;
 }
 
 EvolutionManager::~EvolutionManager() {
@@ -44,7 +30,6 @@ EvolutionManager::~EvolutionManager() {
         delete &it;
     }
 }
-
 
 EvolutionManager *EvolutionManager::getInstance() {
 
@@ -59,7 +44,7 @@ EvolutionManager *EvolutionManager::getInstance() {
 
 // The age of the current generation.
 int EvolutionManager::getGenerationCount() {
-    return 0;
+    return getInstance()->getGeneticAlgorithm()->generationCount;
 }
 
 void EvolutionManager::evalFinished() {
@@ -68,32 +53,50 @@ void EvolutionManager::evalFinished() {
 
 void EvolutionManager::startEvolution() {
 
+    // Build Neural Network.
+
+    // Create neural layer array (NUM_NEURAL_LAYERS = 4)
+    getInstance()->ffnTopology = new int[NUM_NEURAL_LAYERS+1];
+
+    // It comprises 4 layers: an input layer with 5 neurons, two hidden layers with 4 and 3 neurons respectively
+    // and an output layer with 2 neurons.
+
+    // Input layer
+    getInstance()->ffnTopology[0] = 5;
+
+    // Hidden layers
+    getInstance()->ffnTopology[1] = 4;
+    getInstance()->ffnTopology[2] = 3;
+
+    // Output layer
+    getInstance()->ffnTopology[3] = 2;
+    getInstance()->ffnTopology[4] = 2;
+
     // Create neural network to determine parameter count
-   // NeuralNetwork nn = new NeuralNetwork(FFNTopology);
+    NeuralNetwork *nn = new NeuralNetwork(getInstance()->ffnTopology, NUM_NEURAL_LAYERS);
 
     // Setup genetic algorithm
-    // nn.WeightCount
-    geneticAlgorithm = new GeneticAlgorithm(0, populationSize);
-    genotypesSaved = 0;
+    getInstance()->geneticAlgorithm = new GeneticAlgorithm(nn->weightCount, getInstance()->populationSize);
+    getInstance()->genotypesSaved = 0;
 
-    geneticAlgorithm->evaluation = startEvaluation;
+    getInstance()->geneticAlgorithm->evaluation = startEvaluation;
 
-    if (elitistSelection) {
+    if (getInstance()->elitistSelection) {
 
         // Second configuration
-        geneticAlgorithm->selection = geneticAlgorithm->defaultSelectionOperator;
-        geneticAlgorithm->recombination = randomRecombination;
-        geneticAlgorithm->mutation = mutateAllButBestTwo;
+        getInstance()->geneticAlgorithm->selection = getInstance()->geneticAlgorithm->defaultSelectionOperator;
+        getInstance()->geneticAlgorithm->recombination = randomRecombination;
+        getInstance()->geneticAlgorithm->mutation = mutateAllButBestTwo;
 
     } else {
 
         // First configuration
-        geneticAlgorithm->selection = remainderStochasticSampling;
-        geneticAlgorithm->recombination = randomRecombination;
-        geneticAlgorithm->mutation = mutateAllButBestTwo;
+        getInstance()->geneticAlgorithm->selection = remainderStochasticSampling;
+        getInstance()->geneticAlgorithm->recombination = randomRecombination;
+        getInstance()->geneticAlgorithm->mutation = mutateAllButBestTwo;
     }
 
-    allAgentsDied += evalFinished;
+    getInstance()->allAgentsDied += evalFinished;
 
     char buffer[80];
     time_t rawtime;
@@ -102,25 +105,25 @@ void EvolutionManager::startEvolution() {
     timeinfo = localtime(&rawtime);
 
     // Statistics
-    if (saveStatistics) {
-        strftime(buffer,sizeof(buffer),"%d-%m-%Y %H:%M:%S",timeinfo);
+    if (getInstance()->saveStatistics) {
+        strftime(buffer,sizeof(buffer),"%d-%m-%Y_%H:%M:%S",timeinfo);
         std::string str(buffer);
-        getInstance()->statisticsFileName = std::string("Evaluation - ") + buffer;
+        getInstance()->statisticsFileName = std::string("evaluation-") + buffer;
         writeStatisticsFileStart();
-        geneticAlgorithm->fitnessCalculationFinished += writeStatisticsToFile;
+        getInstance()->geneticAlgorithm->fitnessCalculationFinished += writeStatisticsToFile;
     }
 
-    geneticAlgorithm->fitnessCalculationFinished += checkForTrackFinished;
+    getInstance()->geneticAlgorithm->fitnessCalculationFinished += checkForTrackFinished;
 
     //Restart logic
-    if (restartAfter > 0) {
+    if (getInstance()->restartAfter > 0) {
 
-        geneticAlgorithm->terminationCriterion += checkGenerationTermination;
-        geneticAlgorithm->algorithmTerminated += onGATermination;
+        getInstance()->geneticAlgorithm->terminationCriterion += checkGenerationTermination;
+        getInstance()->geneticAlgorithm->algorithmTerminated += onGATermination;
 
     }
 
-    geneticAlgorithm->start();
+    getInstance()->geneticAlgorithm->start();
 }
 
 
@@ -135,8 +138,8 @@ void EvolutionManager::writeStatisticsFileStart() {
     if (getInstance()->statisticsFile.is_open())
     {
         outText += "Evaluation of a population with size: ";
-        outText += getInstance()->populationSize;
-        outText += ", on Track " + trackName + ".\n";
+        outText += std::to_string(getInstance()->populationSize);
+        outText += " on Track " + trackName + ".\n";
         getInstance()->statisticsFile << outText;
         getInstance()->statisticsFile.close();
     }
@@ -277,5 +280,5 @@ std::list<Genotype> *EvolutionManager::remainderStochasticSampling(std::list<Gen
 }
 
 GeneticAlgorithm *EvolutionManager::getGeneticAlgorithm() {
-    return this->geneticAlgorithm;
+    return getInstance()->geneticAlgorithm;
 }

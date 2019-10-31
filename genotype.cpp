@@ -8,12 +8,7 @@
 // Based on design of Samuel Arzt (March 2017)
 //
 
-#include <iostream>
-#include <string>
-#include <cassert>
-#include <fstream>      // std::ifstream, std::ofstream
 #include "genotype.h"
-#include "random_d.h"
 
 Genotype::Genotype() {
     parameterCount = 0;
