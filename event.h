@@ -34,7 +34,7 @@ public:
 
 class Event {
 private:
-    std::vector<std::unique_ptr<EventHandler>> handlers;
+    std::vector<std::shared_ptr<EventHandler>> handlers;
     void notifyHandlers();
 
 public:

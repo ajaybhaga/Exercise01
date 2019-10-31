@@ -37,7 +37,7 @@ bool EventHandler::operator!=(std::nullptr_t) {
 }
 
 void Event::notifyHandlers() {
-    std::vector<std::unique_ptr<EventHandler>>::iterator func = this->handlers.begin();
+    std::vector<std::shared_ptr<EventHandler>>::iterator func = this->handlers.begin();
     for (; func != this->handlers.end(); ++func) {
         if (*func != nullptr && (*func)->id != 0) {
             (*(*func))();
@@ -46,11 +46,11 @@ void Event::notifyHandlers() {
 }
 
 void Event::addHandler(const EventHandler &handler) {
-    this->handlers.push_back(std::unique_ptr<EventHandler>(new EventHandler{handler}));
+    this->handlers.push_back(std::shared_ptr<EventHandler>(new EventHandler{handler}));
 }
 
 void Event::removeHandler(const EventHandler &handler) {
-    std::vector<std::unique_ptr<EventHandler>>::iterator toRemove = this->handlers.begin();
+    std::vector<std::shared_ptr<EventHandler>>::iterator toRemove = this->handlers.begin();
     for (; toRemove != this->handlers.end(); ++toRemove) {
         if (*(*toRemove) == handler) {
             this->handlers.erase(toRemove);
