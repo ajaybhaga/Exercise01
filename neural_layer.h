@@ -15,10 +15,11 @@
 
 class NeuralLayer {
 public:
-
+    NeuralLayer();
     NeuralLayer(int nodeCount, int outputCount);
     ~NeuralLayer();
 
+    void initLayers(int nodeCount, int outputCount);
     void setWeights(double *weights);
     double *processInputs(double *inputs);
     NeuralLayer deepCopy();

@@ -33,6 +33,7 @@ public:
 };
 
 class Event {
+private:
     std::vector<std::unique_ptr<EventHandler>> handlers;
     void notifyHandlers();
 

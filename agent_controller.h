@@ -13,7 +13,7 @@
 class AgentController {
 public:
 
-    AgentController();
+    AgentController(Agent agent);
     ~AgentController();
 
     void awake();
@@ -29,7 +29,7 @@ public:
     // Maximum delay in seconds between the collection of two checkpoints until this car dies.
     const float MAX_CHECKPOINT_DELAY = 7;
 
-    Agent agent;
+    std::unique_ptr<Agent> agent;
     bool useUserInput = false;
     // AgentMovement movement;
 

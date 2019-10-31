@@ -5,10 +5,18 @@
 // Based on design of Samuel Arzt (March 2017)
 //
 
+#include <stdlib.h>     /* abs */
 #include "neural_layer.h"
 
-NeuralLayer::NeuralLayer(int nodeCount, int outputCount) {
 
+NeuralLayer::NeuralLayer() {
+}
+
+NeuralLayer::NeuralLayer(int nodeCount, int outputCount) {
+    initLayers(nodeCount, outputCount);
+}
+
+void NeuralLayer::initLayers(int nodeCount, int outputCount) {
     this->neuronCount = nodeCount;
     this->outputCount = outputCount;
 
@@ -17,8 +25,8 @@ NeuralLayer::NeuralLayer(int nodeCount, int outputCount) {
     for (int i = 0; i < nodeCount + 1; i++) {
         this->weights[i] = new double[outputCount];
     }
-
 }
+
 
 NeuralLayer::~NeuralLayer() {
 
@@ -86,14 +94,61 @@ double *NeuralLayer::processInputs(double *inputs) {
     return sums;
 }
 
+// Copies this NeuralLayer including its weights.
 NeuralLayer NeuralLayer::deepCopy() {
-    return NeuralLayer(0, 0);
+
+    // Copy weights
+    double **copiedWeights;
+
+    // Allocate dynamic 2D array for weights
+    copiedWeights = new double*[this->neuronCount + 1]; // + 1 for bias node
+    for (int i = 0; i < this->neuronCount + 1; i++) {
+        copiedWeights[i] = new double[outputCount];
+    }
+
+    for (int i = 0; i < this->neuronCount; i++) {
+        for (int j = 0; j < this->outputCount; j++) {
+            copiedWeights[i][j] = weights[i][j];
+        }
+    }
+
+    // Create copy
+    NeuralLayer *newLayer = new NeuralLayer(this->neuronCount, this->outputCount);
+    newLayer->weights = copiedWeights;
+    newLayer->neuronActivationFunction = this->neuronActivationFunction;
+
+    return *newLayer;
 }
 
 void NeuralLayer::setRandomWeights(double minValue, double maxValue) {
 
+    double range = std::abs(minValue - maxValue);
+
+    // create the random number generator:
+    random_d rd{0.0, 1.0};
+
+    for (int i = 0; i < this->neuronCount; i++) {
+        for (int j = 0; j < this->outputCount; j++) {
+            weights[i][j] = minValue + (rd() * range);
+        }
+    }
 }
 
 std::string NeuralLayer::toString() {
-    return nullptr;
+
+    std::string output = "";
+
+    for (int i = 0; i < this->neuronCount; i++) {
+        for (int j = 0; j < this->outputCount; j++) {
+            output += "[";
+            output += i;
+            output += ", ";
+            output += j;
+            output += "]: ";
+            output += weights[i][j];
+        }
+        output += "\n";
+    }
+
+    return output;
 }

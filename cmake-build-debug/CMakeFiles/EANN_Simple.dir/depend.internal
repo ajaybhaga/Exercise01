@@ -23,6 +23,7 @@ CMakeFiles/EANN_Simple.dir/event.cpp.o
  /Users/badzindagi/dev/MayaBrain/event.h
 CMakeFiles/EANN_Simple.dir/evolution_manager.cpp.o
  /Users/badzindagi/dev/MayaBrain/agent.h
+ /Users/badzindagi/dev/MayaBrain/agent_controller.h
  /Users/badzindagi/dev/MayaBrain/event.h
  /Users/badzindagi/dev/MayaBrain/evolution_manager.cpp
  /Users/badzindagi/dev/MayaBrain/evolution_manager.h
@@ -58,6 +59,8 @@ CMakeFiles/EANN_Simple.dir/neural_layer.cpp.o
  /Users/badzindagi/dev/MayaBrain/neural_layer.h
  /Users/badzindagi/dev/MayaBrain/random_d.h
 CMakeFiles/EANN_Simple.dir/neural_network.cpp.o
+ /Users/badzindagi/dev/MayaBrain/math_helper.h
+ /Users/badzindagi/dev/MayaBrain/neural_layer.h
  /Users/badzindagi/dev/MayaBrain/neural_network.cpp
  /Users/badzindagi/dev/MayaBrain/neural_network.h
  /Users/badzindagi/dev/MayaBrain/random_d.h

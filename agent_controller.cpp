@@ -7,8 +7,9 @@
 
 #include "agent_controller.h"
 
-AgentController::AgentController() {
-
+AgentController::AgentController(Agent agent) {
+    //this->agent = std::make_unique<Agent>(agent);//agent->genotype, );
+//    std::unique_ptr<EventHandler>(new EventHandler{handler})
 }
 
 AgentController::~AgentController() {
@@ -44,9 +45,13 @@ void AgentController::checkpointCaptured() {
 }
 
 float AgentController::getCurrentCompletionReward() {
-    return agent.genotype.evaluation;
+    if (agent)
+        return agent->genotype.evaluation;
+    else
+        return -1.0;
 }
 
 void AgentController::setCurrentCompletionReward(float reward) {
-    agent.genotype.evaluation = reward;
+    if (agent)
+        agent->genotype.evaluation = reward;
 }

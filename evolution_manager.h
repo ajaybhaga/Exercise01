@@ -12,6 +12,7 @@
 #include <list>
 #include <fstream>
 #include "agent.h"
+#include "agent_controller.h"
 #include "random_d.h"
 #include "event.h"
 #include "genetic_algorithm.h"
@@ -35,7 +36,7 @@ public:
     static void onGATermination();
     void restartAlgorithm(float wait);
     static void startEvaluation(std::list<Genotype> currentPopulation);
-    void onAgentDied(Agent agent);
+    static void onAgentDied();
     static std::list<Genotype> *remainderStochasticSampling(std::list<Genotype> currentPopulation);
     static std::list<Genotype> *randomRecombination(std::list<Genotype> intermediatePopulation, int newPopulationSize);
     static void mutateAllButBestTwo(std::list<Genotype> newPopulation);
@@ -79,6 +80,9 @@ private:
 
     // The current population agents.
     std::list<std::unique_ptr<Agent>> agents;
+
+    // The current population agents.
+    std::list<std::unique_ptr<AgentController>> agentControllers;
 
     GeneticAlgorithm *geneticAlgorithm;
 };

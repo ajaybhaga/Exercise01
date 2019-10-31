@@ -39,6 +39,10 @@ EvolutionManager::~EvolutionManager() {
     for (auto it = agents.begin(); it != agents.end(); ++it) {
         delete &it;
     }
+
+    for (auto it = agentControllers.begin(); it != agentControllers.end(); ++it) {
+        delete &it;
+    }
 }
 
 
@@ -221,17 +225,29 @@ void EvolutionManager::restartAlgorithm(float wait) {
 
     // Create new agents from currentPopulation
     getInstance()->agents.clear();
+    getInstance()->agentControllers.clear();
     getInstance()->agentsAliveCount = 0;
 
+    // Iterate through genotypes
     for (auto it = currentPopulation.begin(); it != currentPopulation.end(); ++it) {
-        getInstance()->agents.emplace_back(new Agent(*it, MathHelper::softSignFunction, getInstance()->ffnTopology));
+        Agent *agent = new Agent(*it, MathHelper::softSignFunction, getInstance()->ffnTopology);
+        AgentController *agentController = new AgentController(*agent);
+        getInstance()->agents.emplace_back(agent);
+        getInstance()->agentControllers.emplace_back(agentController);
+        getInstance()->agentsAliveCount++;
+
     }
 
     // TrackManager.Instance.setCarAmount(agents.Count);
-    // TODO: Retrieve agent controllers from track manager (this is where we tie into world actions).
-    for (auto it = getInstance()->agents.begin(); it != getInstance()->agents.end(); ++it) {
 
+    // Iterate through agents
+    for (auto it = getInstance()->agents.begin(); it != getInstance()->agents.end(); ++it) {
         // Iterate through agent controller, update agent reference
+       // getInstance()->agentControllers.emplace_back(new AgentController(*it));
+        getInstance()->agentsAliveCount++;
+       // getInstance()->agents.push_back(new Agent(*it, MathHelper::softSignFunction, getInstance()->ffnTopology));
+
+//        std::list<Genotype>::iterator it
 
 
 
@@ -240,7 +256,7 @@ void EvolutionManager::restartAlgorithm(float wait) {
 
 }
 
-void EvolutionManager::onAgentDied(Agent agent) {
+void EvolutionManager::onAgentDied() {
 
 }
 
