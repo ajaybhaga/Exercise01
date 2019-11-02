@@ -6,9 +6,17 @@
 
 #IncludeRegexTransform: 
 
+/Users/badzindagi/dev/MayaBrain/agent.cpp
+agent.h
+/Users/badzindagi/dev/MayaBrain/agent.h
+
 /Users/badzindagi/dev/MayaBrain/agent.h
 shared_libs.h
 /Users/badzindagi/dev/MayaBrain/shared_libs.h
+
+/Users/badzindagi/dev/MayaBrain/agent_controller.cpp
+agent_controller.h
+/Users/badzindagi/dev/MayaBrain/agent_controller.h
 
 /Users/badzindagi/dev/MayaBrain/agent_controller.h
 shared_libs.h
@@ -29,10 +37,14 @@ evolution_manager.h
 /Users/badzindagi/dev/MayaBrain/evolution_manager.h
 
 /Users/badzindagi/dev/MayaBrain/evolution_manager.h
-shared_libs.h
-/Users/badzindagi/dev/MayaBrain/shared_libs.h
 agent_controller.h
 /Users/badzindagi/dev/MayaBrain/agent_controller.h
+genetic_algorithm.h
+/Users/badzindagi/dev/MayaBrain/genetic_algorithm.h
+
+/Users/badzindagi/dev/MayaBrain/genetic_algorithm.cpp
+genetic_algorithm.h
+/Users/badzindagi/dev/MayaBrain/genetic_algorithm.h
 
 /Users/badzindagi/dev/MayaBrain/genetic_algorithm.h
 shared_libs.h
@@ -51,6 +63,10 @@ fstream
 -
 random_d.h
 /Users/badzindagi/dev/MayaBrain/random_d.h
+
+/Users/badzindagi/dev/MayaBrain/main.cpp
+shared_libs.h
+/Users/badzindagi/dev/MayaBrain/shared_libs.h
 
 /Users/badzindagi/dev/MayaBrain/math_helper.h
 random_d.h
@@ -131,4 +147,8 @@ neural_network.h
 /Users/badzindagi/dev/MayaBrain/neural_network.h
 agent.h
 /Users/badzindagi/dev/MayaBrain/agent.h
+agent_controller.h
+/Users/badzindagi/dev/MayaBrain/agent_controller.h
+evolution_manager.h
+/Users/badzindagi/dev/MayaBrain/evolution_manager.h
 

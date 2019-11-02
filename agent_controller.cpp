@@ -18,13 +18,27 @@ AgentController::~AgentController() {
 
 void AgentController::awake() {
 
+    // Cache components
+    // movement -> CarMovement
+    // spriteRender
+    // sensors
 }
 
 void AgentController::start() {
 
+    // movement.hitWall += die
+
+    this->name += "Agent (";
+    this->name += this->nextId();
+    this->name += ")";
 }
 
 void AgentController::restart() {
+
+    // movement enabled
+    timeSinceLastCheckpoint = 0;
+
+
 
 }
 
@@ -54,4 +68,8 @@ float AgentController::getCurrentCompletionReward() {
 void AgentController::setCurrentCompletionReward(float reward) {
     if (agent)
         agent->genotype.evaluation = reward;
+}
+
+int AgentController::nextId() {
+    return idGenerator++;
 }

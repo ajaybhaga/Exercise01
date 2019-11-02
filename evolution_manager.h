@@ -8,7 +8,7 @@
 #ifndef EANN_SIMPLE_EVOLUTION_MANAGER_H
 #define EANN_SIMPLE_EVOLUTION_MANAGER_H
 
-#include "shared_libs.h"
+#include "genetic_algorithm.h"
 #include "agent_controller.h"
 
 // Singleton class for managing the evolutionary processes.

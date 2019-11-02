@@ -26,17 +26,27 @@ public:
     float getCurrentCompletionReward();
     void setCurrentCompletionReward(float reward);
 
-    // Maximum delay in seconds between the collection of two checkpoints until this car dies.
-    const float MAX_CHECKPOINT_DELAY = 7;
+    int nextId();
 
     std::unique_ptr<Agent> agent;
     bool useUserInput = false;
     // AgentMovement movement;
 
+
+
 private:
+
+    static int idGenerator;
+
+    // Maximum delay in seconds between the collection of two checkpoints until this agent dies.
+    const float MAX_CHECKPOINT_DELAY = 7;
 
     // Sensor[] sensors;
     float timeSinceLastCheckpoint;
+
+    std::string name;
 };
+
+int AgentController::idGenerator = 0;
 
 #endif //EANN_SIMPLE_AGENT_CONTROLLER_H

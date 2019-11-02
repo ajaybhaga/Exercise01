@@ -200,6 +200,45 @@ CMakeFiles/EANN_Simple.dir/agent_controller.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EANN_Simple.dir/agent_controller.cpp.s"
 	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/badzindagi/dev/MayaBrain/agent_controller.cpp -o CMakeFiles/EANN_Simple.dir/agent_controller.cpp.s
 
+CMakeFiles/EANN_Simple.dir/grid.cpp.o: CMakeFiles/EANN_Simple.dir/flags.make
+CMakeFiles/EANN_Simple.dir/grid.cpp.o: ../grid.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/badzindagi/dev/MayaBrain/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/EANN_Simple.dir/grid.cpp.o"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/EANN_Simple.dir/grid.cpp.o -c /Users/badzindagi/dev/MayaBrain/grid.cpp
+
+CMakeFiles/EANN_Simple.dir/grid.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/EANN_Simple.dir/grid.cpp.i"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/badzindagi/dev/MayaBrain/grid.cpp > CMakeFiles/EANN_Simple.dir/grid.cpp.i
+
+CMakeFiles/EANN_Simple.dir/grid.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EANN_Simple.dir/grid.cpp.s"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/badzindagi/dev/MayaBrain/grid.cpp -o CMakeFiles/EANN_Simple.dir/grid.cpp.s
+
+CMakeFiles/EANN_Simple.dir/sensor.cpp.o: CMakeFiles/EANN_Simple.dir/flags.make
+CMakeFiles/EANN_Simple.dir/sensor.cpp.o: ../sensor.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/badzindagi/dev/MayaBrain/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/EANN_Simple.dir/sensor.cpp.o"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/EANN_Simple.dir/sensor.cpp.o -c /Users/badzindagi/dev/MayaBrain/sensor.cpp
+
+CMakeFiles/EANN_Simple.dir/sensor.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/EANN_Simple.dir/sensor.cpp.i"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/badzindagi/dev/MayaBrain/sensor.cpp > CMakeFiles/EANN_Simple.dir/sensor.cpp.i
+
+CMakeFiles/EANN_Simple.dir/sensor.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EANN_Simple.dir/sensor.cpp.s"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/badzindagi/dev/MayaBrain/sensor.cpp -o CMakeFiles/EANN_Simple.dir/sensor.cpp.s
+
+CMakeFiles/EANN_Simple.dir/vec2.cpp.o: CMakeFiles/EANN_Simple.dir/flags.make
+CMakeFiles/EANN_Simple.dir/vec2.cpp.o: ../vec2.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/badzindagi/dev/MayaBrain/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/EANN_Simple.dir/vec2.cpp.o"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/EANN_Simple.dir/vec2.cpp.o -c /Users/badzindagi/dev/MayaBrain/vec2.cpp
+
+CMakeFiles/EANN_Simple.dir/vec2.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/EANN_Simple.dir/vec2.cpp.i"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/badzindagi/dev/MayaBrain/vec2.cpp > CMakeFiles/EANN_Simple.dir/vec2.cpp.i
+
+CMakeFiles/EANN_Simple.dir/vec2.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EANN_Simple.dir/vec2.cpp.s"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/badzindagi/dev/MayaBrain/vec2.cpp -o CMakeFiles/EANN_Simple.dir/vec2.cpp.s
+
 # Object files for target EANN_Simple
 EANN_Simple_OBJECTS = \
 "CMakeFiles/EANN_Simple.dir/main.cpp.o" \
@@ -212,7 +251,10 @@ EANN_Simple_OBJECTS = \
 "CMakeFiles/EANN_Simple.dir/neural_network.cpp.o" \
 "CMakeFiles/EANN_Simple.dir/math_helper.cpp.o" \
 "CMakeFiles/EANN_Simple.dir/event.cpp.o" \
-"CMakeFiles/EANN_Simple.dir/agent_controller.cpp.o"
+"CMakeFiles/EANN_Simple.dir/agent_controller.cpp.o" \
+"CMakeFiles/EANN_Simple.dir/grid.cpp.o" \
+"CMakeFiles/EANN_Simple.dir/sensor.cpp.o" \
+"CMakeFiles/EANN_Simple.dir/vec2.cpp.o"
 
 # External object files for target EANN_Simple
 EANN_Simple_EXTERNAL_OBJECTS =
@@ -228,9 +270,12 @@ EANN_Simple: CMakeFiles/EANN_Simple.dir/neural_network.cpp.o
 EANN_Simple: CMakeFiles/EANN_Simple.dir/math_helper.cpp.o
 EANN_Simple: CMakeFiles/EANN_Simple.dir/event.cpp.o
 EANN_Simple: CMakeFiles/EANN_Simple.dir/agent_controller.cpp.o
+EANN_Simple: CMakeFiles/EANN_Simple.dir/grid.cpp.o
+EANN_Simple: CMakeFiles/EANN_Simple.dir/sensor.cpp.o
+EANN_Simple: CMakeFiles/EANN_Simple.dir/vec2.cpp.o
 EANN_Simple: CMakeFiles/EANN_Simple.dir/build.make
 EANN_Simple: CMakeFiles/EANN_Simple.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/badzindagi/dev/MayaBrain/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX executable EANN_Simple"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/badzindagi/dev/MayaBrain/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Linking CXX executable EANN_Simple"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/EANN_Simple.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

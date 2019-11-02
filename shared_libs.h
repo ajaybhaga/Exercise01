@@ -32,7 +32,9 @@
 #include "genetic_algorithm.h"
 #include "neural_network.h"
 #include "agent.h"
-//#include "agent_controller.h"
+#include "agent_controller.h"
+#include "evolution_manager.h"
+
 //#include "evolution_manager.h"
 
 // Config variables
