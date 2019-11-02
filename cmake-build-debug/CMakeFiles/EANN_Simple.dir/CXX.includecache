@@ -7,20 +7,20 @@
 #IncludeRegexTransform: 
 
 /Users/badzindagi/dev/MayaBrain/agent.cpp
-agent.h
-/Users/badzindagi/dev/MayaBrain/agent.h
+shared_libs.h
+/Users/badzindagi/dev/MayaBrain/shared_libs.h
 
 /Users/badzindagi/dev/MayaBrain/agent.h
 shared_libs.h
 /Users/badzindagi/dev/MayaBrain/shared_libs.h
 
 /Users/badzindagi/dev/MayaBrain/agent_controller.cpp
-agent_controller.h
-/Users/badzindagi/dev/MayaBrain/agent_controller.h
-
-/Users/badzindagi/dev/MayaBrain/agent_controller.h
 shared_libs.h
 /Users/badzindagi/dev/MayaBrain/shared_libs.h
+
+/Users/badzindagi/dev/MayaBrain/agent_controller.h
+agent.h
+/Users/badzindagi/dev/MayaBrain/agent.h
 
 /Users/badzindagi/dev/MayaBrain/event.h
 functional
@@ -33,22 +33,22 @@ iostream
 -
 
 /Users/badzindagi/dev/MayaBrain/evolution_manager.cpp
-evolution_manager.h
-/Users/badzindagi/dev/MayaBrain/evolution_manager.h
-
-/Users/badzindagi/dev/MayaBrain/evolution_manager.h
-agent_controller.h
-/Users/badzindagi/dev/MayaBrain/agent_controller.h
-genetic_algorithm.h
-/Users/badzindagi/dev/MayaBrain/genetic_algorithm.h
-
-/Users/badzindagi/dev/MayaBrain/genetic_algorithm.cpp
-genetic_algorithm.h
-/Users/badzindagi/dev/MayaBrain/genetic_algorithm.h
-
-/Users/badzindagi/dev/MayaBrain/genetic_algorithm.h
 shared_libs.h
 /Users/badzindagi/dev/MayaBrain/shared_libs.h
+
+/Users/badzindagi/dev/MayaBrain/evolution_manager.h
+genetic_algorithm.h
+/Users/badzindagi/dev/MayaBrain/genetic_algorithm.h
+agent_controller.h
+/Users/badzindagi/dev/MayaBrain/agent_controller.h
+
+/Users/badzindagi/dev/MayaBrain/genetic_algorithm.cpp
+shared_libs.h
+/Users/badzindagi/dev/MayaBrain/shared_libs.h
+
+/Users/badzindagi/dev/MayaBrain/genetic_algorithm.h
+genotype.h
+/Users/badzindagi/dev/MayaBrain/genotype.h
 
 /Users/badzindagi/dev/MayaBrain/genotype.h
 string

@@ -5,7 +5,9 @@
 // Based on design of Samuel Arzt (March 2017)
 //
 
-#include "agent_controller.h"
+#include "shared_libs.h"
+
+int AgentController::idGenerator = 0;
 
 AgentController::AgentController(Agent agent) {
     //this->agent = std::make_unique<Agent>(agent);//agent->genotype, );

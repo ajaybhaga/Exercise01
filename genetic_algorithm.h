@@ -8,7 +8,7 @@
 #ifndef EANN_SIMPLE_GENETIC_ALGORITHM_H
 #define EANN_SIMPLE_GENETIC_ALGORITHM_H
 
-#include "shared_libs.h"
+#include "genotype.h"
 
 // Default min value of initial population parameters.
 static const float DefInitParamMin = -1.0f;

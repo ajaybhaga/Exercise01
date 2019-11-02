@@ -8,7 +8,7 @@
 #ifndef EANN_SIMPLE_AGENT_CONTROLLER_H
 #define EANN_SIMPLE_AGENT_CONTROLLER_H
 
-#include "shared_libs.h"
+#include "agent.h"
 
 class AgentController {
 public:
@@ -46,7 +46,5 @@ private:
 
     std::string name;
 };
-
-int AgentController::idGenerator = 0;
 
 #endif //EANN_SIMPLE_AGENT_CONTROLLER_H

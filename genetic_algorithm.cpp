@@ -5,7 +5,7 @@
 // Based on design of Samuel Arzt (March 2017)
 //
 
-#include "genetic_algorithm.h"
+#include "shared_libs.h"
 
 GeneticAlgorithm::GeneticAlgorithm(int genotypeParamCount, int populationSize) {
 
