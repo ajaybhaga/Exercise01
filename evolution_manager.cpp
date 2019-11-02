@@ -237,46 +237,178 @@ void EvolutionManager::restartAlgorithm(float wait) {
         AgentController *agentController = new AgentController(*agent);
         getInstance()->agents.emplace_back(agent);
         getInstance()->agentControllers.emplace_back(agentController);
+        agentController->agent->agentDied += onAgentDied;
         getInstance()->agentsAliveCount++;
-
     }
 
     // TrackManager.Instance.setCarAmount(agents.Count);
 
-    // Iterate through agents
-    for (auto it = getInstance()->agents.begin(); it != getInstance()->agents.end(); ++it) {
-        // Iterate through agent controller, update agent reference
-       // getInstance()->agentControllers.emplace_back(new AgentController(*it));
-        getInstance()->agentsAliveCount++;
-       // getInstance()->agents.push_back(new Agent(*it, MathHelper::softSignFunction, getInstance()->ffnTopology));
+    // Iterate through agent controllers
+//    for (auto it = getInstance()->agentControllers.begin(); it != getInstance()->agentControllers.end(); ++it) {
+//    }
 
-//        std::list<Genotype>::iterator it
-
-
-
-    }
-
+    // track manager -> Instance restart
 
 }
 
 void EvolutionManager::onAgentDied() {
 
+    getInstance()->agentsAliveCount--;
+
+    if (getInstance()->agentsAliveCount) {
+        getInstance()->allAgentsDied();
+    }
+
 }
 
+// Mutates all members of the new population with the default probability, while leaving the first 2 genotypes in the list.
 void EvolutionManager::mutateAllButBestTwo(std::list<Genotype> newPopulation) {
+    // Create the random number generator
+    random_d rd{0.0, 1.0};
 
+    int i = 0;
+    //for (int i = 2; i < newPopulation.size(); i++) {
+    for (auto it = newPopulation.begin(); it != newPopulation.end(); ++it) {
+
+        if (i >= 2) {
+            if (rd() < DefMutationProb) {
+                getInstance()->getGeneticAlgorithm()->mutateGenotype(*it, DefMutationProb, DefMutationAmount);
+            }
+        }
+        i++;
+    }
 }
 
 void EvolutionManager::mutateAll(std::list<Genotype> newPopulation) {
 
+    // Create the random number generator
+    random_d rd{0.0, 1.0};
+
+    for (auto it = newPopulation.begin(); it != newPopulation.end(); ++it) {
+        //for (int i = 0; i < newPopulation.size(); i++) {
+        if (rd() < DefMutationProb) {
+            getInstance()->getGeneticAlgorithm()->mutateGenotype(*it, DefMutationProb, DefMutationAmount);
+        }
+    }
 }
 
 std::list<Genotype> *EvolutionManager::randomRecombination(std::list<Genotype> intermediatePopulation, int newPopulationSize) {
-    return nullptr;
+
+    if (intermediatePopulation.size() < 2) {
+
+        std::cout << "The intermediate population has to be at least of size 2 for this operator.";
+        return nullptr;
+    }
+
+    std::list<Genotype> *newPopulation = new std::list<Genotype>();
+
+    if (intermediatePopulation.size() < newPopulationSize) {
+
+        Genotype *offspring1;
+        Genotype *offspring2;
+
+        // Get first 2 list items (top 2)
+        size_t n = 2;
+        auto end = std::next(intermediatePopulation.begin(), std::min(n, intermediatePopulation.size()));
+        std::list<Genotype> b(intermediatePopulation.begin(), end);
+
+        Genotype intermediatePopulation0;
+        Genotype intermediatePopulation1;
+
+        int count = 0;
+        for (std::list<Genotype>::iterator it = b.begin(); it != b.end(); ++it) {
+            switch (count) {
+                case 0:
+                    intermediatePopulation0 = *it;
+                    break;
+                case 1:
+                    intermediatePopulation1 = *it;
+                    break;
+
+            }
+            count++;
+        }
+
+        // Always add best two (unmodified)
+        newPopulation->emplace_back(intermediatePopulation0);
+        newPopulation->emplace_back(intermediatePopulation1);
+
+        // Create the random number generator
+        random_d rd{0.0, std::round(intermediatePopulation.size())};
+
+        while (newPopulation->size() < newPopulationSize) {
+
+            // Get two random indices that are not the same.
+            int randomIndex1 = (int) rd();
+            int randomIndex2;
+
+            do {
+                randomIndex2 = (int) rd();
+            } while (randomIndex2 == randomIndex1);
+
+            // Retrieve intermediatePopulation -> randomIndex1 & randomIndex2
+            Genotype intermediatePopulationR1;
+            Genotype intermediatePopulationR2;
+
+            int i = 0;
+            //for (int i = 2; i < newPopulation.size(); i++) {
+            for (auto it = newPopulation->begin(); it != newPopulation->end(); ++it) {
+
+                if (i == randomIndex1) {
+                    intermediatePopulationR1 = *it;
+                }
+
+                if (i == randomIndex2) {
+                    intermediatePopulationR2 = *it;
+                }
+            }
+
+            getInstance()->getGeneticAlgorithm()->completeCrossover(intermediatePopulationR1, intermediatePopulationR2,
+                    DefCrossSwapProb, offspring1, offspring2);
+
+            newPopulation->emplace_back(*offspring1);
+            if (newPopulation->size() < newPopulationSize) {
+                newPopulation->emplace_back(*offspring2);
+            }
+        }
+    }
+
+    return newPopulation;
 }
 
 std::list<Genotype> *EvolutionManager::remainderStochasticSampling(std::list<Genotype> currentPopulation) {
-    return nullptr;
+
+    // Create the random number generator
+    random_d rd{0.0, 1.0};
+
+    std::list<Genotype> *intermediatePopulation = new std::list<Genotype>();
+    // Put integer portion of genotypes into intermediatePopulation
+    // Assumes that currentPopulation is already sorted
+
+    for (auto it = currentPopulation.begin(); it != currentPopulation.end(); ++it) {
+        //for (int i = 0; i < newPopulation.size(); i++) {
+
+        if ((*it).fitness < 1) {
+            break;
+        } else {
+            for (int i = 0; i < (int) (*it).fitness; i++) {
+                Genotype *g = new Genotype((*it).getParameterCopy(), (*it).parameterCount);
+                intermediatePopulation->emplace_back(*g);
+            }
+        }
+    }
+
+    // Put remainder portion of genotypes into intermediatePopulation
+    for (auto it = currentPopulation.begin(); it != currentPopulation.end(); ++it) {
+
+        float remainder = (*it).fitness - (int) (*it).fitness;
+        if (rd() < remainder) {
+            Genotype *g = new Genotype((*it).getParameterCopy(), (*it).parameterCount);
+            intermediatePopulation->emplace_back(*g);
+        }
+    }
+
+    return intermediatePopulation;
 }
 
 GeneticAlgorithm *EvolutionManager::getGeneticAlgorithm() {

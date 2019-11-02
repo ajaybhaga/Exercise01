@@ -27,8 +27,10 @@ Genotype::Genotype(float *parameters, int parameterCount) {
 
 Genotype::~Genotype() {
 
-    // Deallocate Heap memory
-    delete[] parameters;
+    if (parameters) {
+        // Deallocate Heap memory
+        delete[] parameters;
+    }
 }
 
 void Genotype::setRandomParameters(float minValue, float maxValue) {
