@@ -226,18 +226,226 @@ CMakeFiles/EANN_Simple.dir/sensor.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EANN_Simple.dir/sensor.cpp.s"
 	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/badzindagi/dev/MayaBrain/sensor.cpp -o CMakeFiles/EANN_Simple.dir/sensor.cpp.s
 
-CMakeFiles/EANN_Simple.dir/vec2.cpp.o: CMakeFiles/EANN_Simple.dir/flags.make
-CMakeFiles/EANN_Simple.dir/vec2.cpp.o: ../vec2.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/badzindagi/dev/MayaBrain/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/EANN_Simple.dir/vec2.cpp.o"
-	/usr/local/Cellar/llvm/9.0.0/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/EANN_Simple.dir/vec2.cpp.o -c /Users/badzindagi/dev/MayaBrain/vec2.cpp
+CMakeFiles/EANN_Simple.dir/app.cpp.o: CMakeFiles/EANN_Simple.dir/flags.make
+CMakeFiles/EANN_Simple.dir/app.cpp.o: ../app.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/badzindagi/dev/MayaBrain/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/EANN_Simple.dir/app.cpp.o"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/EANN_Simple.dir/app.cpp.o -c /Users/badzindagi/dev/MayaBrain/app.cpp
 
-CMakeFiles/EANN_Simple.dir/vec2.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/EANN_Simple.dir/vec2.cpp.i"
-	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/badzindagi/dev/MayaBrain/vec2.cpp > CMakeFiles/EANN_Simple.dir/vec2.cpp.i
+CMakeFiles/EANN_Simple.dir/app.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/EANN_Simple.dir/app.cpp.i"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/badzindagi/dev/MayaBrain/app.cpp > CMakeFiles/EANN_Simple.dir/app.cpp.i
 
-CMakeFiles/EANN_Simple.dir/vec2.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EANN_Simple.dir/vec2.cpp.s"
-	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/badzindagi/dev/MayaBrain/vec2.cpp -o CMakeFiles/EANN_Simple.dir/vec2.cpp.s
+CMakeFiles/EANN_Simple.dir/app.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EANN_Simple.dir/app.cpp.s"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/badzindagi/dev/MayaBrain/app.cpp -o CMakeFiles/EANN_Simple.dir/app.cpp.s
+
+CMakeFiles/EANN_Simple.dir/timing.cpp.o: CMakeFiles/EANN_Simple.dir/flags.make
+CMakeFiles/EANN_Simple.dir/timing.cpp.o: ../timing.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/badzindagi/dev/MayaBrain/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/EANN_Simple.dir/timing.cpp.o"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/EANN_Simple.dir/timing.cpp.o -c /Users/badzindagi/dev/MayaBrain/timing.cpp
+
+CMakeFiles/EANN_Simple.dir/timing.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/EANN_Simple.dir/timing.cpp.i"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/badzindagi/dev/MayaBrain/timing.cpp > CMakeFiles/EANN_Simple.dir/timing.cpp.i
+
+CMakeFiles/EANN_Simple.dir/timing.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EANN_Simple.dir/timing.cpp.s"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/badzindagi/dev/MayaBrain/timing.cpp -o CMakeFiles/EANN_Simple.dir/timing.cpp.s
+
+CMakeFiles/EANN_Simple.dir/cyclone/body.cpp.o: CMakeFiles/EANN_Simple.dir/flags.make
+CMakeFiles/EANN_Simple.dir/cyclone/body.cpp.o: ../cyclone/body.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/badzindagi/dev/MayaBrain/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/EANN_Simple.dir/cyclone/body.cpp.o"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/EANN_Simple.dir/cyclone/body.cpp.o -c /Users/badzindagi/dev/MayaBrain/cyclone/body.cpp
+
+CMakeFiles/EANN_Simple.dir/cyclone/body.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/EANN_Simple.dir/cyclone/body.cpp.i"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/badzindagi/dev/MayaBrain/cyclone/body.cpp > CMakeFiles/EANN_Simple.dir/cyclone/body.cpp.i
+
+CMakeFiles/EANN_Simple.dir/cyclone/body.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EANN_Simple.dir/cyclone/body.cpp.s"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/badzindagi/dev/MayaBrain/cyclone/body.cpp -o CMakeFiles/EANN_Simple.dir/cyclone/body.cpp.s
+
+CMakeFiles/EANN_Simple.dir/cyclone/collide_coarse.cpp.o: CMakeFiles/EANN_Simple.dir/flags.make
+CMakeFiles/EANN_Simple.dir/cyclone/collide_coarse.cpp.o: ../cyclone/collide_coarse.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/badzindagi/dev/MayaBrain/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/EANN_Simple.dir/cyclone/collide_coarse.cpp.o"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/EANN_Simple.dir/cyclone/collide_coarse.cpp.o -c /Users/badzindagi/dev/MayaBrain/cyclone/collide_coarse.cpp
+
+CMakeFiles/EANN_Simple.dir/cyclone/collide_coarse.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/EANN_Simple.dir/cyclone/collide_coarse.cpp.i"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/badzindagi/dev/MayaBrain/cyclone/collide_coarse.cpp > CMakeFiles/EANN_Simple.dir/cyclone/collide_coarse.cpp.i
+
+CMakeFiles/EANN_Simple.dir/cyclone/collide_coarse.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EANN_Simple.dir/cyclone/collide_coarse.cpp.s"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/badzindagi/dev/MayaBrain/cyclone/collide_coarse.cpp -o CMakeFiles/EANN_Simple.dir/cyclone/collide_coarse.cpp.s
+
+CMakeFiles/EANN_Simple.dir/cyclone/collide_fine.cpp.o: CMakeFiles/EANN_Simple.dir/flags.make
+CMakeFiles/EANN_Simple.dir/cyclone/collide_fine.cpp.o: ../cyclone/collide_fine.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/badzindagi/dev/MayaBrain/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/EANN_Simple.dir/cyclone/collide_fine.cpp.o"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/EANN_Simple.dir/cyclone/collide_fine.cpp.o -c /Users/badzindagi/dev/MayaBrain/cyclone/collide_fine.cpp
+
+CMakeFiles/EANN_Simple.dir/cyclone/collide_fine.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/EANN_Simple.dir/cyclone/collide_fine.cpp.i"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/badzindagi/dev/MayaBrain/cyclone/collide_fine.cpp > CMakeFiles/EANN_Simple.dir/cyclone/collide_fine.cpp.i
+
+CMakeFiles/EANN_Simple.dir/cyclone/collide_fine.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EANN_Simple.dir/cyclone/collide_fine.cpp.s"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/badzindagi/dev/MayaBrain/cyclone/collide_fine.cpp -o CMakeFiles/EANN_Simple.dir/cyclone/collide_fine.cpp.s
+
+CMakeFiles/EANN_Simple.dir/cyclone/contacts.cpp.o: CMakeFiles/EANN_Simple.dir/flags.make
+CMakeFiles/EANN_Simple.dir/cyclone/contacts.cpp.o: ../cyclone/contacts.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/badzindagi/dev/MayaBrain/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/EANN_Simple.dir/cyclone/contacts.cpp.o"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/EANN_Simple.dir/cyclone/contacts.cpp.o -c /Users/badzindagi/dev/MayaBrain/cyclone/contacts.cpp
+
+CMakeFiles/EANN_Simple.dir/cyclone/contacts.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/EANN_Simple.dir/cyclone/contacts.cpp.i"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/badzindagi/dev/MayaBrain/cyclone/contacts.cpp > CMakeFiles/EANN_Simple.dir/cyclone/contacts.cpp.i
+
+CMakeFiles/EANN_Simple.dir/cyclone/contacts.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EANN_Simple.dir/cyclone/contacts.cpp.s"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/badzindagi/dev/MayaBrain/cyclone/contacts.cpp -o CMakeFiles/EANN_Simple.dir/cyclone/contacts.cpp.s
+
+CMakeFiles/EANN_Simple.dir/cyclone/core.cpp.o: CMakeFiles/EANN_Simple.dir/flags.make
+CMakeFiles/EANN_Simple.dir/cyclone/core.cpp.o: ../cyclone/core.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/badzindagi/dev/MayaBrain/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/EANN_Simple.dir/cyclone/core.cpp.o"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/EANN_Simple.dir/cyclone/core.cpp.o -c /Users/badzindagi/dev/MayaBrain/cyclone/core.cpp
+
+CMakeFiles/EANN_Simple.dir/cyclone/core.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/EANN_Simple.dir/cyclone/core.cpp.i"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/badzindagi/dev/MayaBrain/cyclone/core.cpp > CMakeFiles/EANN_Simple.dir/cyclone/core.cpp.i
+
+CMakeFiles/EANN_Simple.dir/cyclone/core.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EANN_Simple.dir/cyclone/core.cpp.s"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/badzindagi/dev/MayaBrain/cyclone/core.cpp -o CMakeFiles/EANN_Simple.dir/cyclone/core.cpp.s
+
+CMakeFiles/EANN_Simple.dir/cyclone/fgen.cpp.o: CMakeFiles/EANN_Simple.dir/flags.make
+CMakeFiles/EANN_Simple.dir/cyclone/fgen.cpp.o: ../cyclone/fgen.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/badzindagi/dev/MayaBrain/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/EANN_Simple.dir/cyclone/fgen.cpp.o"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/EANN_Simple.dir/cyclone/fgen.cpp.o -c /Users/badzindagi/dev/MayaBrain/cyclone/fgen.cpp
+
+CMakeFiles/EANN_Simple.dir/cyclone/fgen.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/EANN_Simple.dir/cyclone/fgen.cpp.i"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/badzindagi/dev/MayaBrain/cyclone/fgen.cpp > CMakeFiles/EANN_Simple.dir/cyclone/fgen.cpp.i
+
+CMakeFiles/EANN_Simple.dir/cyclone/fgen.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EANN_Simple.dir/cyclone/fgen.cpp.s"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/badzindagi/dev/MayaBrain/cyclone/fgen.cpp -o CMakeFiles/EANN_Simple.dir/cyclone/fgen.cpp.s
+
+CMakeFiles/EANN_Simple.dir/cyclone/joints.cpp.o: CMakeFiles/EANN_Simple.dir/flags.make
+CMakeFiles/EANN_Simple.dir/cyclone/joints.cpp.o: ../cyclone/joints.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/badzindagi/dev/MayaBrain/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/EANN_Simple.dir/cyclone/joints.cpp.o"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/EANN_Simple.dir/cyclone/joints.cpp.o -c /Users/badzindagi/dev/MayaBrain/cyclone/joints.cpp
+
+CMakeFiles/EANN_Simple.dir/cyclone/joints.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/EANN_Simple.dir/cyclone/joints.cpp.i"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/badzindagi/dev/MayaBrain/cyclone/joints.cpp > CMakeFiles/EANN_Simple.dir/cyclone/joints.cpp.i
+
+CMakeFiles/EANN_Simple.dir/cyclone/joints.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EANN_Simple.dir/cyclone/joints.cpp.s"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/badzindagi/dev/MayaBrain/cyclone/joints.cpp -o CMakeFiles/EANN_Simple.dir/cyclone/joints.cpp.s
+
+CMakeFiles/EANN_Simple.dir/cyclone/particle.cpp.o: CMakeFiles/EANN_Simple.dir/flags.make
+CMakeFiles/EANN_Simple.dir/cyclone/particle.cpp.o: ../cyclone/particle.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/badzindagi/dev/MayaBrain/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/EANN_Simple.dir/cyclone/particle.cpp.o"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/EANN_Simple.dir/cyclone/particle.cpp.o -c /Users/badzindagi/dev/MayaBrain/cyclone/particle.cpp
+
+CMakeFiles/EANN_Simple.dir/cyclone/particle.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/EANN_Simple.dir/cyclone/particle.cpp.i"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/badzindagi/dev/MayaBrain/cyclone/particle.cpp > CMakeFiles/EANN_Simple.dir/cyclone/particle.cpp.i
+
+CMakeFiles/EANN_Simple.dir/cyclone/particle.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EANN_Simple.dir/cyclone/particle.cpp.s"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/badzindagi/dev/MayaBrain/cyclone/particle.cpp -o CMakeFiles/EANN_Simple.dir/cyclone/particle.cpp.s
+
+CMakeFiles/EANN_Simple.dir/cyclone/pcontacts.cpp.o: CMakeFiles/EANN_Simple.dir/flags.make
+CMakeFiles/EANN_Simple.dir/cyclone/pcontacts.cpp.o: ../cyclone/pcontacts.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/badzindagi/dev/MayaBrain/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/EANN_Simple.dir/cyclone/pcontacts.cpp.o"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/EANN_Simple.dir/cyclone/pcontacts.cpp.o -c /Users/badzindagi/dev/MayaBrain/cyclone/pcontacts.cpp
+
+CMakeFiles/EANN_Simple.dir/cyclone/pcontacts.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/EANN_Simple.dir/cyclone/pcontacts.cpp.i"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/badzindagi/dev/MayaBrain/cyclone/pcontacts.cpp > CMakeFiles/EANN_Simple.dir/cyclone/pcontacts.cpp.i
+
+CMakeFiles/EANN_Simple.dir/cyclone/pcontacts.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EANN_Simple.dir/cyclone/pcontacts.cpp.s"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/badzindagi/dev/MayaBrain/cyclone/pcontacts.cpp -o CMakeFiles/EANN_Simple.dir/cyclone/pcontacts.cpp.s
+
+CMakeFiles/EANN_Simple.dir/cyclone/pfgen.cpp.o: CMakeFiles/EANN_Simple.dir/flags.make
+CMakeFiles/EANN_Simple.dir/cyclone/pfgen.cpp.o: ../cyclone/pfgen.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/badzindagi/dev/MayaBrain/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/EANN_Simple.dir/cyclone/pfgen.cpp.o"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/EANN_Simple.dir/cyclone/pfgen.cpp.o -c /Users/badzindagi/dev/MayaBrain/cyclone/pfgen.cpp
+
+CMakeFiles/EANN_Simple.dir/cyclone/pfgen.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/EANN_Simple.dir/cyclone/pfgen.cpp.i"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/badzindagi/dev/MayaBrain/cyclone/pfgen.cpp > CMakeFiles/EANN_Simple.dir/cyclone/pfgen.cpp.i
+
+CMakeFiles/EANN_Simple.dir/cyclone/pfgen.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EANN_Simple.dir/cyclone/pfgen.cpp.s"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/badzindagi/dev/MayaBrain/cyclone/pfgen.cpp -o CMakeFiles/EANN_Simple.dir/cyclone/pfgen.cpp.s
+
+CMakeFiles/EANN_Simple.dir/cyclone/plinks.cpp.o: CMakeFiles/EANN_Simple.dir/flags.make
+CMakeFiles/EANN_Simple.dir/cyclone/plinks.cpp.o: ../cyclone/plinks.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/badzindagi/dev/MayaBrain/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/EANN_Simple.dir/cyclone/plinks.cpp.o"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/EANN_Simple.dir/cyclone/plinks.cpp.o -c /Users/badzindagi/dev/MayaBrain/cyclone/plinks.cpp
+
+CMakeFiles/EANN_Simple.dir/cyclone/plinks.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/EANN_Simple.dir/cyclone/plinks.cpp.i"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/badzindagi/dev/MayaBrain/cyclone/plinks.cpp > CMakeFiles/EANN_Simple.dir/cyclone/plinks.cpp.i
+
+CMakeFiles/EANN_Simple.dir/cyclone/plinks.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EANN_Simple.dir/cyclone/plinks.cpp.s"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/badzindagi/dev/MayaBrain/cyclone/plinks.cpp -o CMakeFiles/EANN_Simple.dir/cyclone/plinks.cpp.s
+
+CMakeFiles/EANN_Simple.dir/cyclone/pworld.cpp.o: CMakeFiles/EANN_Simple.dir/flags.make
+CMakeFiles/EANN_Simple.dir/cyclone/pworld.cpp.o: ../cyclone/pworld.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/badzindagi/dev/MayaBrain/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/EANN_Simple.dir/cyclone/pworld.cpp.o"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/EANN_Simple.dir/cyclone/pworld.cpp.o -c /Users/badzindagi/dev/MayaBrain/cyclone/pworld.cpp
+
+CMakeFiles/EANN_Simple.dir/cyclone/pworld.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/EANN_Simple.dir/cyclone/pworld.cpp.i"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/badzindagi/dev/MayaBrain/cyclone/pworld.cpp > CMakeFiles/EANN_Simple.dir/cyclone/pworld.cpp.i
+
+CMakeFiles/EANN_Simple.dir/cyclone/pworld.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EANN_Simple.dir/cyclone/pworld.cpp.s"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/badzindagi/dev/MayaBrain/cyclone/pworld.cpp -o CMakeFiles/EANN_Simple.dir/cyclone/pworld.cpp.s
+
+CMakeFiles/EANN_Simple.dir/cyclone/random.cpp.o: CMakeFiles/EANN_Simple.dir/flags.make
+CMakeFiles/EANN_Simple.dir/cyclone/random.cpp.o: ../cyclone/random.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/badzindagi/dev/MayaBrain/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object CMakeFiles/EANN_Simple.dir/cyclone/random.cpp.o"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/EANN_Simple.dir/cyclone/random.cpp.o -c /Users/badzindagi/dev/MayaBrain/cyclone/random.cpp
+
+CMakeFiles/EANN_Simple.dir/cyclone/random.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/EANN_Simple.dir/cyclone/random.cpp.i"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/badzindagi/dev/MayaBrain/cyclone/random.cpp > CMakeFiles/EANN_Simple.dir/cyclone/random.cpp.i
+
+CMakeFiles/EANN_Simple.dir/cyclone/random.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EANN_Simple.dir/cyclone/random.cpp.s"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/badzindagi/dev/MayaBrain/cyclone/random.cpp -o CMakeFiles/EANN_Simple.dir/cyclone/random.cpp.s
+
+CMakeFiles/EANN_Simple.dir/cyclone/world.cpp.o: CMakeFiles/EANN_Simple.dir/flags.make
+CMakeFiles/EANN_Simple.dir/cyclone/world.cpp.o: ../cyclone/world.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/badzindagi/dev/MayaBrain/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object CMakeFiles/EANN_Simple.dir/cyclone/world.cpp.o"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/EANN_Simple.dir/cyclone/world.cpp.o -c /Users/badzindagi/dev/MayaBrain/cyclone/world.cpp
+
+CMakeFiles/EANN_Simple.dir/cyclone/world.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/EANN_Simple.dir/cyclone/world.cpp.i"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/badzindagi/dev/MayaBrain/cyclone/world.cpp > CMakeFiles/EANN_Simple.dir/cyclone/world.cpp.i
+
+CMakeFiles/EANN_Simple.dir/cyclone/world.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EANN_Simple.dir/cyclone/world.cpp.s"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/badzindagi/dev/MayaBrain/cyclone/world.cpp -o CMakeFiles/EANN_Simple.dir/cyclone/world.cpp.s
+
+CMakeFiles/EANN_Simple.dir/fracture.cpp.o: CMakeFiles/EANN_Simple.dir/flags.make
+CMakeFiles/EANN_Simple.dir/fracture.cpp.o: ../fracture.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/badzindagi/dev/MayaBrain/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object CMakeFiles/EANN_Simple.dir/fracture.cpp.o"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/EANN_Simple.dir/fracture.cpp.o -c /Users/badzindagi/dev/MayaBrain/fracture.cpp
+
+CMakeFiles/EANN_Simple.dir/fracture.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/EANN_Simple.dir/fracture.cpp.i"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/badzindagi/dev/MayaBrain/fracture.cpp > CMakeFiles/EANN_Simple.dir/fracture.cpp.i
+
+CMakeFiles/EANN_Simple.dir/fracture.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EANN_Simple.dir/fracture.cpp.s"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/badzindagi/dev/MayaBrain/fracture.cpp -o CMakeFiles/EANN_Simple.dir/fracture.cpp.s
 
 # Object files for target EANN_Simple
 EANN_Simple_OBJECTS = \
@@ -254,7 +462,23 @@ EANN_Simple_OBJECTS = \
 "CMakeFiles/EANN_Simple.dir/agent_controller.cpp.o" \
 "CMakeFiles/EANN_Simple.dir/grid.cpp.o" \
 "CMakeFiles/EANN_Simple.dir/sensor.cpp.o" \
-"CMakeFiles/EANN_Simple.dir/vec2.cpp.o"
+"CMakeFiles/EANN_Simple.dir/app.cpp.o" \
+"CMakeFiles/EANN_Simple.dir/timing.cpp.o" \
+"CMakeFiles/EANN_Simple.dir/cyclone/body.cpp.o" \
+"CMakeFiles/EANN_Simple.dir/cyclone/collide_coarse.cpp.o" \
+"CMakeFiles/EANN_Simple.dir/cyclone/collide_fine.cpp.o" \
+"CMakeFiles/EANN_Simple.dir/cyclone/contacts.cpp.o" \
+"CMakeFiles/EANN_Simple.dir/cyclone/core.cpp.o" \
+"CMakeFiles/EANN_Simple.dir/cyclone/fgen.cpp.o" \
+"CMakeFiles/EANN_Simple.dir/cyclone/joints.cpp.o" \
+"CMakeFiles/EANN_Simple.dir/cyclone/particle.cpp.o" \
+"CMakeFiles/EANN_Simple.dir/cyclone/pcontacts.cpp.o" \
+"CMakeFiles/EANN_Simple.dir/cyclone/pfgen.cpp.o" \
+"CMakeFiles/EANN_Simple.dir/cyclone/plinks.cpp.o" \
+"CMakeFiles/EANN_Simple.dir/cyclone/pworld.cpp.o" \
+"CMakeFiles/EANN_Simple.dir/cyclone/random.cpp.o" \
+"CMakeFiles/EANN_Simple.dir/cyclone/world.cpp.o" \
+"CMakeFiles/EANN_Simple.dir/fracture.cpp.o"
 
 # External object files for target EANN_Simple
 EANN_Simple_EXTERNAL_OBJECTS =
@@ -272,10 +496,26 @@ EANN_Simple: CMakeFiles/EANN_Simple.dir/event.cpp.o
 EANN_Simple: CMakeFiles/EANN_Simple.dir/agent_controller.cpp.o
 EANN_Simple: CMakeFiles/EANN_Simple.dir/grid.cpp.o
 EANN_Simple: CMakeFiles/EANN_Simple.dir/sensor.cpp.o
-EANN_Simple: CMakeFiles/EANN_Simple.dir/vec2.cpp.o
+EANN_Simple: CMakeFiles/EANN_Simple.dir/app.cpp.o
+EANN_Simple: CMakeFiles/EANN_Simple.dir/timing.cpp.o
+EANN_Simple: CMakeFiles/EANN_Simple.dir/cyclone/body.cpp.o
+EANN_Simple: CMakeFiles/EANN_Simple.dir/cyclone/collide_coarse.cpp.o
+EANN_Simple: CMakeFiles/EANN_Simple.dir/cyclone/collide_fine.cpp.o
+EANN_Simple: CMakeFiles/EANN_Simple.dir/cyclone/contacts.cpp.o
+EANN_Simple: CMakeFiles/EANN_Simple.dir/cyclone/core.cpp.o
+EANN_Simple: CMakeFiles/EANN_Simple.dir/cyclone/fgen.cpp.o
+EANN_Simple: CMakeFiles/EANN_Simple.dir/cyclone/joints.cpp.o
+EANN_Simple: CMakeFiles/EANN_Simple.dir/cyclone/particle.cpp.o
+EANN_Simple: CMakeFiles/EANN_Simple.dir/cyclone/pcontacts.cpp.o
+EANN_Simple: CMakeFiles/EANN_Simple.dir/cyclone/pfgen.cpp.o
+EANN_Simple: CMakeFiles/EANN_Simple.dir/cyclone/plinks.cpp.o
+EANN_Simple: CMakeFiles/EANN_Simple.dir/cyclone/pworld.cpp.o
+EANN_Simple: CMakeFiles/EANN_Simple.dir/cyclone/random.cpp.o
+EANN_Simple: CMakeFiles/EANN_Simple.dir/cyclone/world.cpp.o
+EANN_Simple: CMakeFiles/EANN_Simple.dir/fracture.cpp.o
 EANN_Simple: CMakeFiles/EANN_Simple.dir/build.make
 EANN_Simple: CMakeFiles/EANN_Simple.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/badzindagi/dev/MayaBrain/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Linking CXX executable EANN_Simple"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/badzindagi/dev/MayaBrain/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Linking CXX executable EANN_Simple"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/EANN_Simple.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

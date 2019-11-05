@@ -44,6 +44,11 @@
 				<Option type="1"/>
 				<Option compiler="clang"/>
 				<Compiler>
+					<Add directory="/System/Library/Frameworks/OpenGL.framework"/>
+					<Add directory="/System/Library/Frameworks/GLUT.framework/Headers"/>
+					<Add directory="/Users/badzindagi/dev/MayaBrain"/>
+					<Add directory="/Users/badzindagi/dev/MayaBrain/cyclone"/>
+					<Add directory="/Users/badzindagi/dev/MayaBrain/glut"/>
 					<Add directory="/usr/local/Cellar/llvm/9.0.0/bin/../include/c++/v1"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/usr/local/Cellar/llvm/9.0.0/lib/clang/9.0.0/include"/>
@@ -65,6 +70,11 @@
 				<Option type="1"/>
 				<Option compiler="clang"/>
 				<Compiler>
+					<Add directory="/System/Library/Frameworks/OpenGL.framework"/>
+					<Add directory="/System/Library/Frameworks/GLUT.framework/Headers"/>
+					<Add directory="/Users/badzindagi/dev/MayaBrain"/>
+					<Add directory="/Users/badzindagi/dev/MayaBrain/cyclone"/>
+					<Add directory="/Users/badzindagi/dev/MayaBrain/glut"/>
 					<Add directory="/usr/local/Cellar/llvm/9.0.0/bin/../include/c++/v1"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/usr/local/Cellar/llvm/9.0.0/lib/clang/9.0.0/include"/>
@@ -92,6 +102,96 @@
 		<Unit filename="/Users/badzindagi/dev/MayaBrain/agent_controller.h">
 			<Option target="EANN_Simple"/>
 		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/app.cpp">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/app.h">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/cyclone/body.cpp">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/cyclone/body.h">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/cyclone/collide_coarse.cpp">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/cyclone/collide_coarse.h">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/cyclone/collide_fine.cpp">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/cyclone/collide_fine.h">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/cyclone/contacts.cpp">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/cyclone/contacts.h">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/cyclone/core.cpp">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/cyclone/core.h">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/cyclone/fgen.cpp">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/cyclone/fgen.h">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/cyclone/joints.cpp">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/cyclone/joints.h">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/cyclone/particle.cpp">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/cyclone/particle.h">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/cyclone/pcontacts.cpp">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/cyclone/pcontacts.h">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/cyclone/pfgen.cpp">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/cyclone/pfgen.h">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/cyclone/plinks.cpp">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/cyclone/plinks.h">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/cyclone/pworld.cpp">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/cyclone/pworld.h">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/cyclone/random.cpp">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/cyclone/random.h">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/cyclone/world.cpp">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/cyclone/world.h">
+			<Option target="EANN_Simple"/>
+		</Unit>
 		<Unit filename="/Users/badzindagi/dev/MayaBrain/event.cpp">
 			<Option target="EANN_Simple"/>
 		</Unit>
@@ -104,6 +204,9 @@
 		<Unit filename="/Users/badzindagi/dev/MayaBrain/evolution_manager.h">
 			<Option target="EANN_Simple"/>
 		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/fracture.cpp">
+			<Option target="EANN_Simple"/>
+		</Unit>
 		<Unit filename="/Users/badzindagi/dev/MayaBrain/genetic_algorithm.cpp">
 			<Option target="EANN_Simple"/>
 		</Unit>
@@ -114,6 +217,9 @@
 			<Option target="EANN_Simple"/>
 		</Unit>
 		<Unit filename="/Users/badzindagi/dev/MayaBrain/genotype.h">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/gl/glut.h">
 			<Option target="EANN_Simple"/>
 		</Unit>
 		<Unit filename="/Users/badzindagi/dev/MayaBrain/grid.cpp">
@@ -161,10 +267,10 @@
 		<Unit filename="/Users/badzindagi/dev/MayaBrain/shared_libs.h">
 			<Option target="EANN_Simple"/>
 		</Unit>
-		<Unit filename="/Users/badzindagi/dev/MayaBrain/vec2.cpp">
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/timing.cpp">
 			<Option target="EANN_Simple"/>
 		</Unit>
-		<Unit filename="/Users/badzindagi/dev/MayaBrain/vec2.h">
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/timing.h">
 			<Option target="EANN_Simple"/>
 		</Unit>
 		<Unit filename="/Users/badzindagi/dev/MayaBrain/CMakeLists.txt">

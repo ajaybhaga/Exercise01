@@ -9,6 +9,7 @@
 #include <stdlib.h>     /* abs */
 #include "math_helper.h"
 #include "random_d.h"
+#include <cyclone.h>
 
 // Class representing a sensor reading the distance to the nearest obstacle in a specified direction.
 class Sensor {

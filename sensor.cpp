@@ -19,7 +19,7 @@ void Sensor::start() {
 void Sensor::fixedUpdate() {
 
     // Calculate direction of sensor
-   // Vector2 direction = Cross.tranform.position - this.transform.position;
+//    cyclone::Vector2 direction = &(new Vector2());//Cross.tranform.position - this.transform.position;
    // direction.Normalize();
 
     // Check distance
