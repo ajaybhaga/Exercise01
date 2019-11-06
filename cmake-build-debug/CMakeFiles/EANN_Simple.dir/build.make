@@ -434,18 +434,18 @@ CMakeFiles/EANN_Simple.dir/cyclone/world.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EANN_Simple.dir/cyclone/world.cpp.s"
 	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/badzindagi/dev/MayaBrain/cyclone/world.cpp -o CMakeFiles/EANN_Simple.dir/cyclone/world.cpp.s
 
-CMakeFiles/EANN_Simple.dir/fracture.cpp.o: CMakeFiles/EANN_Simple.dir/flags.make
-CMakeFiles/EANN_Simple.dir/fracture.cpp.o: ../fracture.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/badzindagi/dev/MayaBrain/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object CMakeFiles/EANN_Simple.dir/fracture.cpp.o"
-	/usr/local/Cellar/llvm/9.0.0/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/EANN_Simple.dir/fracture.cpp.o -c /Users/badzindagi/dev/MayaBrain/fracture.cpp
+CMakeFiles/EANN_Simple.dir/environment.cpp.o: CMakeFiles/EANN_Simple.dir/flags.make
+CMakeFiles/EANN_Simple.dir/environment.cpp.o: ../environment.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/badzindagi/dev/MayaBrain/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object CMakeFiles/EANN_Simple.dir/environment.cpp.o"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/EANN_Simple.dir/environment.cpp.o -c /Users/badzindagi/dev/MayaBrain/environment.cpp
 
-CMakeFiles/EANN_Simple.dir/fracture.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/EANN_Simple.dir/fracture.cpp.i"
-	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/badzindagi/dev/MayaBrain/fracture.cpp > CMakeFiles/EANN_Simple.dir/fracture.cpp.i
+CMakeFiles/EANN_Simple.dir/environment.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/EANN_Simple.dir/environment.cpp.i"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/badzindagi/dev/MayaBrain/environment.cpp > CMakeFiles/EANN_Simple.dir/environment.cpp.i
 
-CMakeFiles/EANN_Simple.dir/fracture.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EANN_Simple.dir/fracture.cpp.s"
-	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/badzindagi/dev/MayaBrain/fracture.cpp -o CMakeFiles/EANN_Simple.dir/fracture.cpp.s
+CMakeFiles/EANN_Simple.dir/environment.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EANN_Simple.dir/environment.cpp.s"
+	/usr/local/Cellar/llvm/9.0.0/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/badzindagi/dev/MayaBrain/environment.cpp -o CMakeFiles/EANN_Simple.dir/environment.cpp.s
 
 # Object files for target EANN_Simple
 EANN_Simple_OBJECTS = \
@@ -478,7 +478,7 @@ EANN_Simple_OBJECTS = \
 "CMakeFiles/EANN_Simple.dir/cyclone/pworld.cpp.o" \
 "CMakeFiles/EANN_Simple.dir/cyclone/random.cpp.o" \
 "CMakeFiles/EANN_Simple.dir/cyclone/world.cpp.o" \
-"CMakeFiles/EANN_Simple.dir/fracture.cpp.o"
+"CMakeFiles/EANN_Simple.dir/environment.cpp.o"
 
 # External object files for target EANN_Simple
 EANN_Simple_EXTERNAL_OBJECTS =
@@ -512,7 +512,7 @@ EANN_Simple: CMakeFiles/EANN_Simple.dir/cyclone/plinks.cpp.o
 EANN_Simple: CMakeFiles/EANN_Simple.dir/cyclone/pworld.cpp.o
 EANN_Simple: CMakeFiles/EANN_Simple.dir/cyclone/random.cpp.o
 EANN_Simple: CMakeFiles/EANN_Simple.dir/cyclone/world.cpp.o
-EANN_Simple: CMakeFiles/EANN_Simple.dir/fracture.cpp.o
+EANN_Simple: CMakeFiles/EANN_Simple.dir/environment.cpp.o
 EANN_Simple: CMakeFiles/EANN_Simple.dir/build.make
 EANN_Simple: CMakeFiles/EANN_Simple.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/badzindagi/dev/MayaBrain/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Linking CXX executable EANN_Simple"

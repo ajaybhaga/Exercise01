@@ -604,7 +604,7 @@ namespace cyclone {
         {
             if (squareMagnitude() > size*size)
             {
-                normalise();
+                normalize();
                 x *= size;
                 y *= size;
                 z *= size;
@@ -612,7 +612,7 @@ namespace cyclone {
         }
 
         /** Turns a non-zero vector into a vector of unit length. */
-        void normalise()
+        void normalize()
         {
             real l = magnitude();
             if (l > 0)
@@ -625,7 +625,7 @@ namespace cyclone {
         Vector3 unit() const
         {
             Vector3 result = *this;
-            result.normalise();
+            result.normalize();
             return result;
         }
 

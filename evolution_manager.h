@@ -70,10 +70,10 @@ private:
     int* ffnTopology;
 
     // The current population agents.
-    std::list<std::unique_ptr<Agent>> agents;
+    std::list<std::shared_ptr<Agent>> agents;
 
     // The current population agents.
-    std::list<std::unique_ptr<AgentController>> agentControllers;
+    std::list<std::shared_ptr<AgentController>> agentControllers;
 
     GeneticAlgorithm *geneticAlgorithm;
 };

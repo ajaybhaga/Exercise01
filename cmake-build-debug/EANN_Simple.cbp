@@ -192,6 +192,9 @@
 		<Unit filename="/Users/badzindagi/dev/MayaBrain/cyclone/world.h">
 			<Option target="EANN_Simple"/>
 		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/environment.cpp">
+			<Option target="EANN_Simple"/>
+		</Unit>
 		<Unit filename="/Users/badzindagi/dev/MayaBrain/event.cpp">
 			<Option target="EANN_Simple"/>
 		</Unit>
@@ -202,9 +205,6 @@
 			<Option target="EANN_Simple"/>
 		</Unit>
 		<Unit filename="/Users/badzindagi/dev/MayaBrain/evolution_manager.h">
-			<Option target="EANN_Simple"/>
-		</Unit>
-		<Unit filename="/Users/badzindagi/dev/MayaBrain/fracture.cpp">
 			<Option target="EANN_Simple"/>
 		</Unit>
 		<Unit filename="/Users/badzindagi/dev/MayaBrain/genetic_algorithm.cpp">

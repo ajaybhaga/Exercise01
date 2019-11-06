@@ -26,9 +26,11 @@ public:
 
     Genotype();
     Genotype(float *parameters, int parameterCount);
+    Genotype(std::vector<float> parameters);
     ~Genotype();
     void setRandomParameters(float minValue, float maxValue);
-    float* getParameterCopy();
+    std::vector<float>& getParameterCopy();
+    int getParameterCount();
     void saveToFile(const char *filePath);
     Genotype *loadFromFile(const char *filePath);
     float getParameter(int index);
@@ -38,10 +40,9 @@ public:
 
     float evaluation;
     float fitness;
-    int parameterCount;
 
 private:
-    float* parameters;
+    std::vector<float> parameters;
 };
 
 

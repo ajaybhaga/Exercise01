@@ -11,26 +11,23 @@
 #include "genotype.h"
 
 Genotype::Genotype() {
-    parameterCount = 0;
 }
 
 Genotype::Genotype(float *parameters, int parameterCount) {
 
-    this->parameters = parameters;
-    if (!parameters) {
-        this->parameterCount = 0;
-    } else {
-        this->parameterCount = parameterCount;
+    for (int i = 0; i < parameterCount; i++) {
+        this->parameters.emplace_back(parameters[i]);
     }
+
     fitness = 0;
+}
+
+Genotype::Genotype(std::vector<float> parameters) {
+    this->parameters = parameters;
 }
 
 Genotype::~Genotype() {
 
-    if (parameters) {
-        // Deallocate Heap memory
-        delete[] parameters;
-    }
 }
 
 void Genotype::setRandomParameters(float minValue, float maxValue) {
@@ -41,19 +38,13 @@ void Genotype::setRandomParameters(float minValue, float maxValue) {
 
     // Generate random parameter vector
     float range = maxValue - minValue;
-    for (int i = 0; i < parameterCount; i++) {
+    for (int i = 0; i < this->parameters.size(); i++) {
         parameters[i] = rd();
     }
 }
 
-float *Genotype::getParameterCopy() {
-
-    float *copy = new float[parameterCount];
-    for (int i = 0; i < parameterCount; i++) {
-        copy[i] = parameters[i];
-    }
-
-    return copy;
+std::vector<float>& Genotype::getParameterCopy() {
+    return parameters;
 }
 
 void Genotype::saveToFile(const char* filePath) {
@@ -119,17 +110,13 @@ Genotype *Genotype::loadFromFile(const char* filePath) {
     Genotype* genotype = new Genotype();
     genotype->evaluation = file->record.evaluation;
     genotype->fitness = file->record.fitness;
-    genotype->parameterCount = file->record.parameterCount;
-    genotype->parameters = file->record.parameters;
+    // TODO: read file into Vector
+//    genotype->parameters = file->record.parameters;
     return genotype;
 }
 
 float Genotype::getParameter(int index) {
-    if (parameters) {
-        return parameters[index];
-    } else {
-        return -1;
-    }
+    return parameters[index];
 }
 
 Genotype* Genotype::generateRandom(int parameterCount, float minValue, float maxValue) {
@@ -144,13 +131,15 @@ Genotype* Genotype::generateRandom(int parameterCount, float minValue, float max
 }
 
 void Genotype::outputToConsole() {
-    for (int i = 0; i < parameterCount; i++) {
+    for (int i = 0; i < this->parameters.size(); i++) {
         std::cout << "parameters[" << i << "] -> " << parameters[i] << std::endl;
     }
 }
 
 void Genotype::setParameter(int index, float value) {
-    if (parameters) {
-        parameters[index] = value;
-    }
+    parameters[index] = value;
+}
+
+int Genotype::getParameterCount() {
+    return parameters.size();
 }

@@ -197,7 +197,7 @@ void GeneticAlgorithm::completeCrossover(Genotype parent1, Genotype parent2, flo
     random_d rd{0, 1};
 
     // Initialize new parameter vectors
-    int parameterCount = parent1.parameterCount;
+    int parameterCount = parent1.getParameterCopy().size();
     float *off1Parameters = new float[parameterCount];
     float *off2Parameters = new float[parameterCount];
 
@@ -227,7 +227,7 @@ void GeneticAlgorithm::mutateGenotype(Genotype genotype, float mutationProb, flo
     // Create the random number generator
     random_d rd{0, 1};
 
-    for (int i = 0; i < genotype.parameterCount; i++) {
+    for (int i = 0; i < genotype.getParameterCount(); i++) {
 
         if (rd() < mutationProb) {
             // Mutate by random amount in range [-mutationAmount, mutationAmount]

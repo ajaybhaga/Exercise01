@@ -32,25 +32,10 @@ void Application::setView()
 {
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-//    gluPerspective(60.0, (double)width/(double)height, 1.0, 500.0);
+    gluPerspective(60.0, (double)width/(double)height, 1.0, 500.0);
 //    glMultMatrix( GLKMatrix4MakePerspective(60.0, (double)width/(double)height, 1.0, 500.0).m ); // << .m is the GLfloat* you are accessing
 
     glMatrixMode(GL_MODELVIEW);
-    /*
-     *
-     * glMatrixMode( GL_PROJECTION ); // select our projection matrix
-glLoadIdentity();
-glMultMatrix( GLKMatrix4MakePerspective(30f,[self bounds].size.width/(GLfloat)[self bounds].size.height,1.0f,1000.0f ).m ); // << .m is the GLfloat* you are accessing
-
-     glEnable(GL_DEPTH_TEST);
-glPolygonMode (GL_FRONT_AND_BACK, GL_FILL);
-//...etc... for model drawing
-glMatrixMode( GL_MODELVIEW );
-//...drawing, etc.
-
-     *
-     */
-
 }
 
 void Application::display()

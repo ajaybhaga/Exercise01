@@ -10,8 +10,7 @@
 int AgentController::idGenerator = 0;
 
 AgentController::AgentController(Agent agent) {
-    //this->agent = std::make_unique<Agent>(agent);//agent->genotype, );
-//    std::unique_ptr<EventHandler>(new EventHandler{handler})
+    this->agent = std::make_shared<Agent>(agent);
 }
 
 AgentController::~AgentController() {

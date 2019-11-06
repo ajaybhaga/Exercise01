@@ -208,7 +208,7 @@ public:
 
             // Work out the direction to the impact.
             cyclone::Vector3 direction = newPos - contact.contactPoint;
-            direction.normalise();
+            direction.normalize();
 
             // Set the body's properties (we assume the block has a body
             // already that we're going to overwrite).
@@ -235,7 +235,7 @@ public:
 /**
  * The main demo class definition.
  */
-class FractureDemo : public RigidBodyApplication
+class Environment : public RigidBodyApplication
 {
     /** Tracks if a block has been hit. */
     bool hit;
@@ -265,7 +265,7 @@ class FractureDemo : public RigidBodyApplication
 
 public:
     /** Creates a new demo object. */
-    FractureDemo();
+    Environment();
 
     /** Returns the window title for the demo. */
     virtual const char* getTitle();
@@ -275,9 +275,7 @@ public:
 };
 
 // Method definitions
-FractureDemo::FractureDemo()
-    :
-    RigidBodyApplication()
+Environment::Environment() : RigidBodyApplication()
 {
     // Create the ball.
     ball.body = new cyclone::RigidBody();
@@ -296,12 +294,12 @@ FractureDemo::FractureDemo()
     reset();
 }
 
-const char* FractureDemo::getTitle()
+const char* Environment::getTitle()
 {
     return "MayaBrain Demo";
 }
 
-void FractureDemo::generateContacts()
+void Environment::generateContacts()
 {
     hit = false;
 
@@ -356,7 +354,7 @@ void FractureDemo::generateContacts()
     }
 }
 
-void FractureDemo::reset()
+void Environment::reset()
 {
     // Only the first block exists
     blocks[0].exists = true;
@@ -405,7 +403,7 @@ void FractureDemo::reset()
     cData.contactCount = 0;
 }
 
-void FractureDemo::update()
+void Environment::update()
 {
     RigidBodyApplication::update();
 
@@ -421,7 +419,7 @@ void FractureDemo::update()
     }
 }
 
-void FractureDemo::updateObjects(cyclone::real duration)
+void Environment::updateObjects(cyclone::real duration)
 {
     for (Block *block = blocks; block < blocks+MAX_BLOCKS; block++)
     {
@@ -439,7 +437,7 @@ void FractureDemo::updateObjects(cyclone::real duration)
     }
 }
 
-void FractureDemo::display()
+void Environment::display()
 {
     const static GLfloat lightPosition[] = {0.7f,1,0.4f,0};
 
@@ -466,7 +464,8 @@ void FractureDemo::display()
         glPushMatrix();
         cyclone::Vector3 pos = ball.body->getPosition();
         glTranslatef(pos.x, pos.y, pos.z);
-        glutSolidSphere(0.25f, 16, 8);
+        //glutSolidSphere(0.25f, 16, 8);
+        glutSolidIcosahedron();
         glPopMatrix();
     }
 
@@ -501,5 +500,5 @@ void FractureDemo::display()
  */
 Application* getApplication()
 {
-    return new FractureDemo();
+    return new Environment();
 }

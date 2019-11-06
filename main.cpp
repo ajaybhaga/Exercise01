@@ -107,8 +107,6 @@ int main(int argc, char** argv)
 {
     std::cout << "MayaBrain" << std::endl;
 
-
-    /*
     std::cout << "Evolution Manager -> starting..." << std::endl;
     EvolutionManager::getInstance()->startEvolution();
 
@@ -123,7 +121,7 @@ int main(int argc, char** argv)
     std::cout << "Loading genotype from disk..." << std::endl;
     genotype = genotype->loadFromFile("genotype01.data");
     std::cout << "Loaded genotype from disk." << std::endl;
-*/
+
     // Set up GLUT and the timers
     glutInit(&argc, argv);
     TimingData::init();

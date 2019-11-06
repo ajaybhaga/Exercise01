@@ -296,7 +296,7 @@ static inline bool tryAxis(
 {
     // Make sure we have a normalized axis, and don't check almost parallel axes
     if (axis.squareMagnitude() < 0.0001) return true;
-    axis.normalise();
+    axis.normalize();
 
     real penetration = penetrationOnAxis(one, two, axis, toCentre);
 
@@ -479,7 +479,7 @@ unsigned CollisionDetector::boxAndBox(
         Vector3 oneAxis = one.getAxis(oneAxisIndex);
         Vector3 twoAxis = two.getAxis(twoAxisIndex);
         Vector3 axis = oneAxis % twoAxis;
-        axis.normalise();
+        axis.normalize();
 
         // The axis should point from box one to box two.
         if (axis * toCentre > 0) axis = axis * -1.0f;
@@ -628,7 +628,7 @@ unsigned CollisionDetector::boxAndSphere(
 
     Contact* contact = data->contacts;
     contact->contactNormal = (closestPtWorld - centre);
-    contact->contactNormal.normalise();
+    contact->contactNormal.normalize();
     contact->contactPoint = closestPtWorld;
     contact->penetration = sphere.radius - real_sqrt(dist);
     contact->setBodyData(box.body, sphere.body,

@@ -28,7 +28,7 @@ public:
 
     int nextId();
 
-    std::unique_ptr<Agent> agent;
+    std::shared_ptr<Agent> agent;
     bool useUserInput = false;
     // AgentMovement movement;
 

@@ -31,6 +31,13 @@ private:
     const float MAX_DIST = 10.0f;
     const float MIN_DIST = 0.01f;
 
+    // Center of sensor (start pointing)
+    cyclone::Vector3 center;
+    // Sensor target
+    cyclone::Vector3 target;
+    // Sensor direction
+    cyclone::Vector3 direction;
+
 
 };
 

@@ -61,7 +61,7 @@ void ParticleDrag::updateForce(Particle* particle, real duration)
     dragCoeff = k1 * dragCoeff + k2 * dragCoeff * dragCoeff;
 
     // Calculate the final force and apply it
-    force.normalise();
+    force.normalize();
     force *= -dragCoeff;
     particle->addForce(force);
 }
@@ -84,7 +84,7 @@ void ParticleSpring::updateForce(Particle* particle, real duration)
     magnitude *= springConstant;
 
     // Calculate the final force and apply it
-    force.normalise();
+    force.normalize();
     force *= -magnitude;
     particle->addForce(force);
 }
@@ -142,7 +142,7 @@ void ParticleBungee::updateForce(Particle* particle, real duration)
     magnitude = springConstant * (restLength - magnitude);
 
     // Calculate the final force and apply it
-    force.normalise();
+    force.normalize();
     force *= -magnitude;
     particle->addForce(force);
 }
@@ -212,7 +212,7 @@ void ParticleAnchoredBungee::updateForce(Particle* particle, real duration)
     magnitude *= springConstant;
 
     // Calculate the final force and apply it
-    force.normalise();
+    force.normalize();
     force *= -magnitude;
     particle->addForce(force);
 }
@@ -229,7 +229,7 @@ void ParticleAnchoredSpring::updateForce(Particle* particle, real duration)
     magnitude = (restLength - magnitude) * springConstant;
 
     // Calculate the final force and apply it
-    force.normalise();
+    force.normalize();
     force *= magnitude;
     particle->addForce(force);
 }

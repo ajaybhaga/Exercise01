@@ -9,6 +9,7 @@
 #define EANN_SIMPLE_AGENT_H
 
 #include "shared_libs.h"
+#include <cyclone.h>
 
 class Agent {
 public:
@@ -34,6 +35,19 @@ public:
 
 private:
     bool alive = false;
+
+    cyclone::Vector3 position;
+public:
+    const cyclone::Vector3 &getPosition() const;
+
+    void setPosition(const cyclone::Vector3 &position);
+
+    const cyclone::Quaternion &getRotation() const;
+
+    void setRotation(const cyclone::Quaternion &rotation);
+
+private:
+    cyclone::Quaternion rotation;
 };
 
 #endif //EANN_SIMPLE_AGENT_H

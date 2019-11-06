@@ -582,6 +582,33 @@ cyclone/world.cpp.s:
 	$(MAKE) -f CMakeFiles/EANN_Simple.dir/build.make CMakeFiles/EANN_Simple.dir/cyclone/world.cpp.s
 .PHONY : cyclone/world.cpp.s
 
+environment.o: environment.cpp.o
+
+.PHONY : environment.o
+
+# target to build an object file
+environment.cpp.o:
+	$(MAKE) -f CMakeFiles/EANN_Simple.dir/build.make CMakeFiles/EANN_Simple.dir/environment.cpp.o
+.PHONY : environment.cpp.o
+
+environment.i: environment.cpp.i
+
+.PHONY : environment.i
+
+# target to preprocess a source file
+environment.cpp.i:
+	$(MAKE) -f CMakeFiles/EANN_Simple.dir/build.make CMakeFiles/EANN_Simple.dir/environment.cpp.i
+.PHONY : environment.cpp.i
+
+environment.s: environment.cpp.s
+
+.PHONY : environment.s
+
+# target to generate assembly for a file
+environment.cpp.s:
+	$(MAKE) -f CMakeFiles/EANN_Simple.dir/build.make CMakeFiles/EANN_Simple.dir/environment.cpp.s
+.PHONY : environment.cpp.s
+
 event.o: event.cpp.o
 
 .PHONY : event.o
@@ -635,33 +662,6 @@ evolution_manager.s: evolution_manager.cpp.s
 evolution_manager.cpp.s:
 	$(MAKE) -f CMakeFiles/EANN_Simple.dir/build.make CMakeFiles/EANN_Simple.dir/evolution_manager.cpp.s
 .PHONY : evolution_manager.cpp.s
-
-fracture.o: fracture.cpp.o
-
-.PHONY : fracture.o
-
-# target to build an object file
-fracture.cpp.o:
-	$(MAKE) -f CMakeFiles/EANN_Simple.dir/build.make CMakeFiles/EANN_Simple.dir/fracture.cpp.o
-.PHONY : fracture.cpp.o
-
-fracture.i: fracture.cpp.i
-
-.PHONY : fracture.i
-
-# target to preprocess a source file
-fracture.cpp.i:
-	$(MAKE) -f CMakeFiles/EANN_Simple.dir/build.make CMakeFiles/EANN_Simple.dir/fracture.cpp.i
-.PHONY : fracture.cpp.i
-
-fracture.s: fracture.cpp.s
-
-.PHONY : fracture.s
-
-# target to generate assembly for a file
-fracture.cpp.s:
-	$(MAKE) -f CMakeFiles/EANN_Simple.dir/build.make CMakeFiles/EANN_Simple.dir/fracture.cpp.s
-.PHONY : fracture.cpp.s
 
 genetic_algorithm.o: genetic_algorithm.cpp.o
 
@@ -993,15 +993,15 @@ help:
 	@echo "... cyclone/world.o"
 	@echo "... cyclone/world.i"
 	@echo "... cyclone/world.s"
+	@echo "... environment.o"
+	@echo "... environment.i"
+	@echo "... environment.s"
 	@echo "... event.o"
 	@echo "... event.i"
 	@echo "... event.s"
 	@echo "... evolution_manager.o"
 	@echo "... evolution_manager.i"
 	@echo "... evolution_manager.s"
-	@echo "... fracture.o"
-	@echo "... fracture.i"
-	@echo "... fracture.s"
 	@echo "... genetic_algorithm.o"
 	@echo "... genetic_algorithm.i"
 	@echo "... genetic_algorithm.s"

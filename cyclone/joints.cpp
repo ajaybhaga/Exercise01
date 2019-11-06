@@ -23,7 +23,7 @@ unsigned Joint::addContact(Contact *contact, unsigned limit) const
     // Calculate the length of the joint
     Vector3 a_to_b = b_pos_world - a_pos_world;
     Vector3 normal = a_to_b;
-    normal.normalise();
+    normal.normalize();
     real length = a_to_b.magnitude();
 
     // Check if it is violated

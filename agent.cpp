@@ -24,7 +24,7 @@ Agent::Agent(Genotype &genotype, NeuralLayer::ActivationFunction defaultActivati
     }
 
     // Check if topology is valid
-    if (ffn->weightCount != genotype.parameterCount) {
+    if (ffn->weightCount != genotype.getParameterCount()) {
         std::cout << "Error: the given genotype's parameter count must match the neural network topology's weight count." << std::endl;
     } else {
         std::cout << "Success: the given genotype's parameter count matches the neural network topology's weight count." << std::endl;
@@ -36,10 +36,10 @@ Agent::Agent(Genotype &genotype, NeuralLayer::ActivationFunction defaultActivati
         for (int i = 0; i < ffn->layers[k]->neuronCount; i++) {
             for (int j = 0; j < ffn->layers[k]->outputCount; j++) {
                 // Retrieve parameters for genotype
-                float *parameters = this->genotype.getParameterCopy();
+                std::vector<float> parameters = this->genotype.getParameterCopy();
 
                 // Set weights to parameter values
-                for (int p = 0; p < this->genotype.parameterCount; p++) {
+                for (int p = 0; p < this->genotype.getParameterCount(); p++) {
                     ffn->layers[k]->weights[i][j] = parameters[p];
                 }
             }
@@ -74,11 +74,11 @@ int Agent::compareTo(Agent &other) {
         for (int i = 0; i < ffn->layers[k]->neuronCount; i++) {
             for (int j = 0; j < ffn->layers[k]->outputCount; j++) {
                 // Retrieve parameters for genotype
-                float *parametersA = this->genotype.getParameterCopy();
-                float *parametersB = other.genotype.getParameterCopy();
+                std::vector<float> parametersA = this->genotype.getParameterCopy();
+                std::vector<float> parametersB = other.genotype.getParameterCopy();
 
                 // Compare genotypes
-                for (int p = 0; p < this->genotype.parameterCount; p++) {
+                for (int p = 0; p < this->genotype.getParameterCount(); p++) {
 
                     if (parametersA[p] != parametersB[p]) {
                         match = false;
@@ -98,5 +98,21 @@ int Agent::compareTo(Agent &other) {
 
 bool Agent::isAlive() {
     return alive;
+}
+
+const cyclone::Vector3 &Agent::getPosition() const {
+    return position;
+}
+
+void Agent::setPosition(const cyclone::Vector3 &position) {
+    Agent::position = position;
+}
+
+const cyclone::Quaternion &Agent::getRotation() const {
+    return rotation;
+}
+
+void Agent::setRotation(const cyclone::Quaternion &rotation) {
+    Agent::rotation = rotation;
 }
 

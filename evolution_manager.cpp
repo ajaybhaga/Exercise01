@@ -233,14 +233,15 @@ void EvolutionManager::restartAlgorithm(float wait) {
 
     // Iterate through genotypes
     for (auto it = currentPopulation.begin(); it != currentPopulation.end(); ++it) {
-        Agent *agent = new Agent(*it, MathHelper::softSignFunction, getInstance()->ffnTopology);
+        Agent* agent = new Agent(*it, MathHelper::softSignFunction, getInstance()->ffnTopology);
         AgentController *agentController = new AgentController(*agent);
-        getInstance()->agents.emplace_back(agent);
-        getInstance()->agentControllers.emplace_back(agentController);
+        getInstance()->agents.emplace_back(std::make_shared<Agent>(*agent));
+        getInstance()->agentControllers.emplace_back(std::make_shared<AgentController>(*agentController));
         agentController->agent->agentDied += onAgentDied;
         getInstance()->agentsAliveCount++;
     }
 
+    std::cout << "startEvaluation" << std::flush;
     // TrackManager.Instance.setCarAmount(agents.Count);
 
     // Iterate through agent controllers
@@ -392,7 +393,7 @@ std::list<Genotype> *EvolutionManager::remainderStochasticSampling(std::list<Gen
             break;
         } else {
             for (int i = 0; i < (int) (*it).fitness; i++) {
-                Genotype *g = new Genotype((*it).getParameterCopy(), (*it).parameterCount);
+                Genotype *g = new Genotype((*it).getParameterCopy());
                 intermediatePopulation->emplace_back(*g);
             }
         }
@@ -403,7 +404,7 @@ std::list<Genotype> *EvolutionManager::remainderStochasticSampling(std::list<Gen
 
         float remainder = (*it).fitness - (int) (*it).fitness;
         if (rd() < remainder) {
-            Genotype *g = new Genotype((*it).getParameterCopy(), (*it).parameterCount);
+            Genotype *g = new Genotype((*it).getParameterCopy());
             intermediatePopulation->emplace_back(*g);
         }
     }

@@ -39,7 +39,7 @@ unsigned ParticleCable::addContact(ParticleContact *contact,
 
     // Calculate the normal
     Vector3 normal = particle[1]->getPosition() - particle[0]->getPosition();
-    normal.normalise();
+    normal.normalize();
     contact->contactNormal = normal;
 
     contact->penetration = length-maxLength;
@@ -66,7 +66,7 @@ unsigned ParticleRod::addContact(ParticleContact *contact,
 
     // Calculate the normal
     Vector3 normal = particle[1]->getPosition() - particle[0]->getPosition();
-    normal.normalise();
+    normal.normalize();
 
     // The contact normal depends on whether we're extending or compressing
     if (currentLen > length) {
@@ -107,7 +107,7 @@ unsigned ParticleCableConstraint::addContact(ParticleContact *contact,
 
     // Calculate the normal
     Vector3 normal = anchor - particle->getPosition();
-    normal.normalise();
+    normal.normalize();
     contact->contactNormal = normal;
 
     contact->penetration = length-maxLength;
@@ -134,7 +134,7 @@ unsigned ParticleRodConstraint::addContact(ParticleContact *contact,
 
     // Calculate the normal
     Vector3 normal = anchor - particle->getPosition();
-    normal.normalise();
+    normal.normalize();
 
     // The contact normal depends on whether we're extending or compressing
     if (currentLen > length) {

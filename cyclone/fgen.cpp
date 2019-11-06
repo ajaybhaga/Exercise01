@@ -107,7 +107,7 @@ void Spring::updateForce(RigidBody* body, real duration)
     magnitude *= springConstant;
 
     // Calculate the final force and apply it
-    force.normalise();
+    force.normalize();
     force *= -magnitude;
     body->addForceAtPoint(force, lws);
 }

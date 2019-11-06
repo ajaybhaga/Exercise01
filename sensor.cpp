@@ -19,8 +19,8 @@ void Sensor::start() {
 void Sensor::fixedUpdate() {
 
     // Calculate direction of sensor
-//    cyclone::Vector2 direction = &(new Vector2());//Cross.tranform.position - this.transform.position;
-   // direction.Normalize();
+    this->direction = this->target - this->center;
+    this->direction.normalize();
 
     // Check distance
   /*  if (hit.collider == null) {
@@ -29,12 +29,15 @@ void Sensor::fixedUpdate() {
         hit.distance = MIN_DIST;
     }
 */
+
+    // Calculate hit distance
+    float hitDistance = 1.0;
+
     // Transform to percent of max distance
-//    this->output = hit.distance;
+    this->output = hitDistance;
 
-    // Set position of visual cross
-    // cross.transform.position = (Vector2) this->transform.position + direction * hit.distance;
-
+    // Set position of sensor target
+    this->target = this->center + (this->direction * hitDistance);
 }
 
 // Hides the visual representation of the sensor
