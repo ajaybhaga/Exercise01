@@ -24,6 +24,7 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <dirent.h>
+#include <cyclone.h>
 
 #include "random_d.h"
 #include "event.h"
@@ -31,8 +32,10 @@
 #include "neural_layer.h"
 #include "genetic_algorithm.h"
 #include "neural_network.h"
+#include "sensor.h"
 #include "agent.h"
 #include "agent_controller.h"
+#include "agent_movement.h"
 #include "evolution_manager.h"
 
 //#include "evolution_manager.h"

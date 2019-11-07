@@ -32,19 +32,32 @@ void AgentController::start() {
     this->name += "Agent (";
     this->name += this->nextId();
     this->name += ")";
+
+    auto start = std::chrono::high_resolution_clock::now();
 }
 
 void AgentController::restart() {
 
     // movement enabled
     timeSinceLastCheckpoint = 0;
+    startTime = std::chrono::high_resolution_clock::now().time_since_epoch().count();
 
+    for (int i = 0; i < this->sensors.size(); i++) {
+        sensors[i].show();
+    }
 
 
 }
 
 void AgentController::update() {
+    long currTime = std::chrono::high_resolution_clock::now().time_since_epoch().count();
+    long deltaTime = currTime-startTime;
+//    std::this_thread::sleep_for(2s);
+//    auto end = std::chrono::high_resolution_clock::now();
+//    std::chrono::duration<double, std::milli> elapsed = end-start;
+    std::cout << "Delta time: " << deltaTime << " ms\n";
 
+    timeSinceLastCheckpoint += deltaTime;
 }
 
 void AgentController::fixedUpdate() {

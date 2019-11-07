@@ -102,6 +102,12 @@
 		<Unit filename="/Users/badzindagi/dev/MayaBrain/agent_controller.h">
 			<Option target="EANN_Simple"/>
 		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/agent_movement.cpp">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/agent_movement.h">
+			<Option target="EANN_Simple"/>
+		</Unit>
 		<Unit filename="/Users/badzindagi/dev/MayaBrain/app.cpp">
 			<Option target="EANN_Simple"/>
 		</Unit>

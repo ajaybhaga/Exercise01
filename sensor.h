@@ -27,6 +27,7 @@ public:
     float output;
 
 private:
+    bool visibility;
 
     const float MAX_DIST = 10.0f;
     const float MIN_DIST = 0.01f;

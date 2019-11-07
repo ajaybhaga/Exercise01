@@ -177,6 +177,33 @@ agent_controller.cpp.s:
 	$(MAKE) -f CMakeFiles/EANN_Simple.dir/build.make CMakeFiles/EANN_Simple.dir/agent_controller.cpp.s
 .PHONY : agent_controller.cpp.s
 
+agent_movement.o: agent_movement.cpp.o
+
+.PHONY : agent_movement.o
+
+# target to build an object file
+agent_movement.cpp.o:
+	$(MAKE) -f CMakeFiles/EANN_Simple.dir/build.make CMakeFiles/EANN_Simple.dir/agent_movement.cpp.o
+.PHONY : agent_movement.cpp.o
+
+agent_movement.i: agent_movement.cpp.i
+
+.PHONY : agent_movement.i
+
+# target to preprocess a source file
+agent_movement.cpp.i:
+	$(MAKE) -f CMakeFiles/EANN_Simple.dir/build.make CMakeFiles/EANN_Simple.dir/agent_movement.cpp.i
+.PHONY : agent_movement.cpp.i
+
+agent_movement.s: agent_movement.cpp.s
+
+.PHONY : agent_movement.s
+
+# target to generate assembly for a file
+agent_movement.cpp.s:
+	$(MAKE) -f CMakeFiles/EANN_Simple.dir/build.make CMakeFiles/EANN_Simple.dir/agent_movement.cpp.s
+.PHONY : agent_movement.cpp.s
+
 app.o: app.cpp.o
 
 .PHONY : app.o
@@ -948,6 +975,9 @@ help:
 	@echo "... agent_controller.o"
 	@echo "... agent_controller.i"
 	@echo "... agent_controller.s"
+	@echo "... agent_movement.o"
+	@echo "... agent_movement.i"
+	@echo "... agent_movement.s"
 	@echo "... app.o"
 	@echo "... app.i"
 	@echo "... app.s"

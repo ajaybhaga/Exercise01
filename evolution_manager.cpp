@@ -241,7 +241,7 @@ void EvolutionManager::restartAlgorithm(float wait) {
         getInstance()->agentsAliveCount++;
     }
 
-    std::cout << "startEvaluation" << std::flush;
+    std::cout << "startEvaluation" << std::endl;
     // TrackManager.Instance.setCarAmount(agents.Count);
 
     // Iterate through agent controllers

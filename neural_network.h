@@ -40,14 +40,7 @@ public:
     // The amount of overall weights of the connections of this network.
     int weightCount;
 
-
     int numLayers;
-
-    // The weights of the connections of this layer to the next layer.
-    // e.g. weight [i, j] is the weight of the connection from the i-th weight of this layer to the
-    // j-th weight of the next layer.
-    double **weights;
-
 
 private:
 };

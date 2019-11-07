@@ -42,11 +42,10 @@ void Sensor::fixedUpdate() {
 
 // Hides the visual representation of the sensor
 void Sensor::hide() {
-
-
+    visibility = false;
 }
 
 // Shows the visual representation of the sensor
 void Sensor::show() {
-
+    visibility = true;
 }

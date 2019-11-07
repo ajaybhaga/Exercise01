@@ -9,7 +9,6 @@
 #define EANN_SIMPLE_AGENT_H
 
 #include "shared_libs.h"
-#include <cyclone.h>
 
 class Agent {
 public:
@@ -33,20 +32,14 @@ public:
     // Whether this agent is currently alive (actively participating in the simulation).
     bool isAlive();
 
-private:
-    bool alive = false;
-
-    cyclone::Vector3 position;
-public:
     const cyclone::Vector3 &getPosition() const;
-
     void setPosition(const cyclone::Vector3 &position);
-
     const cyclone::Quaternion &getRotation() const;
-
     void setRotation(const cyclone::Quaternion &rotation);
 
 private:
+    bool alive = false;
+    cyclone::Vector3 position;
     cyclone::Quaternion rotation;
 };
 

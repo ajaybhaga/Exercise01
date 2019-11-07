@@ -796,6 +796,15 @@ namespace cyclone {
         {
         }
 
+        Quaternion(real angle, Vector3 unitAxis)
+        {
+            r = cos(angle/2.0);
+            real sin2 = sin(angle/2.0);
+            i = sin2 * unitAxis[0];
+            j = sin2 * unitAxis[1];
+            k = sin2 * unitAxis[2];
+        }
+
         /**
          * Normalises the quaternion to unit length, making it a valid
          * orientation quaternion.
@@ -836,6 +845,7 @@ namespace cyclone {
                 q.i*multiplier.j - q.j*multiplier.i;
         }
 
+
         /**
          * Adds the given vector to this, scaled by the given amount.
          * This is used to update the orientation quaternion by a rotation
@@ -863,6 +873,7 @@ namespace cyclone {
             Quaternion q(0, vector.x, vector.y, vector.z);
             (*this) *= q;
         }
+
     };
 
     /**
