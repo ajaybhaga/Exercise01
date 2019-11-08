@@ -8,7 +8,10 @@
 #ifndef EANN_SIMPLE_AGENT_MOVEMENT_H
 #define EANN_SIMPLE_AGENT_MOVEMENT_H
 
-#include "shared_libs.h"
+#include "agent_controller.h"
+
+// Forward declaration
+class AgentController;
 
 class AgentMovement {
 public:

@@ -131,18 +131,36 @@ shared_libs.h
 /Users/badzindagi/dev/MayaBrain/shared_libs.h
 
 /Users/badzindagi/dev/MayaBrain/agent_controller.h
+cyclone.h
+-
+random_d.h
+/Users/badzindagi/dev/MayaBrain/random_d.h
+event.h
+/Users/badzindagi/dev/MayaBrain/event.h
+genotype.h
+/Users/badzindagi/dev/MayaBrain/genotype.h
+neural_layer.h
+/Users/badzindagi/dev/MayaBrain/neural_layer.h
+genetic_algorithm.h
+/Users/badzindagi/dev/MayaBrain/genetic_algorithm.h
+neural_network.h
+/Users/badzindagi/dev/MayaBrain/neural_network.h
+sensor.h
+/Users/badzindagi/dev/MayaBrain/sensor.h
+agent.h
+/Users/badzindagi/dev/MayaBrain/agent.h
+agent_movement.h
+/Users/badzindagi/dev/MayaBrain/agent_movement.h
 shared_libs.h
 /Users/badzindagi/dev/MayaBrain/shared_libs.h
 
 /Users/badzindagi/dev/MayaBrain/agent_movement.cpp
-agent_movement.h
-/Users/badzindagi/dev/MayaBrain/agent_movement.h
-cyclone/cyclone.h
--
-
-/Users/badzindagi/dev/MayaBrain/agent_movement.h
 shared_libs.h
 /Users/badzindagi/dev/MayaBrain/shared_libs.h
+
+/Users/badzindagi/dev/MayaBrain/agent_movement.h
+agent_controller.h
+/Users/badzindagi/dev/MayaBrain/agent_controller.h
 
 /Users/badzindagi/dev/MayaBrain/app.h
 cstdlib
@@ -303,10 +321,6 @@ sensor.h
 /Users/badzindagi/dev/MayaBrain/sensor.h
 agent.h
 /Users/badzindagi/dev/MayaBrain/agent.h
-agent_controller.h
-/Users/badzindagi/dev/MayaBrain/agent_controller.h
-agent_movement.h
-/Users/badzindagi/dev/MayaBrain/agent_movement.h
 evolution_manager.h
 /Users/badzindagi/dev/MayaBrain/evolution_manager.h
 

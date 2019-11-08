@@ -5,8 +5,7 @@
 // Based on design of Samuel Arzt (March 2017)
 //
 
-#include "agent_movement.h"
-#include <cyclone/cyclone.h>
+#include "shared_libs.h"
 
 AgentMovement::AgentMovement() {
 

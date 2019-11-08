@@ -11,6 +11,7 @@ int AgentController::idGenerator = 0;
 
 AgentController::AgentController(Agent agent) {
     this->agent = std::make_shared<Agent>(agent);
+    this->movement = std::make_shared<AgentMovement>();
 }
 
 AgentController::~AgentController() {

@@ -8,7 +8,21 @@
 #ifndef EANN_SIMPLE_AGENT_CONTROLLER_H
 #define EANN_SIMPLE_AGENT_CONTROLLER_H
 
+#include <cyclone.h>
+
+#include "random_d.h"
+#include "event.h"
+#include "genotype.h"
+#include "neural_layer.h"
+#include "genetic_algorithm.h"
+#include "neural_network.h"
+#include "sensor.h"
+#include "agent.h"
+#include "agent_movement.h"
 #include "shared_libs.h"
+
+
+
 
 class AgentController {
 public:
@@ -29,7 +43,7 @@ public:
     int nextId();
 
     std::shared_ptr<Agent> agent;
-    //std::shared_ptr<AgentMovement> movement;
+    std::shared_ptr<AgentMovement> movement;
 
     bool useUserInput = false;
 

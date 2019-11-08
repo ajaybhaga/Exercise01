@@ -34,8 +34,8 @@
 #include "neural_network.h"
 #include "sensor.h"
 #include "agent.h"
-#include "agent_controller.h"
-#include "agent_movement.h"
+//#include "agent_movement.h"
+//#include "agent_controller.h"
 #include "evolution_manager.h"
 
 //#include "evolution_manager.h"
