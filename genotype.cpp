@@ -33,7 +33,7 @@ Genotype::~Genotype() {
 void Genotype::setRandomParameters(float minValue, float maxValue) {
     assert(minValue < maxValue);
 
-    // create the random number generator:
+    // Create the random number generator
     random_d rd{minValue, maxValue};
 
     // Generate random parameter vector

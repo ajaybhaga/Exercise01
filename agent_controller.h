@@ -61,6 +61,7 @@ private:
     std::vector<Sensor> sensors;
     float timeSinceLastCheckpoint;
     long startTime;
+    long lastTime;
 
     std::string name;
 };

@@ -114,6 +114,9 @@
 		<Unit filename="/Users/badzindagi/dev/MayaBrain/app.h">
 			<Option target="EANN_Simple"/>
 		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/block.h">
+			<Option target="EANN_Simple"/>
+		</Unit>
 		<Unit filename="/Users/badzindagi/dev/MayaBrain/cyclone/body.cpp">
 			<Option target="EANN_Simple"/>
 		</Unit>
@@ -199,6 +202,9 @@
 			<Option target="EANN_Simple"/>
 		</Unit>
 		<Unit filename="/Users/badzindagi/dev/MayaBrain/environment.cpp">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/environment.h">
 			<Option target="EANN_Simple"/>
 		</Unit>
 		<Unit filename="/Users/badzindagi/dev/MayaBrain/event.cpp">

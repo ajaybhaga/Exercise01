@@ -149,8 +149,8 @@ void EvolutionManager::writeStatisticsToFile() {
 
     std::string outText;
 
-    std::list<Genotype> currentPopulation = getInstance()->getGeneticAlgorithm()->getCurrentPopulation();
-    for (std::list<Genotype>::iterator it = currentPopulation.begin(); it != currentPopulation.end(); ++it) {
+    std::vector<Genotype> currentPopulation = getInstance()->getGeneticAlgorithm()->getCurrentPopulation();
+    for (std::vector<Genotype>::iterator it = currentPopulation.begin(); it != currentPopulation.end(); ++it) {
         outText += "Generation Count -> ";
         outText += getInstance()->getGeneticAlgorithm()->generationCount;
         outText += "\n";
@@ -166,9 +166,9 @@ void EvolutionManager::checkForTrackFinished() {
     if (getInstance()->genotypesSaved >= getInstance()->saveFirstNGenotype) return;
 
     std::string saveFolder = getInstance()->statisticsFileName + "/";
-    std::list<Genotype> currentPopulation = getInstance()->getGeneticAlgorithm()->getCurrentPopulation();
+    std::vector<Genotype> currentPopulation = getInstance()->getGeneticAlgorithm()->getCurrentPopulation();
 
-    for (std::list<Genotype>::iterator it = currentPopulation.begin(); it != currentPopulation.end(); ++it) {
+    for (std::vector<Genotype>::iterator it = currentPopulation.begin(); it != currentPopulation.end(); ++it) {
 
         if (it->evaluation >= 1) {
 
@@ -224,7 +224,7 @@ void EvolutionManager::restartAlgorithm(float wait) {
 }
 
 // Starts the evaluation by first creating new agents from the current population and then restarting the track manager.
- void EvolutionManager::startEvaluation(std::list<Genotype> currentPopulation) {
+ void EvolutionManager::startEvaluation(std::vector<Genotype> currentPopulation) {
 
     // Create new agents from currentPopulation
     getInstance()->agents.clear();
@@ -263,7 +263,7 @@ void EvolutionManager::onAgentDied() {
 }
 
 // Mutates all members of the new population with the default probability, while leaving the first 2 genotypes in the list.
-void EvolutionManager::mutateAllButBestTwo(std::list<Genotype> newPopulation) {
+void EvolutionManager::mutateAllButBestTwo(std::vector<Genotype> newPopulation) {
     // Create the random number generator
     random_d rd{0.0, 1.0};
 
@@ -280,7 +280,7 @@ void EvolutionManager::mutateAllButBestTwo(std::list<Genotype> newPopulation) {
     }
 }
 
-void EvolutionManager::mutateAll(std::list<Genotype> newPopulation) {
+void EvolutionManager::mutateAll(std::vector<Genotype> newPopulation) {
 
     // Create the random number generator
     random_d rd{0.0, 1.0};
@@ -293,7 +293,7 @@ void EvolutionManager::mutateAll(std::list<Genotype> newPopulation) {
     }
 }
 
-std::list<Genotype> *EvolutionManager::randomRecombination(std::list<Genotype> intermediatePopulation, int newPopulationSize) {
+std::vector<Genotype> *EvolutionManager::randomRecombination(std::vector<Genotype> intermediatePopulation, int newPopulationSize) {
 
     if (intermediatePopulation.size() < 2) {
 
@@ -301,7 +301,7 @@ std::list<Genotype> *EvolutionManager::randomRecombination(std::list<Genotype> i
         return nullptr;
     }
 
-    std::list<Genotype> *newPopulation = new std::list<Genotype>();
+    std::vector<Genotype> *newPopulation = new std::vector<Genotype>();
 
     if (intermediatePopulation.size() < newPopulationSize) {
 
@@ -311,13 +311,13 @@ std::list<Genotype> *EvolutionManager::randomRecombination(std::list<Genotype> i
         // Get first 2 list items (top 2)
         size_t n = 2;
         auto end = std::next(intermediatePopulation.begin(), std::min(n, intermediatePopulation.size()));
-        std::list<Genotype> b(intermediatePopulation.begin(), end);
+        std::vector<Genotype> b(intermediatePopulation.begin(), end);
 
         Genotype intermediatePopulation0;
         Genotype intermediatePopulation1;
 
         int count = 0;
-        for (std::list<Genotype>::iterator it = b.begin(); it != b.end(); ++it) {
+        for (std::vector<Genotype>::iterator it = b.begin(); it != b.end(); ++it) {
             switch (count) {
                 case 0:
                     intermediatePopulation0 = *it;
@@ -377,12 +377,12 @@ std::list<Genotype> *EvolutionManager::randomRecombination(std::list<Genotype> i
     return newPopulation;
 }
 
-std::list<Genotype> *EvolutionManager::remainderStochasticSampling(std::list<Genotype> currentPopulation) {
+std::vector<Genotype> *EvolutionManager::remainderStochasticSampling(std::vector<Genotype> currentPopulation) {
 
     // Create the random number generator
     random_d rd{0.0, 1.0};
 
-    std::list<Genotype> *intermediatePopulation = new std::list<Genotype>();
+    std::vector<Genotype> *intermediatePopulation = new std::vector<Genotype>();
     // Put integer portion of genotypes into intermediatePopulation
     // Assumes that currentPopulation is already sorted
 
@@ -414,4 +414,12 @@ std::list<Genotype> *EvolutionManager::remainderStochasticSampling(std::list<Gen
 
 GeneticAlgorithm *EvolutionManager::getGeneticAlgorithm() {
     return getInstance()->geneticAlgorithm;
+}
+
+const std::vector<std::shared_ptr<Agent>> &EvolutionManager::getAgents() const {
+    return agents;
+}
+
+const std::vector<std::shared_ptr<AgentController>> &EvolutionManager::getAgentControllers() const {
+    return agentControllers;
 }

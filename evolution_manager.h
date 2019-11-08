@@ -29,12 +29,12 @@ public:
     static void checkForTrackFinished();
     static bool checkGenerationTermination();
     static void onGATermination();
-    static void startEvaluation(std::list<Genotype> currentPopulation);
+    static void startEvaluation(std::vector<Genotype> currentPopulation);
     static void onAgentDied();
-    static std::list<Genotype> *remainderStochasticSampling(std::list<Genotype> currentPopulation);
-    static std::list<Genotype> *randomRecombination(std::list<Genotype> intermediatePopulation, int newPopulationSize);
-    static void mutateAllButBestTwo(std::list<Genotype> newPopulation);
-    static void mutateAll(std::list<Genotype> newPopulation);
+    static std::vector<Genotype> *remainderStochasticSampling(std::vector<Genotype> currentPopulation);
+    static std::vector<Genotype> *randomRecombination(std::vector<Genotype> intermediatePopulation, int newPopulationSize);
+    static void mutateAllButBestTwo(std::vector<Genotype> newPopulation);
+    static void mutateAll(std::vector<Genotype> newPopulation);
     static void evalFinished();
 
     // The amount of agents that are currently alive.
@@ -42,6 +42,9 @@ public:
 
     // Event for when all agents have died.
     Event allAgentsDied;
+
+    const std::vector<std::shared_ptr<Agent>> &getAgents() const;
+    const std::vector<std::shared_ptr<AgentController>> &getAgentControllers() const;
 
 private:
 
@@ -71,10 +74,10 @@ private:
     int* ffnTopology;
 
     // The current population agents.
-    std::list<std::shared_ptr<Agent>> agents;
+    std::vector<std::shared_ptr<Agent>> agents;
 
     // The current population agents.
-    std::list<std::shared_ptr<AgentController>> agentControllers;
+    std::vector<std::shared_ptr<AgentController>> agentControllers;
 
     GeneticAlgorithm *geneticAlgorithm;
 };

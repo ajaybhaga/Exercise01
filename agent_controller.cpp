@@ -7,6 +7,8 @@
 
 #include "shared_libs.h"
 
+class EvolutionManager;
+
 int AgentController::idGenerator = 0;
 
 AgentController::AgentController(Agent agent) {
@@ -28,7 +30,8 @@ void AgentController::awake() {
 
 void AgentController::start() {
 
-    // movement.hitWall += die
+    // When agent controller hits wall -> die action
+//    this->movement->hitWall += die;
 
     this->name += "Agent (";
     this->name += this->nextId();
@@ -39,7 +42,6 @@ void AgentController::start() {
 
 void AgentController::restart() {
 
-    // movement enabled
     timeSinceLastCheckpoint = 0;
     startTime = std::chrono::high_resolution_clock::now().time_since_epoch().count();
 
@@ -47,30 +49,53 @@ void AgentController::restart() {
         sensors[i].show();
     }
 
-
+    this->agent->reset();
 }
 
 void AgentController::update() {
     long currTime = std::chrono::high_resolution_clock::now().time_since_epoch().count();
-    long deltaTime = currTime-startTime;
+    long deltaTime = currTime-lastTime;
 //    std::this_thread::sleep_for(2s);
 //    auto end = std::chrono::high_resolution_clock::now();
 //    std::chrono::duration<double, std::milli> elapsed = end-start;
     std::cout << "Delta time: " << deltaTime << " ms\n";
+    lastTime = currTime;
 
     timeSinceLastCheckpoint += deltaTime;
 }
 
 void AgentController::fixedUpdate() {
 
+    // Get readings from sensors
+    double *sensorOutput = new double[sensors.size()];
+    for (int i = 0; i < sensors.size(); i++) {
+        sensorOutput[i] = sensors[i].output;
+    }
+
+    // Process sensor inputs through ffn
+    double *controlInputs = this->agent->ffn->processInputs(sensorOutput);
+    // Apply inputs to agent movement
+    this->movement->setInputs(controlInputs);
+
+    // Agent timed out, death by timeout
+    if (timeSinceLastCheckpoint > MAX_CHECKPOINT_DELAY) {
+        die();
+    }
 }
 
 void AgentController::die() {
 
+    this->movement->stop();
+
+    for (int i = 0; i < sensors.size(); i++) {
+        sensors[i].hide();
+    }
+
+    agent->kill();
 }
 
 void AgentController::checkpointCaptured() {
-
+    timeSinceLastCheckpoint = 0;
 }
 
 float AgentController::getCurrentCompletionReward() {

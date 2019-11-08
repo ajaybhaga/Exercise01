@@ -51,10 +51,10 @@ void GeneticAlgorithm::evaluationFinished() {
     }
 
     // Apply selection
-    std::list<Genotype> *intermediatePopulation = selection(currentPopulation);
+    std::vector<Genotype> *intermediatePopulation = selection(currentPopulation);
 
     // Apply recombination
-    std::list<Genotype> *newPopulation = recombination(*intermediatePopulation, populationSize);
+    std::vector<Genotype> *newPopulation = recombination(*intermediatePopulation, populationSize);
 
     // Apply mutation
     mutation(*newPopulation);
@@ -73,11 +73,11 @@ void GeneticAlgorithm::terminate() {
 
 }
 
-void GeneticAlgorithm::defaultPopulationInitialization(std::list<Genotype> population) {
+void GeneticAlgorithm::defaultPopulationInitialization(std::vector<Genotype> population) {
 
     int popCount = 0;
     // Set parameters to random values in set range
-    for (std::list<Genotype>::iterator it = population.begin(); it != population.end(); ++it) {
+    for (std::vector<Genotype>::iterator it = population.begin(); it != population.end(); ++it) {
         /* std::cout << *it; ... */
         it->setRandomParameters(DefInitParamMin, DefInitParamMax);
         std::cout << "Generating genotype [" << (popCount + 1) << "]." << std::endl;
@@ -86,17 +86,17 @@ void GeneticAlgorithm::defaultPopulationInitialization(std::list<Genotype> popul
     }
 }
 
-void GeneticAlgorithm::asyncEvaluation(std::list<Genotype> currentPopulation) {
+void GeneticAlgorithm::asyncEvaluation(std::vector<Genotype> currentPopulation) {
     // At this point the async evaluation should be started and after it is finished EvaluationFinished should be called
     std::cout << "Reached async evaluation." << std::endl;
 }
 
-void GeneticAlgorithm::defaultFitnessCalculation(std::list<Genotype> currentPopulation) {
+void GeneticAlgorithm::defaultFitnessCalculation(std::vector<Genotype> currentPopulation) {
 
     // First calculate average evaluation of whole population
     int populationSize = 0;
     float overallEvaluation = 0;
-    for (std::list<Genotype>::iterator it = currentPopulation.begin(); it != currentPopulation.end(); ++it) {
+    for (std::vector<Genotype>::iterator it = currentPopulation.begin(); it != currentPopulation.end(); ++it) {
         overallEvaluation += it->evaluation;
         populationSize++;
     }
@@ -104,21 +104,21 @@ void GeneticAlgorithm::defaultFitnessCalculation(std::list<Genotype> currentPopu
     float averageEvaluation = overallEvaluation / populationSize;
 
     // Now assign fitness with formula fitness = evaluation / averageEvaluation
-    for (std::list<Genotype>::iterator it = currentPopulation.begin(); it != currentPopulation.end(); ++it) {
+    for (std::vector<Genotype>::iterator it = currentPopulation.begin(); it != currentPopulation.end(); ++it) {
         it->fitness = it->evaluation / averageEvaluation;
     }
 }
 
-std::list<Genotype>* GeneticAlgorithm::defaultSelectionOperator(std::list<Genotype> currentPopulation) {
+std::vector<Genotype>* GeneticAlgorithm::defaultSelectionOperator(std::vector<Genotype> currentPopulation) {
 
-    std::list<Genotype>* intermediatePopulation = new std::list<Genotype>();
+    std::vector<Genotype>* intermediatePopulation = new std::vector<Genotype>();
 
     // Get first 3 list items (top 3)
     size_t n = 3;
     auto end = std::next(currentPopulation.begin(), std::min(n, currentPopulation.size()));
-    std::list<Genotype> b(currentPopulation.begin(), end);
+    std::vector<Genotype> b(currentPopulation.begin(), end);
     // Selects best three genotypes of the current population and copies them to the intermediate population.
-    for (std::list<Genotype>::iterator it = b.begin(); it != b.end(); ++it) {
+    for (std::vector<Genotype>::iterator it = b.begin(); it != b.end(); ++it) {
         intermediatePopulation->push_back(*it);
     }
 
@@ -126,14 +126,14 @@ std::list<Genotype>* GeneticAlgorithm::defaultSelectionOperator(std::list<Genoty
 }
 
 // Simply crosses the first with the second genotype of the intermediate population until the new population is of desired size.
-std::list<Genotype> *GeneticAlgorithm::defaultRecombinationOperator(std::list<Genotype> intermediatePopulation, int newPopulationSize) {
+std::vector<Genotype> *GeneticAlgorithm::defaultRecombinationOperator(std::vector<Genotype> intermediatePopulation, int newPopulationSize) {
 
     if (intermediatePopulation.size() < 2) {
         std::cout << "Intermediate population size must be greater than 2 for this operator.";
         return nullptr;
     }
 
-    std::list<Genotype> *newPopulation = new std::list<Genotype>();
+    std::vector<Genotype> *newPopulation = new std::vector<Genotype>();
 
     if (newPopulation->size() < newPopulationSize) {
 
@@ -143,13 +143,13 @@ std::list<Genotype> *GeneticAlgorithm::defaultRecombinationOperator(std::list<Ge
         // Get first 2 list items (top 2)
         size_t n = 2;
         auto end = std::next(intermediatePopulation.begin(), std::min(n, intermediatePopulation.size()));
-        std::list<Genotype> b(intermediatePopulation.begin(), end);
+        std::vector<Genotype> b(intermediatePopulation.begin(), end);
 
         Genotype intermediatePopulation0;
         Genotype intermediatePopulation1;
 
         int count = 0;
-        for (std::list<Genotype>::iterator it = b.begin(); it != b.end(); ++it) {
+        for (std::vector<Genotype>::iterator it = b.begin(); it != b.end(); ++it) {
 //            intermediatePopulation->push_back(*it);
             switch (count) {
                 case 0:
@@ -174,12 +174,12 @@ std::list<Genotype> *GeneticAlgorithm::defaultRecombinationOperator(std::list<Ge
     return newPopulation;
 }
 
-void GeneticAlgorithm::defaultMutationOperator(std::list<Genotype> newPopulation) {
+void GeneticAlgorithm::defaultMutationOperator(std::vector<Genotype> newPopulation) {
 
     // Create the random number generator
     random_d rd{0, 1};
 
-    for (std::list<Genotype>::iterator it = newPopulation.begin(); it != newPopulation.end(); ++it) {
+    for (std::vector<Genotype>::iterator it = newPopulation.begin(); it != newPopulation.end(); ++it) {
 
         for (Genotype& genotype : newPopulation) {
             if (rd() < DefMutationPerc) {
@@ -236,10 +236,10 @@ void GeneticAlgorithm::mutateGenotype(Genotype genotype, float mutationProb, flo
     }
 }
 
-bool GeneticAlgorithm::defaultTermination(std::list<Genotype> currentPopulation) {
+bool GeneticAlgorithm::defaultTermination(std::vector<Genotype> currentPopulation) {
     return false;
 }
 
-const std::list<Genotype> &GeneticAlgorithm::getCurrentPopulation() const {
+const std::vector<Genotype> &GeneticAlgorithm::getCurrentPopulation() const {
     return currentPopulation;
 }

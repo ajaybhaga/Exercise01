@@ -43,37 +43,37 @@ public:
     void terminate();
 
     // Static methods
-    static void defaultPopulationInitialization(std::list<Genotype> population);
-    static void asyncEvaluation(std::list<Genotype> currentPopulation);
-    static void defaultFitnessCalculation(std::list<Genotype> currentPopulation);
-    static std::list<Genotype> *defaultSelectionOperator(std::list<Genotype> currentPopulation);
-    static std::list<Genotype> *defaultRecombinationOperator(std::list<Genotype> intermediatePopulation, int newPopulationSize);
+    static void defaultPopulationInitialization(std::vector<Genotype> population);
+    static void asyncEvaluation(std::vector<Genotype> currentPopulation);
+    static void defaultFitnessCalculation(std::vector<Genotype> currentPopulation);
+    static std::vector<Genotype> *defaultSelectionOperator(std::vector<Genotype> currentPopulation);
+    static std::vector<Genotype> *defaultRecombinationOperator(std::vector<Genotype> intermediatePopulation, int newPopulationSize);
 
-    static void defaultMutationOperator(std::list<Genotype> newPopulation);
+    static void defaultMutationOperator(std::vector<Genotype> newPopulation);
     static void completeCrossover(Genotype parent1, Genotype parent2, float swapChance, Genotype *offspring1, Genotype *offspring2);
     static void mutateGenotype(Genotype genotype, float mutationProb, float mutationAmount);
-    static bool defaultTermination(std::list<Genotype> currentPopulation);
+    static bool defaultTermination(std::vector<Genotype> currentPopulation);
 
     // Use to initialize the initial population.
-    typedef std::function<void (std::list<Genotype> initialPopulation)> InitializationOperator;
+    typedef std::function<void (std::vector<Genotype> initialPopulation)> InitializationOperator;
 
     // Used to evaluate (or start the evaluation process of) the current population.
-    typedef std::function<void (std::list<Genotype> currentPopulation)> EvaluationOperator;
+    typedef std::function<void (std::vector<Genotype> currentPopulation)> EvaluationOperator;
 
     // Used to calculate the fitness value of each genotype of the current population.
-    typedef std::function<void (std::list<Genotype> currentPopulation)> FitnessCalculation;
+    typedef std::function<void (std::vector<Genotype> currentPopulation)> FitnessCalculation;
 
     // Used to select genotypes of the current population and create the intermediate population.
-    typedef std::function<std::list<Genotype> *(std::list<Genotype> currentPopulation)> SelectionOperator;
+    typedef std::function<std::vector<Genotype> *(std::vector<Genotype> currentPopulation)> SelectionOperator;
 
     // Used to recombine the intermediate population to generate a new population.
-    typedef std::function<std::list<Genotype> *(std::list<Genotype> intermediatePopulation, int newPopulationSize)> RecombinationOperator;
+    typedef std::function<std::vector<Genotype> *(std::vector<Genotype> intermediatePopulation, int newPopulationSize)> RecombinationOperator;
 
     // Used to mutate the new population.
-    typedef std::function<void (std::list<Genotype> newPopulation)> MutationOperator;
+    typedef std::function<void (std::vector<Genotype> newPopulation)> MutationOperator;
 
     // Used to check whether any termination criterion has been met.
-    typedef std::function<bool (std::list<Genotype> currentPopulation)> CheckTerminationCriterion;
+    typedef std::function<bool (std::vector<Genotype> currentPopulation)> CheckTerminationCriterion;
 
     // Operators
     InitializationOperator initializePopulation = defaultPopulationInitialization;
@@ -97,9 +97,9 @@ public:
     bool running;
 
 private:
-    std::list<Genotype> currentPopulation;
+    std::vector<Genotype> currentPopulation;
 public:
-    const std::list<Genotype> &getCurrentPopulation() const;
+    const std::vector<Genotype> &getCurrentPopulation() const;
 };
 
 #endif //EANN_SIMPLE_GENETIC_ALGORITHM_H
