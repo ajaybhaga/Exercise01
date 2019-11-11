@@ -80,20 +80,19 @@ const char* Environment::getTitle()
     return "MayaBrain Demo";
 }
 
-void Environment::generateContacts()
-{
+void Environment::generateContacts() {
     hit = false;
 
     // Create the ground plane data
     cyclone::CollisionPlane plane;
-    plane.direction = cyclone::Vector3(0,1,0);
+    plane.direction = cyclone::Vector3(0, 1, 0);
     plane.offset = 0;
 
     // Set up the collision data structure
     cData.reset(maxContacts);
-    cData.friction = (cyclone::real)0.9;
-    cData.restitution = (cyclone::real)0.2;
-    cData.tolerance = (cyclone::real)0.1;
+    cData.friction = (cyclone::real) 0.9;
+    cData.restitution = (cyclone::real) 0.2;
+    cData.tolerance = (cyclone::real) 0.1;
 
     // Perform collision detection
     cyclone::Matrix4 transform, otherTransform;
@@ -127,8 +126,7 @@ void Environment::generateContacts()
         }
 
         // Check for sphere ground collisions
-        if (ball_active)
-        {
+        if (ball_active) {
             if (!cData.hasMoreContacts()) return;
             cyclone::CollisionDetector::sphereAndHalfSpace(this->agentCollSpheres[i], plane, &cData);
         }
@@ -202,24 +200,26 @@ void Environment::update()
     }
 }
 
-void Environment::updateObjects(cyclone::real duration)
-{
-    for (Block *block = blocks; block < blocks+MAX_BLOCKS; block++)
-    {
-        if (block->exists)
-        {
+void Environment::updateObjects(cyclone::real duration) {
+    for (Block *block = blocks; block < blocks + MAX_BLOCKS; block++) {
+        if (block->exists) {
             block->body->integrate(duration);
             block->calculateInternals();
         }
     }
+
+    // Update position for each agent
+    std::vector<std::shared_ptr<Agent>> agents = EvolutionManager::getInstance()->getAgents();
 
     for (int i = 0; i < this->agentCollSpheres.size(); i++) {
 
         if (ball_active) {
             this->agentCollSpheres[i].body->integrate(duration);
             this->agentCollSpheres[i].calculateInternals();
+            agents[i]->setPosition(this->agentCollSpheres[i].body->getPosition());
         }
     }
+
 }
 
 void Environment::display()
@@ -291,6 +291,16 @@ void Environment::display()
     glEnd();
 
     RigidBodyApplication::drawDebug();
+
+    char buffer[255];
+
+    std::vector<std::shared_ptr<Agent>> agents = EvolutionManager::getInstance()->getAgents();
+/*    for (int i = 0; i < agents.size(); i++) {
+        agents[i]->setPosition(cyclone::Vector3(rd(), rd(), rd()));
+    }
+*/
+    sprintf(buffer, "Population: %d", agents.size());
+    this->renderText(5, 5, buffer, NULL);
 }
 
 /**

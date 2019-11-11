@@ -34,7 +34,6 @@ void Application::setView()
     glLoadIdentity();
     gluPerspective(60.0, (double)width/(double)height, 1.0, 500.0);
 //    glMultMatrix( GLKMatrix4MakePerspective(60.0, (double)width/(double)height, 1.0, 500.0).m ); // << .m is the GLfloat* you are accessing
-
     glMatrixMode(GL_MODELVIEW);
 }
 
@@ -111,6 +110,7 @@ void Application::renderText(float x, float y, const char *text, void *font)
     // Loop through characters displaying them.
     size_t len = strlen(text);
 
+    glColor3f(0.0, 0.0, 0.0);
     glRasterPos2f(x, y);
     for (const char *letter = text; letter < text+len; letter++) {
 
@@ -130,70 +130,6 @@ void Application::renderText(float x, float y, const char *text, void *font)
     glMatrixMode(GL_MODELVIEW);
 
     glEnable(GL_DEPTH_TEST);
-}
-
-
-MassAggregateApplication::MassAggregateApplication(unsigned int particleCount)
-:
-world(particleCount*10)
-{
-    particleArray = new cyclone::Particle[particleCount];
-    for (unsigned i = 0; i < particleCount; i++)
-    {
-        world.getParticles().push_back(particleArray + i);
-    }
-
-    groundContactGenerator.init(&world.getParticles());
-    world.getContactGenerators().push_back(&groundContactGenerator);
-}
-
-MassAggregateApplication::~MassAggregateApplication()
-{
-    delete[] particleArray;
-}
-
-void MassAggregateApplication::initGraphics()
-{
-    // Call the superclass
-    Application::initGraphics();
-}
-
-void MassAggregateApplication::display()
-{
-    // Clear the view port and set the camera direction
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    glLoadIdentity();
-    gluLookAt(0.0, 3.5, 8.0,  0.0, 3.5, 0.0,  0.0, 1.0, 0.0);
-
-    glColor3f(0,0,0);
-
-    cyclone::ParticleWorld::Particles &particles = world.getParticles();
-    for (cyclone::ParticleWorld::Particles::iterator p = particles.begin();
-        p != particles.end();
-        p++)
-    {
-        cyclone::Particle *particle = *p;
-        const cyclone::Vector3 &pos = particle->getPosition();
-        glPushMatrix();
-        glTranslatef(pos.x, pos.y, pos.z);
-        glutSolidSphere(0.1f, 20, 10);
-        glPopMatrix();
-    }
-}
-
-void MassAggregateApplication::update()
-{
-    // Clear accumulators
-    world.startFrame();
-
-    // Find the duration of the last frame in seconds
-    float duration = (float)TimingData::get().lastFrameDuration * 0.001f;
-    if (duration <= 0.0f) return;
-
-    // Run the simulation
-    world.runPhysics(duration);
-
-    Application::update();
 }
 
 RigidBodyApplication::RigidBodyApplication()
@@ -252,6 +188,7 @@ void RigidBodyApplication::display()
     glRotatef(-phi, 0, 0, 1);
     glRotatef(theta, 0, 1, 0);
     glTranslatef(0, -5.0f, 0);
+
 }
 
 void RigidBodyApplication::drawDebug()
