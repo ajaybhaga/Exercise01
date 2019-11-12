@@ -17,6 +17,7 @@
 #include "genetic_algorithm.h"
 #include "neural_network.h"
 #include "sensor.h"
+#include "agent_fsm.h"
 #include "agent.h"
 #include "agent_movement.h"
 #include "shared_libs.h"
@@ -44,6 +45,7 @@ public:
 
     std::shared_ptr<Agent> agent;
     std::shared_ptr<AgentMovement> movement;
+    std::shared_ptr<AgentFSM> fsm;
 
     bool useUserInput = false;
 

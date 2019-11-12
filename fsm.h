@@ -29,7 +29,6 @@ private:
     void stateEngine();
 };
 
-
 typedef void (FiniteStateMachine::*StateFunc)(FSMEventData *);
 struct StateStruct {
     StateFunc pStateFunc;
@@ -40,18 +39,18 @@ public:\
 const StateStruct* getStateMap() {\
     static const StateStruct StateMap[] = {
 
-#define STATE_MAP_ENTRY(entry)\
+#define STATE_MAP_ENTRY(entry) \
     { reinterpret_cast<StateFunc>(entry) },
 
 #define END_STATE_MAP \
-    { reinterpret_cast<StateFunc>(NULL) }\
+    { static_cast<StateFunc>(NULL) }\
     }; \
-    return &StateMap[0]; }
+    return &StateMap[0]; };
 
 #define BEGIN_TRANSITION_MAP \
     static const unsigned char TRANSITIONS[] = {\
 
-#define TRANSITION_MAP_ENTRY(entry)\
+#define TRANSITION_MAP_ENTRY(entry) \
     entry,
 
 #define END_TRANSITION_MAP(data) \

@@ -6,18 +6,30 @@
 //
 
 #include "shared_libs.h"
+#include "agent_fsm.h"
 
 class EvolutionManager;
 
 int AgentController::idGenerator = 0;
 
 AgentController::AgentController(Agent agent) {
-    this->agent = std::make_shared<Agent>(agent);
-    this->movement = std::make_shared<AgentMovement>();
+    this->agent = std::make_unique<Agent>(agent);
+    this->movement = std::make_unique<AgentMovement>();
+    this->fsm = std::make_unique<AgentFSM>();
 }
 
 AgentController::~AgentController() {
+    if (this->agent) {
+        this->agent.reset();
+    }
 
+    if (this->movement) {
+        this->movement.reset();
+    }
+
+    if (this->fsm) {
+        this->fsm.reset();
+    }
 }
 
 void AgentController::awake() {

@@ -235,8 +235,8 @@ void EvolutionManager::restartAlgorithm(float wait) {
     for (auto it = currentPopulation.begin(); it != currentPopulation.end(); ++it) {
         Agent* agent = new Agent(*it, MathHelper::softSignFunction, getInstance()->ffnTopology);
         AgentController *agentController = new AgentController(*agent);
-        getInstance()->agents.emplace_back(std::make_shared<Agent>(*agent));
-        getInstance()->agentControllers.emplace_back(std::make_shared<AgentController>(*agentController));
+        getInstance()->agents.emplace_back(std::make_unique<Agent>(*agent));
+        getInstance()->agentControllers.emplace_back(std::make_unique<AgentController>(*agentController));
         agentController->agent->agentDied += onAgentDied;
         getInstance()->agentsAliveCount++;
     }
