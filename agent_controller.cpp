@@ -13,9 +13,9 @@ class EvolutionManager;
 int AgentController::idGenerator = 0;
 
 AgentController::AgentController(Agent agent) {
-    this->agent = std::make_unique<Agent>(agent);
-    this->movement = std::make_unique<AgentMovement>();
-    this->fsm = std::make_unique<AgentFSM>();
+    this->agent = std::make_shared<Agent>(agent);
+    this->movement = std::make_shared<AgentMovement>();
+    this->fsm = std::make_shared<AgentFSM>();
 }
 
 AgentController::~AgentController() {
@@ -72,11 +72,7 @@ void AgentController::update() {
 //    std::chrono::duration<double, std::milli> elapsed = end-start;
     std::cout << "Delta time: " << deltaTime << " ms\n";
     lastTime = currTime;
-
     timeSinceLastCheckpoint += deltaTime;
-}
-
-void AgentController::fixedUpdate() {
 
     // Get readings from sensors
     double *sensorOutput = new double[sensors.size()];

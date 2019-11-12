@@ -8,7 +8,7 @@
 cyclone::Random global_random;
 
 // Method definitions
-Environment::Environment() : RigidBodyApplication()
+Environment::Environment() : Application()
 {
     std::cout << "Evolution Manager -> starting..." << std::endl;
     EvolutionManager::getInstance()->startEvolution();
@@ -186,7 +186,7 @@ void Environment::reset()
 
 void Environment::update()
 {
-    RigidBodyApplication::update();
+    Application::update();
 
     // Handle fractures.
     if (hit)
@@ -198,6 +198,9 @@ void Environment::update()
             );
       ///  ball_active = false;
     }
+
+    //std::cout << "test" << std::endl;
+
 }
 
 void Environment::updateObjects(cyclone::real duration) {
@@ -208,9 +211,20 @@ void Environment::updateObjects(cyclone::real duration) {
         }
     }
 
-    // Update position for each agent
-    std::vector<std::shared_ptr<Agent>> agents = EvolutionManager::getInstance()->getAgents();
 
+    // Iterate through agent controllers and apply update
+    std::vector<std::shared_ptr<Agent>> agents = EvolutionManager::getInstance()->getAgents();
+    std::vector<std::shared_ptr<AgentController>> controllers = EvolutionManager::getInstance()->getAgentControllers();
+    for (int i = 0; i < controllers.size(); i++) {
+        std::shared_ptr<AgentController> controller = controllers[i];
+        controller->update();
+    }
+
+
+    std::cout << "Environment update objects";
+
+    /*
+    // Update position for each agent
     for (int i = 0; i < this->agentCollSpheres.size(); i++) {
 
         if (ball_active) {
@@ -218,7 +232,7 @@ void Environment::updateObjects(cyclone::real duration) {
             this->agentCollSpheres[i].calculateInternals();
             agents[i]->setPosition(this->agentCollSpheres[i].body->getPosition());
         }
-    }
+    }*/
 
 }
 
@@ -226,7 +240,7 @@ void Environment::display()
 {
     const static GLfloat lightPosition[] = {0.7f,1,0.4f,0};
 
-    RigidBodyApplication::display();
+    Application::display();
 
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_LIGHTING);
@@ -290,7 +304,7 @@ void Environment::display()
     glVertex3f(0,0,20);
     glEnd();
 
-    RigidBodyApplication::drawDebug();
+    Application::drawDebug();
 
     char buffer[255];
 

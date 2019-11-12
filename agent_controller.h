@@ -22,9 +22,6 @@
 #include "agent_movement.h"
 #include "shared_libs.h"
 
-
-
-
 class AgentController {
 public:
 
@@ -35,7 +32,6 @@ public:
     void start();
     void restart();
     void update();
-    void fixedUpdate();
     void die();
     void checkpointCaptured();
     float getCurrentCompletionReward();

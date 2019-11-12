@@ -48,6 +48,8 @@ protected:
     int width;
 
 public:
+    Application();
+
     /**
      * Gets the title of the demo for the title bar of the window.
      *
@@ -145,16 +147,8 @@ public:
      * application.
      */
     void renderText(float x, float y, const char *text, void* font=NULL);
-};
 
-/**
- * This application adds additional functionality used in many of the
- * demos. This includes the ability to track contacts (for rigid bodies)
- * and move the camera around.
- */
- class RigidBodyApplication : public Application
- {
- protected:
+protected:
     /** Holds the maximum number of contacts. */
     const static unsigned maxContacts = 256;
 
@@ -166,12 +160,6 @@ public:
 
     /** Holds the contact resolver. */
     cyclone::ContactResolver resolver;
-
-    /** Holds the camera angle. */
-    float theta;
-
-    /** Holds the camera elevation. */
-    float phi;
 
     /** Holds the position of the mouse at the last frame of a drag. */
     int last_x, last_y;
@@ -200,24 +188,5 @@ public:
     /** Resets the simulation. */
     virtual void reset() = 0;
 
-public:
-    /**
-     * Creates a new application object.
-     */
-    RigidBodyApplication();
+};
 
-    /** Display the application. */
-    virtual void display();
-
-    /** Update the objects. */
-    virtual void update();
-
-    /** Handle a mouse click. */
-    virtual void mouse(int button, int state, int x, int y);
-
-    /** Handle a mouse drag */
-    virtual void mouseDrag(int x, int y);
-
-    /** Handles a key press. */
-    virtual void key(unsigned char key);
- };

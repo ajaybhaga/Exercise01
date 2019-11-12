@@ -17,7 +17,7 @@
 /**
  * The main demo class definition.
  */
-class Environment : public RigidBodyApplication
+class Environment : public Application
 {
     /** Tracks if a block has been hit. */
     bool hit;

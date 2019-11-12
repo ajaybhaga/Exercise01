@@ -21,6 +21,9 @@ public:
     // External events taken by this state machine
     void halt();
     void setSpeed(AgentData*);
+    void setRotation(AgentData*);
+    void jump(AgentData*);
+    void attack(AgentData*);
 
 private:
     // State machine state functions
@@ -28,6 +31,9 @@ private:
     void stStop();
     void stStart(AgentData*);
     void stChangeSpeed(AgentData*);
+    void stChangeRotation(AgentData*);
+    void stJump(AgentData*);
+    void stAttack(AgentData*);
 
     // State map to define state function order
     BEGIN_STATE_MAP
@@ -35,6 +41,9 @@ private:
         STATE_MAP_ENTRY(&AgentFSM::stStop)
         STATE_MAP_ENTRY(&AgentFSM::stStart)
         STATE_MAP_ENTRY(&AgentFSM::stChangeSpeed)
+        STATE_MAP_ENTRY(&AgentFSM::stChangeRotation)
+        STATE_MAP_ENTRY(&AgentFSM::stJump)
+        STATE_MAP_ENTRY(&AgentFSM::stAttack)
     END_STATE_MAP
 
     // State enumeration order must match the order of state method entries in the state map
@@ -43,6 +52,9 @@ private:
         ST_STOP,
         ST_START,
         ST_CHANGE_SPEED,
+        ST_CHANGE_ROTATION,
+        ST_JUMP,
+        ST_ATTACK,
         ST_MAX_STATES
     };
 };
