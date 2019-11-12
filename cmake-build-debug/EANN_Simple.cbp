@@ -219,6 +219,18 @@
 		<Unit filename="/Users/badzindagi/dev/MayaBrain/evolution_manager.h">
 			<Option target="EANN_Simple"/>
 		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/fsm.cpp">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/fsm.h">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/fsm_event_data.cpp">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/fsm_event_data.h">
+			<Option target="EANN_Simple"/>
+		</Unit>
 		<Unit filename="/Users/badzindagi/dev/MayaBrain/genetic_algorithm.cpp">
 			<Option target="EANN_Simple"/>
 		</Unit>
@@ -268,6 +280,9 @@
 			<Option target="EANN_Simple"/>
 		</Unit>
 		<Unit filename="/Users/badzindagi/dev/MayaBrain/random_d.h">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/semaphore.h">
 			<Option target="EANN_Simple"/>
 		</Unit>
 		<Unit filename="/Users/badzindagi/dev/MayaBrain/sensor.cpp">

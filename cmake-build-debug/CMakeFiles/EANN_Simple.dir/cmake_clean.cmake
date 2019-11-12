@@ -20,6 +20,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/EANN_Simple.dir/environment.cpp.o"
   "CMakeFiles/EANN_Simple.dir/event.cpp.o"
   "CMakeFiles/EANN_Simple.dir/evolution_manager.cpp.o"
+  "CMakeFiles/EANN_Simple.dir/fsm.cpp.o"
+  "CMakeFiles/EANN_Simple.dir/fsm_event_data.cpp.o"
   "CMakeFiles/EANN_Simple.dir/genetic_algorithm.cpp.o"
   "CMakeFiles/EANN_Simple.dir/genotype.cpp.o"
   "CMakeFiles/EANN_Simple.dir/grid.cpp.o"
