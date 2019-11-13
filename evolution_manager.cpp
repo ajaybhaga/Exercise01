@@ -199,13 +199,13 @@ void EvolutionManager::checkForTrackFinished() {
 }
 
 bool EvolutionManager::checkGenerationTermination() {
-    return getInstance()->getGenerationCount() >= getInstance()->restartAfter;
+    return getInstance()->getGeneticAlgorithm()->checkTermination(getInstance()->getGeneticAlgorithm()->getCurrentPopulation());
 }
 
 void EvolutionManager::onGATermination() {
 
     getInstance()->allAgentsDied -= evalFinished;
-    getInstance()->restartAlgorithm(5.0f);
+    //getInstance()->restartAlgorithm(5.0f);
 }
 
 // Restart the algorithm after a specific wait time
@@ -213,12 +213,10 @@ void EvolutionManager::restartAlgorithm(float wait) {
 
     // ignore wait, use 2 seconds for now
     using namespace std::chrono_literals;
-    std::cout << "Hello waiter\n" << std::flush;
+    std::cout << "[" << currentDateTime() << "] Evolution Manager - waiting 2s before restart." << std::endl << std::flush;
     auto start = std::chrono::high_resolution_clock::now();
     std::this_thread::sleep_for(2s);
-    auto end = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double, std::milli> elapsed = end-start;
-    std::cout << "Waited " << elapsed.count() << " ms\n";
+    std::cout << "[" << currentDateTime() << "] Evolution Manager - restarting algorithm..." << std::endl << std::flush;
 
     startEvolution();
 }
@@ -256,7 +254,8 @@ void EvolutionManager::onAgentDied() {
 
     getInstance()->agentsAliveCount--;
 
-    if (getInstance()->agentsAliveCount) {
+    // Check if all agents have died and signal if so
+    if (getInstance()->agentsAliveCount == 0) {
         getInstance()->allAgentsDied();
     }
 

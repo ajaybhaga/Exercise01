@@ -29,6 +29,7 @@ extern Application* getApplication();
 // Store the global application object.
 Application* app;
 
+
 /**
  * Creates a window in which to display the scene.
  */

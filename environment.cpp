@@ -4,6 +4,10 @@
 
 // MayaBrain shared libs
 #include "environment.h"
+#include <iostream>
+#include <string>
+#include <stdio.h>
+#include <time.h>
 
 cyclone::Random global_random;
 
@@ -204,24 +208,27 @@ void Environment::update()
 }
 
 void Environment::updateObjects(cyclone::real duration) {
+
+    /*
     for (Block *block = blocks; block < blocks + MAX_BLOCKS; block++) {
         if (block->exists) {
             block->body->integrate(duration);
             block->calculateInternals();
         }
-    }
+    }*/
 
 
     // Iterate through agent controllers and apply update
     std::vector<std::shared_ptr<Agent>> agents = EvolutionManager::getInstance()->getAgents();
     std::vector<std::shared_ptr<AgentController>> controllers = EvolutionManager::getInstance()->getAgentControllers();
+
     for (int i = 0; i < controllers.size(); i++) {
         std::shared_ptr<AgentController> controller = controllers[i];
-        controller->update();
+        controller->update(duration);
     }
 
-
-    std::cout << "Environment update objects";
+//    std::cout << "currentDateTime()=" << currentDateTime() << std::endl;
+    //std::cout << "[" << currentDateTime() << "] -> environment update objects" << std::endl;
 
     /*
     // Update position for each agent
@@ -309,12 +316,52 @@ void Environment::display()
     char buffer[255];
 
     std::vector<std::shared_ptr<Agent>> agents = EvolutionManager::getInstance()->getAgents();
-/*    for (int i = 0; i < agents.size(); i++) {
-        agents[i]->setPosition(cyclone::Vector3(rd(), rd(), rd()));
+    std::vector<std::shared_ptr<AgentController>> controllers = EvolutionManager::getInstance()->getAgentControllers();
+
+    int aliveCount = EvolutionManager::getInstance()->agentsAliveCount;
+
+    const int maxRows = 20;
+    char *strText[maxRows];
+
+    for (int i = 0; i < maxRows; i++) {
+
+        strText[i] = new char[80];
+
+        switch(i) {
+
+            case maxRows-1:
+                sprintf(strText[i], "%d alive out of %d population", aliveCount, agents.size());
+                break;
+            case maxRows-2:
+                sprintf(strText[i], "==========================================================================");
+                break;
+            case maxRows-3:
+                sprintf(strText[i], "agent[0].timeSinceLastCheckpoint: %f", controllers[0]->getTimeSinceLastCheckpoint());
+                break;
+
+            case maxRows-4:
+                sprintf(strText[i], "agent[0].x: %f", agents[0].get()->getPosition().x);
+                break;
+            case maxRows-5:
+                sprintf(strText[i], "agent[0].y: %f", agents[0].get()->getPosition().y);
+                break;
+            case maxRows-6:
+                sprintf(strText[i], "agent[0].z: %f", agents[0].get()->getPosition().z);
+                break;
+
+
+            default:
+                sprintf(strText[i], "");
+                break;
+
+
+
+        }
+
+        this->renderText(5, 5 + (10 * i), strText[i], NULL);
+
+        delete strText[i];
     }
-*/
-    sprintf(buffer, "Population: %d", agents.size());
-    this->renderText(5, 5, buffer, NULL);
 }
 
 /**

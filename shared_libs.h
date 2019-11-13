@@ -44,4 +44,17 @@
 #define TRAINING_DATA_DIR "data/"
 #define NUM_NEURAL_LAYERS 4
 
+// Get current date/time, format is YYYY-MM-DD.HH:mm:ss
+static const std::string currentDateTime() {
+    time_t     now = time(0);
+    struct tm  tstruct;
+    char       buf[80];
+    tstruct = *localtime(&now);
+    // Visit http://en.cppreference.com/w/cpp/chrono/c/strftime
+    // for more information about date/time format
+    strftime(buf, sizeof(buf), "%Y-%m-%d.%X", &tstruct);
+
+    return buf;
+}
+
 #endif //EANN_SIMPLE_SHARED_LIBS_H

@@ -45,7 +45,7 @@ void GeneticAlgorithm::evaluationFinished() {
     fitnessCalculationFinished();
 
     // Check termination criterion
-    if (checkTermination) {
+    if (checkTermination(currentPopulation)) {
         terminate();
         return;
     }
@@ -56,6 +56,7 @@ void GeneticAlgorithm::evaluationFinished() {
     // Apply recombination
     std::vector<Genotype> *newPopulation = recombination(*intermediatePopulation, populationSize);
 
+    // TODO: Breaking here
     // Apply mutation
     mutation(*newPopulation);
 
@@ -237,7 +238,8 @@ void GeneticAlgorithm::mutateGenotype(Genotype genotype, float mutationProb, flo
 }
 
 bool GeneticAlgorithm::defaultTermination(std::vector<Genotype> currentPopulation) {
-    return false;
+
+    return (EvolutionManager::getInstance()->getGenerationCount() >= RestartAfter);
 }
 
 const std::vector<Genotype> &GeneticAlgorithm::getCurrentPopulation() const {

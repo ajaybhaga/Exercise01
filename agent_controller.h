@@ -31,7 +31,7 @@ public:
     void awake();
     void start();
     void restart();
-    void update();
+    void update(float duration);
     void die();
     void checkpointCaptured();
     float getCurrentCompletionReward();
@@ -57,9 +57,13 @@ private:
     const float MAX_CHECKPOINT_DELAY = 7;
 
     std::vector<Sensor> sensors;
-    float timeSinceLastCheckpoint;
+    float timeSinceLastCheckpoint = 0.0;
+public:
+    float getTimeSinceLastCheckpoint() const;
+
+private:
     long startTime;
-    long lastTime;
+    long lastTime = 0;
 
     std::string name;
 };

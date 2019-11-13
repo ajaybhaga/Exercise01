@@ -28,6 +28,8 @@ static const float DefMutationAmount = 2.0f;
 // Default percent of genotypes in a new population that are mutated.
 static const float DefMutationPerc = 1.0f;
 
+static const int RestartAfter = 100;
+
 class GeneticAlgorithm {
 public:
 

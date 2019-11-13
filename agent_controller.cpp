@@ -64,15 +64,8 @@ void AgentController::restart() {
     this->agent->reset();
 }
 
-void AgentController::update() {
-    long currTime = std::chrono::high_resolution_clock::now().time_since_epoch().count();
-    long deltaTime = currTime-lastTime;
-//    std::this_thread::sleep_for(2s);
-//    auto end = std::chrono::high_resolution_clock::now();
-//    std::chrono::duration<double, std::milli> elapsed = end-start;
-    std::cout << "Delta time: " << deltaTime << " ms\n";
-    lastTime = currTime;
-    timeSinceLastCheckpoint += deltaTime;
+void AgentController::update(float duration) {
+    timeSinceLastCheckpoint += duration;
 
     // Get readings from sensors
     double *sensorOutput = new double[sensors.size()];
@@ -120,4 +113,8 @@ void AgentController::setCurrentCompletionReward(float reward) {
 
 int AgentController::nextId() {
     return idGenerator++;
+}
+
+float AgentController::getTimeSinceLastCheckpoint() const {
+    return timeSinceLastCheckpoint;
 }
