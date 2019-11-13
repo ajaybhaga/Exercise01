@@ -225,6 +225,8 @@ void Environment::updateObjects(cyclone::real duration) {
     for (int i = 0; i < controllers.size(); i++) {
         std::shared_ptr<AgentController> controller = controllers[i];
         controller->update(duration);
+        // Set agent evaluation (affects fitness calculation)
+        controller->setCurrentCompletionReward(1);
     }
 
 //    std::cout << "currentDateTime()=" << currentDateTime() << std::endl;

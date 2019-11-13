@@ -101,14 +101,14 @@ void AgentController::checkpointCaptured() {
 
 float AgentController::getCurrentCompletionReward() {
     if (agent)
-        return agent->genotype.evaluation;
+        return agent->genotype->evaluation;
     else
         return -1.0;
 }
 
 void AgentController::setCurrentCompletionReward(float reward) {
     if (agent)
-        agent->genotype.evaluation = reward;
+        agent->genotype->evaluation = reward;
 }
 
 int AgentController::nextId() {

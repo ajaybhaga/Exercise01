@@ -39,7 +39,7 @@ public:
     void outputToConsole();
 
     float evaluation;
-    float fitness;
+    float fitness; // Fitness is calculated based on evaluation
 
 private:
     std::vector<float> parameters;

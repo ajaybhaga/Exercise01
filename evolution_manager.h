@@ -29,12 +29,12 @@ public:
     static void checkForTrackFinished();
     static bool checkGenerationTermination();
     static void onGATermination();
-    static void startEvaluation(std::vector<Genotype> currentPopulation);
+    static void startEvaluation(std::vector<Genotype*> currentPopulation);
     static void onAgentDied();
-    static std::vector<Genotype> *remainderStochasticSampling(std::vector<Genotype> currentPopulation);
-    static std::vector<Genotype> *randomRecombination(std::vector<Genotype> intermediatePopulation, int newPopulationSize);
-    static void mutateAllButBestTwo(std::vector<Genotype> newPopulation);
-    static void mutateAll(std::vector<Genotype> newPopulation);
+    static std::vector<Genotype*> *remainderStochasticSampling(std::vector<Genotype*> currentPopulation);
+    static std::vector<Genotype*> *randomRecombination(std::vector<Genotype*> intermediatePopulation, int newPopulationSize);
+    static void mutateAllButBestTwo(std::vector<Genotype*> newPopulation);
+    static void mutateAll(std::vector<Genotype*> newPopulation);
     static void evalFinished();
 
     // The amount of agents that are currently alive.

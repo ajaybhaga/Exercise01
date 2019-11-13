@@ -222,7 +222,7 @@ void EvolutionManager::restartAlgorithm(float wait) {
 }
 
 // Starts the evaluation by first creating new agents from the current population and then restarting the track manager.
- void EvolutionManager::startEvaluation(std::vector<Genotype> currentPopulation) {
+ void EvolutionManager::startEvaluation(std::vector<Genotype*> currentPopulation) {
 
     // Create new agents from currentPopulation
     getInstance()->agents.clear();
@@ -230,8 +230,11 @@ void EvolutionManager::restartAlgorithm(float wait) {
     getInstance()->agentsAliveCount = 0;
 
     // Iterate through genotypes
-    for (auto it = currentPopulation.begin(); it != currentPopulation.end(); ++it) {
-        Agent* agent = new Agent(*it, MathHelper::softSignFunction, getInstance()->ffnTopology);
+    //for (auto it = currentPopulation.begin(); it != currentPopulation.end(); ++it) {
+
+    for (int i = 0; i < currentPopulation.size(); i++) {
+
+        Agent* agent = new Agent(&currentPopulation[i], MathHelper::softSignFunction, getInstance()->ffnTopology);
         AgentController *agentController = new AgentController(*agent);
         getInstance()->agents.emplace_back(std::make_shared<Agent>(*agent));
         getInstance()->agentControllers.emplace_back(std::make_shared<AgentController>(*agentController));
@@ -239,7 +242,6 @@ void EvolutionManager::restartAlgorithm(float wait) {
         getInstance()->agentsAliveCount++;
     }
 
-    std::cout << "startEvaluation" << std::endl;
     // TrackManager.Instance.setCarAmount(agents.Count);
 
     // Iterate through agent controllers
@@ -384,6 +386,8 @@ std::vector<Genotype> *EvolutionManager::remainderStochasticSampling(std::vector
     std::vector<Genotype> *intermediatePopulation = new std::vector<Genotype>();
     // Put integer portion of genotypes into intermediatePopulation
     // Assumes that currentPopulation is already sorted
+
+    std::cout << "selection -> remainderStochasticSampling(): " << currentPopulation.size() << std::endl;
 
     for (auto it = currentPopulation.begin(); it != currentPopulation.end(); ++it) {
         //for (int i = 0; i < newPopulation.size(); i++) {
