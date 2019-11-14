@@ -24,9 +24,9 @@
 class Genotype {
 public:
 
-    Genotype();
-    Genotype(float *parameters, int parameterCount);
     Genotype(std::vector<float> parameters);
+    Genotype(int paramCount);
+    Genotype(int paramCount, float *offParameters);
     ~Genotype();
     void setRandomParameters(float minValue, float maxValue);
     std::vector<float>& getParameterCopy();

@@ -222,15 +222,18 @@ void Environment::updateObjects(cyclone::real duration) {
     std::vector<std::shared_ptr<Agent>> agents = EvolutionManager::getInstance()->getAgents();
     std::vector<std::shared_ptr<AgentController>> controllers = EvolutionManager::getInstance()->getAgentControllers();
 
+    // Create the random number generator
+    random_d rd{0.0, 1.0};
+
     for (int i = 0; i < controllers.size(); i++) {
         std::shared_ptr<AgentController> controller = controllers[i];
         controller->update(duration);
         // Set agent evaluation (affects fitness calculation)
-        controller->setCurrentCompletionReward(1);
+        controller->setCurrentCompletionReward(controller->getCurrentCompletionReward()+rd());
     }
 
 //    std::cout << "currentDateTime()=" << currentDateTime() << std::endl;
-    //std::cout << "[" << currentDateTime() << "] -> environment update objects" << std::endl;
+   // std::cout << "[" << currentDateTime() << "] -> environment update objects" << std::endl;
 
     /*
     // Update position for each agent
@@ -349,6 +352,9 @@ void Environment::display()
                 break;
             case maxRows-6:
                 sprintf(strText[i], "agent[0].z: %f", agents[0].get()->getPosition().z);
+                break;
+            case maxRows-7:
+                sprintf(strText[i], "agent[0].evaluation: %f", agents[0]->genotype->evaluation);
                 break;
 
 

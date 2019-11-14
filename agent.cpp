@@ -13,10 +13,10 @@ Agent::Agent() {
 
 // Initializes a new agent from given genotype, constructing a new feed-forward neural network from
 // the parameters of the genotype.
-Agent::Agent(Genotype *&genotype, NeuralLayer::ActivationFunction defaultActivation, int *topology) {
+Agent::Agent(Genotype *genotype, NeuralLayer::ActivationFunction defaultActivation, int *topology) {
 
     alive = false;
-    this->genotype = &genotype;
+    this->genotype = genotype;
     ffn = new NeuralNetwork(topology, NUM_NEURAL_LAYERS);
 
     for (int i = 0; i < NUM_NEURAL_LAYERS; i++) {
@@ -35,11 +35,12 @@ Agent::Agent(Genotype *&genotype, NeuralLayer::ActivationFunction defaultActivat
 
         for (int i = 0; i < ffn->layers[k]->neuronCount; i++) {
             for (int j = 0; j < ffn->layers[k]->outputCount; j++) {
+
                 // Retrieve parameters for genotype
-                std::vector<float> parameters = this->genotype->getParameterCopy();
+                std::vector<float> parameters = genotype->getParameterCopy();
 
                 // Set weights to parameter values
-                for (int p = 0; p < this->genotype->getParameterCount(); p++) {
+                for (int p = 0; p < genotype->getParameterCount(); p++) {
                     ffn->layers[k]->weights[i][j] = parameters[p];
                 }
             }
@@ -53,7 +54,7 @@ Agent::~Agent() {
 
 // Reset this agent to be alive again.
 void Agent::reset() {
-    genotype->evaluation = 0;
+    this->genotype->evaluation = 0;
     genotype->fitness = 0;
     alive = true;
 }

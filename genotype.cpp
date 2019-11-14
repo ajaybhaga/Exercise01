@@ -10,20 +10,38 @@
 
 #include "genotype.h"
 
-Genotype::Genotype() {
-}
+Genotype::Genotype(int paramCount) {
+    evaluation = 0.0;
+    fitness = 0.0;
 
-Genotype::Genotype(float *parameters, int parameterCount) {
-
-    for (int i = 0; i < parameterCount; i++) {
-        this->parameters.emplace_back(parameters[i]);
+    parameters = std::vector<float>();
+    for (int i = 0; i < paramCount; i++) {
+        float f;
+        parameters.push_back(f);
     }
-
-    fitness = 0;
+    setRandomParameters(-1.0, 1.0);
 }
 
 Genotype::Genotype(std::vector<float> parameters) {
-    this->parameters = parameters;
+
+    this->parameters = std::vector<float>();
+    for (int i = 0; i < parameters.size(); i++) {
+        this->parameters.emplace_back(parameters[i]);
+    }
+
+    evaluation = 0.0;
+    fitness = 0.0;
+}
+
+Genotype::Genotype(int paramCount, float *offParameters) {
+
+    parameters = std::vector<float>();
+    for (int i = 0; i < paramCount; i++) {
+        parameters.push_back(offParameters[i]);
+    }
+
+    evaluation = 0.0;
+    fitness = 0.0;
 }
 
 Genotype::~Genotype() {
@@ -107,7 +125,7 @@ Genotype *Genotype::loadFromFile(const char* filePath) {
     std::cout << "Genotype has been successfully loaded." << std::endl;
     dimensionsInFile.close();
 
-    Genotype* genotype = new Genotype();
+    Genotype* genotype = new Genotype(file->record.parameterCount);
     genotype->evaluation = file->record.evaluation;
     genotype->fitness = file->record.fitness;
     // TODO: read file into Vector
@@ -122,10 +140,10 @@ float Genotype::getParameter(int index) {
 Genotype* Genotype::generateRandom(int parameterCount, float minValue, float maxValue) {
 
     if (parameterCount == 0) {
-        return new Genotype(new float[0], 0);
+        return new Genotype(parameterCount);
     }
 
-    Genotype* randomGenotype = new Genotype(new float[parameterCount], parameterCount);
+    Genotype* randomGenotype = new Genotype(parameterCount);
     randomGenotype->setRandomParameters(minValue, maxValue);
     return randomGenotype;
 }

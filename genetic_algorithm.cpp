@@ -11,7 +11,7 @@ GeneticAlgorithm::GeneticAlgorithm(int genotypeParamCount, int populationSize) {
 
     this->populationSize = populationSize;
     for (int i = 0; i < populationSize; i++) {
-        Genotype* genotype = new Genotype(new float[genotypeParamCount], genotypeParamCount);
+        Genotype* genotype = new Genotype(genotypeParamCount);
         currentPopulation.push_back(genotype);
     }
 
@@ -31,23 +31,26 @@ void GeneticAlgorithm::start() {
     evaluation(currentPopulation);
 }
 
+// Sort by genotype
+bool sortByGenotype(const Genotype* lhs, const Genotype* rhs) { return lhs->fitness > rhs->fitness; }
+
 void GeneticAlgorithm::evaluationFinished() {
     // Iterate through agent controllers and apply update
     std::vector<std::shared_ptr<AgentController>> controllers = EvolutionManager::getInstance()->getAgentControllers();
-
+/*
     for (int i = 0; i < controllers.size(); i++) {
         std::shared_ptr<AgentController> controller = controllers[i];
         // Set agent evaluation (affects fitness calculation)
         controller->setCurrentCompletionReward(1);
     }
-
+*/
     // Calculate fitness from evaluation
     fitnessCalculationMethod(currentPopulation);
 
     // Sort population if flag was set
     if (sortPopulation) {
-        // TODO: sort currentPopulation -> unsure if this sorting is correct;
-       // currentPopulation.sort();
+        // Sort by genotype -> highest fitness is first element
+        std::sort(currentPopulation.begin(), currentPopulation.end(), sortByGenotype);
     }
 
     // Fire fitness calculation finished event
@@ -65,7 +68,6 @@ void GeneticAlgorithm::evaluationFinished() {
     // Apply recombination
     std::vector<Genotype*> *newPopulation = recombination(*intermediatePopulation, populationSize);
 
-    // TODO: Breaking here
     // Apply mutation
     mutation(*newPopulation);
 
@@ -117,9 +119,9 @@ void GeneticAlgorithm::defaultFitnessCalculation(std::vector<Genotype*> currentP
     float averageEvaluation = overallEvaluation / populationSize;
 
     // Now assign fitness with formula fitness = evaluation / averageEvaluation
-    for (std::vector<Genotype>::iterator it = currentPopulation.begin(); it != currentPopulation.end(); ++it) {
-        it->fitness = it->evaluation / averageEvaluation;
-    }
+    for (int i = 0; i < currentPopulation.size(); i++) {
+            currentPopulation[i]->fitness = currentPopulation[i]->evaluation / averageEvaluation;
+        }
 }
 
 std::vector<Genotype*> *GeneticAlgorithm::defaultSelectionOperator(std::vector<Genotype*> currentPopulation) {
@@ -161,29 +163,29 @@ std::vector<Genotype*> *GeneticAlgorithm::defaultRecombinationOperator(std::vect
         auto end = std::next(intermediatePopulation.begin(), std::min(n, intermediatePopulation.size()));
         std::vector<Genotype*> b(intermediatePopulation.begin(), end);
 
-        Genotype intermediatePopulation0;
-        Genotype intermediatePopulation1;
+        Genotype *intermediatePopulation0;
+        Genotype *intermediatePopulation1;
 
         int count = 0;
-        for (std::vector<Genotype*>::iterator it = b.begin(); it != b.end(); ++it) {
+        for (int i = 0; i < b.size(); i++) {
+
 //            intermediatePopulation->push_back(*it);
             switch (count) {
                 case 0:
-                    intermediatePopulation0 = *it;
+                    intermediatePopulation0 = b[0];
                     break;
                 case 1:
-                    intermediatePopulation1 = *it;
+                    intermediatePopulation1 = b[1];
                     break;
-
             }
             count++;
         }
 
         completeCrossover(intermediatePopulation0, intermediatePopulation1, DefCrossSwapProb, offspring1, offspring2);
 
-        newPopulation->push_back(*offspring1);
+        newPopulation->push_back(offspring1);
         if (newPopulation->size() < newPopulationSize) {
-            newPopulation->push_back(*offspring2);
+            newPopulation->push_back(offspring2);
         }
     }
 
@@ -197,23 +199,24 @@ void GeneticAlgorithm::defaultMutationOperator(std::vector<Genotype*> newPopulat
 
     for (std::vector<Genotype*>::iterator it = newPopulation.begin(); it != newPopulation.end(); ++it) {
 
-        for (Genotype& genotype : newPopulation) {
+
+        for (int i = 0; i < newPopulation.size(); i++) {
             if (rd() < DefMutationPerc) {
-                mutateGenotype(genotype, DefMutationProb, DefMutationAmount);
+                mutateGenotype(newPopulation[i], DefMutationProb, DefMutationAmount);
             }
         }
 
     }
 }
 
-void GeneticAlgorithm::completeCrossover(Genotype parent1, Genotype parent2, float swapChance, Genotype *offspring1,
-                                         Genotype *offspring2) {
+void GeneticAlgorithm::completeCrossover(Genotype *parent1, Genotype *parent2, float swapChance, Genotype* &offspring1,
+                                         Genotype* &offspring2) {
 
     // Create the random number generator
     random_d rd{0, 1};
 
     // Initialize new parameter vectors
-    int parameterCount = parent1.getParameterCopy().size();
+    int parameterCount = parent1->getParameterCopy().size();
     float *off1Parameters = new float[parameterCount];
     float *off2Parameters = new float[parameterCount];
 
@@ -222,37 +225,37 @@ void GeneticAlgorithm::completeCrossover(Genotype parent1, Genotype parent2, flo
 
         if (rd() < swapChance) {
             // Swap parameters
-            off1Parameters[i] = parent2.getParameter(i);
-            off2Parameters[i] = parent1.getParameter(i);
+            off1Parameters[i] = parent2->getParameter(i);
+            off2Parameters[i] = parent1->getParameter(i);
         } else {
             // Dont swap parameters
-            off1Parameters[i] = parent1.getParameter(i);
-            off2Parameters[i] = parent2.getParameter(i);
+            off1Parameters[i] = parent1->getParameter(i);
+            off2Parameters[i] = parent2->getParameter(i);
         }
     }
 
-    Genotype *offspring1_out = new Genotype(off1Parameters, parameterCount);
-    Genotype *offspring2_out = new Genotype(off2Parameters, parameterCount);
+    offspring1 = new Genotype(parameterCount, off1Parameters);
+    offspring2 = new Genotype(parameterCount, off2Parameters);
 
-    offspring1 = offspring1_out;
-    offspring2 = offspring2_out;
 }
 
-void GeneticAlgorithm::mutateGenotype(Genotype genotype, float mutationProb, float mutationAmount) {
+void GeneticAlgorithm::mutateGenotype(Genotype *genotype, float mutationProb, float mutationAmount) {
 
     // Create the random number generator
     random_d rd{0, 1};
 
-    for (int i = 0; i < genotype.getParameterCount(); i++) {
+    for (int i = 0; i < genotype->getParameterCount(); i++) {
 
         if (rd() < mutationProb) {
             // Mutate by random amount in range [-mutationAmount, mutationAmount]
-            genotype.setParameter(i, genotype.getParameter(i) + (float)rd() * (mutationAmount * 2) - mutationAmount);
+            genotype->setParameter(i, genotype->getParameter(i) + (float)rd() * (mutationAmount * 2) - mutationAmount);
         }
     }
 }
 
 bool GeneticAlgorithm::defaultTermination(std::vector<Genotype*> currentPopulation) {
+
+    std::cout << "Generation count: " << EvolutionManager::getInstance()->getGenerationCount() << std::endl;
 
     return (EvolutionManager::getInstance()->getGenerationCount() >= RestartAfter);
 }

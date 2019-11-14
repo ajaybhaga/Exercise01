@@ -149,13 +149,14 @@ void EvolutionManager::writeStatisticsToFile() {
 
     std::string outText;
 
-    std::vector<Genotype> currentPopulation = getInstance()->getGeneticAlgorithm()->getCurrentPopulation();
-    for (std::vector<Genotype>::iterator it = currentPopulation.begin(); it != currentPopulation.end(); ++it) {
+    std::vector<Genotype*> currentPopulation = getInstance()->getGeneticAlgorithm()->getCurrentPopulation();
+
+    for (int i = 0; i < currentPopulation.size(); i++) {
         outText += "Generation Count -> ";
         outText += getInstance()->getGeneticAlgorithm()->generationCount;
         outText += "\n";
         outText += "Genotype Evaluation: ";
-        outText += it->evaluation;
+        outText += currentPopulation[i]->evaluation;
         outText += "\n";
     }
 }
@@ -166,11 +167,11 @@ void EvolutionManager::checkForTrackFinished() {
     if (getInstance()->genotypesSaved >= getInstance()->saveFirstNGenotype) return;
 
     std::string saveFolder = getInstance()->statisticsFileName + "/";
-    std::vector<Genotype> currentPopulation = getInstance()->getGeneticAlgorithm()->getCurrentPopulation();
+    std::vector<Genotype*> currentPopulation = getInstance()->getGeneticAlgorithm()->getCurrentPopulation();
 
-    for (std::vector<Genotype>::iterator it = currentPopulation.begin(); it != currentPopulation.end(); ++it) {
+    for (int i = 0; i < currentPopulation.size(); i++) {
 
-        if (it->evaluation >= 1) {
+        if (currentPopulation[i]->evaluation >= 1) {
 
             // Check if directory exist
             if (directoryExists(saveFolder.data())) {
@@ -187,7 +188,7 @@ void EvolutionManager::checkForTrackFinished() {
                 a += "Genotype - Finished as ";
                 a += (++(getInstance()->genotypesSaved));
                 a += ".txt";
-                it->saveToFile(a.data());
+                currentPopulation[i]->saveToFile(a.data());
 
 //                std::ofstream("sandbox/file"); // create regular file
 
@@ -205,7 +206,7 @@ bool EvolutionManager::checkGenerationTermination() {
 void EvolutionManager::onGATermination() {
 
     getInstance()->allAgentsDied -= evalFinished;
-    //getInstance()->restartAlgorithm(5.0f);
+    getInstance()->restartAlgorithm(5.0f);
 }
 
 // Restart the algorithm after a specific wait time
@@ -234,7 +235,7 @@ void EvolutionManager::restartAlgorithm(float wait) {
 
     for (int i = 0; i < currentPopulation.size(); i++) {
 
-        Agent* agent = new Agent(&currentPopulation[i], MathHelper::softSignFunction, getInstance()->ffnTopology);
+        Agent* agent = new Agent(currentPopulation[i], MathHelper::softSignFunction, getInstance()->ffnTopology);
         AgentController *agentController = new AgentController(*agent);
         getInstance()->agents.emplace_back(std::make_shared<Agent>(*agent));
         getInstance()->agentControllers.emplace_back(std::make_shared<AgentController>(*agentController));
@@ -264,37 +265,32 @@ void EvolutionManager::onAgentDied() {
 }
 
 // Mutates all members of the new population with the default probability, while leaving the first 2 genotypes in the list.
-void EvolutionManager::mutateAllButBestTwo(std::vector<Genotype> newPopulation) {
+void EvolutionManager::mutateAllButBestTwo(std::vector<Genotype*> newPopulation) {
     // Create the random number generator
     random_d rd{0.0, 1.0};
 
     int i = 0;
-    //for (int i = 2; i < newPopulation.size(); i++) {
-    for (auto it = newPopulation.begin(); it != newPopulation.end(); ++it) {
+    for (int i = 2; i < newPopulation.size(); i++) {
 
-        if (i >= 2) {
-            if (rd() < DefMutationProb) {
-                getInstance()->getGeneticAlgorithm()->mutateGenotype(*it, DefMutationProb, DefMutationAmount);
-            }
+        if (rd() < DefMutationProb) {
+            getInstance()->getGeneticAlgorithm()->mutateGenotype(newPopulation[i], DefMutationProb, DefMutationAmount);
         }
-        i++;
     }
 }
 
-void EvolutionManager::mutateAll(std::vector<Genotype> newPopulation) {
+void EvolutionManager::mutateAll(std::vector<Genotype*> newPopulation) {
 
     // Create the random number generator
     random_d rd{0.0, 1.0};
 
-    for (auto it = newPopulation.begin(); it != newPopulation.end(); ++it) {
-        //for (int i = 0; i < newPopulation.size(); i++) {
-        if (rd() < DefMutationProb) {
-            getInstance()->getGeneticAlgorithm()->mutateGenotype(*it, DefMutationProb, DefMutationAmount);
-        }
-    }
+     for (int i = 0; i < newPopulation.size(); i++) {
+         if (rd() < DefMutationProb) {
+             getInstance()->getGeneticAlgorithm()->mutateGenotype(newPopulation[i], DefMutationProb, DefMutationAmount);
+         }
+     }
 }
 
-std::vector<Genotype> *EvolutionManager::randomRecombination(std::vector<Genotype> intermediatePopulation, int newPopulationSize) {
+std::vector<Genotype*> *EvolutionManager::randomRecombination(std::vector<Genotype*> intermediatePopulation, int newPopulationSize) {
 
     if (intermediatePopulation.size() < 2) {
 
@@ -302,9 +298,9 @@ std::vector<Genotype> *EvolutionManager::randomRecombination(std::vector<Genotyp
         return nullptr;
     }
 
-    std::vector<Genotype> *newPopulation = new std::vector<Genotype>();
+    std::vector<Genotype*> *newPopulation = new std::vector<Genotype*>();
 
-    if (intermediatePopulation.size() < newPopulationSize) {
+    if (newPopulation->size() < newPopulationSize) {
 
         Genotype *offspring1;
         Genotype *offspring2;
@@ -312,23 +308,23 @@ std::vector<Genotype> *EvolutionManager::randomRecombination(std::vector<Genotyp
         // Get first 2 list items (top 2)
         size_t n = 2;
         auto end = std::next(intermediatePopulation.begin(), std::min(n, intermediatePopulation.size()));
-        std::vector<Genotype> b(intermediatePopulation.begin(), end);
+        std::vector<Genotype*> b(intermediatePopulation.begin(), end);
 
-        Genotype intermediatePopulation0;
-        Genotype intermediatePopulation1;
+        Genotype *intermediatePopulation0;
+        Genotype *intermediatePopulation1;
 
         int count = 0;
-        for (std::vector<Genotype>::iterator it = b.begin(); it != b.end(); ++it) {
-            switch (count) {
+        for (int i = 0; i < b.size(); i++) {
+
+            switch (i) {
                 case 0:
-                    intermediatePopulation0 = *it;
+                    intermediatePopulation0 = b[i];
                     break;
                 case 1:
-                    intermediatePopulation1 = *it;
+                    intermediatePopulation1 = b[i];
                     break;
 
             }
-            count++;
         }
 
         // Always add best two (unmodified)
@@ -348,29 +344,12 @@ std::vector<Genotype> *EvolutionManager::randomRecombination(std::vector<Genotyp
                 randomIndex2 = (int) rd();
             } while (randomIndex2 == randomIndex1);
 
-            // Retrieve intermediatePopulation -> randomIndex1 & randomIndex2
-            Genotype intermediatePopulationR1;
-            Genotype intermediatePopulationR2;
-
-            int i = 0;
-            //for (int i = 2; i < newPopulation.size(); i++) {
-            for (auto it = newPopulation->begin(); it != newPopulation->end(); ++it) {
-
-                if (i == randomIndex1) {
-                    intermediatePopulationR1 = *it;
-                }
-
-                if (i == randomIndex2) {
-                    intermediatePopulationR2 = *it;
-                }
-            }
-
-            getInstance()->getGeneticAlgorithm()->completeCrossover(intermediatePopulationR1, intermediatePopulationR2,
+            getInstance()->getGeneticAlgorithm()->completeCrossover(intermediatePopulation[randomIndex1], intermediatePopulation[randomIndex2],
                     DefCrossSwapProb, offspring1, offspring2);
 
-            newPopulation->emplace_back(*offspring1);
+            newPopulation->emplace_back(offspring1);
             if (newPopulation->size() < newPopulationSize) {
-                newPopulation->emplace_back(*offspring2);
+                newPopulation->emplace_back(offspring2);
             }
         }
     }
@@ -378,37 +357,36 @@ std::vector<Genotype> *EvolutionManager::randomRecombination(std::vector<Genotyp
     return newPopulation;
 }
 
-std::vector<Genotype> *EvolutionManager::remainderStochasticSampling(std::vector<Genotype> currentPopulation) {
+std::vector<Genotype*> *EvolutionManager::remainderStochasticSampling(std::vector<Genotype*> currentPopulation) {
 
     // Create the random number generator
     random_d rd{0.0, 1.0};
 
-    std::vector<Genotype> *intermediatePopulation = new std::vector<Genotype>();
+    std::vector<Genotype*> *intermediatePopulation = new std::vector<Genotype*>();
     // Put integer portion of genotypes into intermediatePopulation
     // Assumes that currentPopulation is already sorted
 
     std::cout << "selection -> remainderStochasticSampling(): " << currentPopulation.size() << std::endl;
 
-    for (auto it = currentPopulation.begin(); it != currentPopulation.end(); ++it) {
-        //for (int i = 0; i < newPopulation.size(); i++) {
+    for (int i = 0; i < currentPopulation.size(); i++) {
 
-        if ((*it).fitness < 1) {
+        if (currentPopulation[i]->fitness < 1) {
             break;
         } else {
-            for (int i = 0; i < (int) (*it).fitness; i++) {
-                Genotype *g = new Genotype((*it).getParameterCopy());
-                intermediatePopulation->emplace_back(*g);
+            for (int i = 0; i < (int) currentPopulation[i]->fitness; i++) {
+                Genotype *g = new Genotype(currentPopulation[i]->getParameterCopy());
+                intermediatePopulation->emplace_back(g);
             }
         }
     }
 
     // Put remainder portion of genotypes into intermediatePopulation
-    for (auto it = currentPopulation.begin(); it != currentPopulation.end(); ++it) {
+    for (int i = 0; i < currentPopulation.size(); i++) {
 
-        float remainder = (*it).fitness - (int) (*it).fitness;
+            float remainder = currentPopulation[i]->fitness - (int) currentPopulation[i]->fitness;
         if (rd() < remainder) {
-            Genotype *g = new Genotype((*it).getParameterCopy());
-            intermediatePopulation->emplace_back(*g);
+            Genotype *g = new Genotype(currentPopulation[i]->getParameterCopy());
+            intermediatePopulation->emplace_back(g);
         }
     }
 

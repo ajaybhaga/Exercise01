@@ -14,14 +14,14 @@ class Agent {
 public:
 
     Agent();
-    Agent(Genotype *&genotype, NeuralLayer::ActivationFunction defaultActivation, int *topology);
+    Agent(Genotype *genotype, NeuralLayer::ActivationFunction defaultActivation, int *topology);
     ~Agent();
     void reset();
     void kill();
     int compareTo(Agent &other);
 
     // Underlying genotype of this agent.
-    Genotype **genotype;
+    Genotype *genotype;
 
     // The feed-forward neural network which was constructed from the genotype of this agent.
     NeuralNetwork *ffn;
