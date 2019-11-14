@@ -366,7 +366,7 @@ std::vector<Genotype*> *EvolutionManager::remainderStochasticSampling(std::vecto
     // Put integer portion of genotypes into intermediatePopulation
     // Assumes that currentPopulation is already sorted
 
-    std::cout << "selection -> remainderStochasticSampling(): " << currentPopulation.size() << std::endl;
+    //std::cout << "selection -> remainderStochasticSampling(): " << currentPopulation.size() << std::endl;
 
     for (int i = 0; i < currentPopulation.size(); i++) {
 

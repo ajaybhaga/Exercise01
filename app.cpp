@@ -22,7 +22,7 @@
 
 void Application::initGraphics()
 {
-    glClearColor(0.9f, 0.95f, 1.0f, 1.0f);
+    glClearColor(1.0f, 0.95f, 0.5f, 1.0f);
     glEnable(GL_DEPTH_TEST);
     glShadeModel(GL_SMOOTH);
 
@@ -40,12 +40,13 @@ void Application::setView()
 
 void Application::display()
 {
-    glClear(GL_COLOR_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glLoadIdentity();
+    gluLookAt(18.0f, 0, 0,  0, 0, 0,  0, 1.0f, 0);
+    glRotatef(-phi, 0, 0, 1);
+    glRotatef(theta, 0, 1, 0);
+    glTranslatef(0, -5.0f, 0);
 
-    glBegin(GL_LINES);
-    glVertex2i(1, 1);
-    glVertex2i(639, 319);
-    glEnd();
 }
 
 const char* Application::getTitle()
@@ -129,6 +130,14 @@ void Application::mouse(int button, int state, int x, int y)
 
 void Application::mouseDrag(int x, int y)
 {
+    // Update the camera
+    theta += (x - last_x)*0.25f;
+    phi += (y - last_y)*0.25f;
+
+    // Keep it in bounds
+    if (phi < -20.0f) phi = -20.0f;
+    else if (phi > 80.0f) phi = 80.0f;
+
     // Remember the position
     last_x = x;
     last_y = y;
@@ -181,7 +190,9 @@ void Application::renderText(float x, float y, const char *text, void *font)
 }
 
 Application::Application()
-: resolver(maxContacts*8),
+:  theta(0.0f),
+   phi(15.0f),
+   resolver(maxContacts*8),
     renderDebugInfo(false),
     pauseSimulation(true),
     autoPauseSimulation(false)

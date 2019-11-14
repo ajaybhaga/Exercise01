@@ -111,14 +111,14 @@ void Environment::generateContacts() {
             if (!cData.hasMoreContacts()) return;
             cyclone::CollisionDetector::boxAndHalfSpace(*block, plane, &cData);
 
-            if (ball_active) {
-                // And with the sphere
-                if (!cData.hasMoreContacts()) return;
-                if (cyclone::CollisionDetector::boxAndSphere(*block, this->agentCollSpheres[i], &cData)) {
-                    hit = true;
-                    fracture_contact = cData.contactCount - 1;
-                }
+
+            // And with the sphere
+            if (!cData.hasMoreContacts()) return;
+            if (cyclone::CollisionDetector::boxAndSphere(*block, this->agentCollSpheres[i], &cData)) {
+                hit = true;
+                fracture_contact = cData.contactCount - 1;
             }
+
 
             // Check for collisions with each other box
             for (Block *other = block + 1; other < blocks + MAX_BLOCKS; other++) {
@@ -130,15 +130,15 @@ void Environment::generateContacts() {
         }
 
         // Check for sphere ground collisions
-        if (ball_active) {
-            if (!cData.hasMoreContacts()) return;
-            cyclone::CollisionDetector::sphereAndHalfSpace(this->agentCollSpheres[i], plane, &cData);
-        }
+        if (!cData.hasMoreContacts()) return;
+        cyclone::CollisionDetector::sphereAndHalfSpace(this->agentCollSpheres[i], plane, &cData);
+
     }
 }
 
 void Environment::reset()
 {
+    /*
     // Only the first block exists
     blocks[0].exists = true;
     for (Block *block = blocks+1; block < blocks+MAX_BLOCKS; block++)
@@ -163,9 +163,8 @@ void Environment::reset()
     blocks[0].body->setAcceleration(cyclone::Vector3::GRAVITY);
     blocks[0].body->setAwake(true);
     blocks[0].body->setCanSleep(true);
+*/
 
-
-    ball_active = true;
 
     for (int i = 0; i < this->agentCollSpheres.size(); i++) {
 
@@ -200,7 +199,6 @@ void Environment::update()
             blocks,
             blocks+1
             );
-      ///  ball_active = false;
     }
 
     //std::cout << "test" << std::endl;
@@ -239,17 +237,18 @@ void Environment::updateObjects(cyclone::real duration) {
     // Update position for each agent
     for (int i = 0; i < this->agentCollSpheres.size(); i++) {
 
-        if (ball_active) {
             this->agentCollSpheres[i].body->integrate(duration);
             this->agentCollSpheres[i].calculateInternals();
             agents[i]->setPosition(this->agentCollSpheres[i].body->getPosition());
-        }
     }*/
 
 }
 
 void Environment::display()
 {
+    std::vector<std::shared_ptr<Agent>> agents = EvolutionManager::getInstance()->getAgents();
+    std::vector<std::shared_ptr<AgentController>> controllers = EvolutionManager::getInstance()->getAgentControllers();
+
     const static GLfloat lightPosition[] = {0.7f,1,0.4f,0};
 
     Application::display();
@@ -262,37 +261,45 @@ void Environment::display()
     glColorMaterial(GL_FRONT_AND_BACK, GL_DIFFUSE);
     glEnable(GL_COLOR_MATERIAL);
 
+
+    /*
     glEnable(GL_NORMALIZE);
     for (Block *block = blocks; block < blocks+MAX_BLOCKS; block++)
     {
         if (block->exists) block->render();
     }
     glDisable(GL_NORMALIZE);
+*/
 
     // Create the random number generator
     random_d rd{0.0, 1.0};
-    for (int i = 0; i < this->agentCollSpheres.size(); i++) {
-        if (ball_active)
-        {
-//            glColor3f(0.4f, 0.7f, 0.4f);
-            glColor3f(rd(), rd(), rd());
 
-            float size = rd();
-            if (size < 0.3f) {
-                size = 0.3f;
-            }
+    for (int i = 0; i < agents.size(); i++) {
+        glColor3f(agents[i].get()->getColour()[0], agents[i].get()->getColour()[1], agents[i].get()->getColour()[2]);
+        std::cout << "agents[i].get()->getColour()[0]:" << std::endl;
+        std::cout << agents[i].get()->getColour()[0];
+        std::cout << "agents[i].get()->getColour()[1]:" << std::endl;
+        std::cout << agents[i].get()->getColour()[1];
+        std::cout << "agents[i].get()->getColour()[2]:" << std::endl;
+        std::cout << agents[i].get()->getColour()[2];
 
-            glPushMatrix();
-
-            cyclone::Vector3 pos = this->agentCollSpheres[i].body->getPosition();
-            glTranslatef(pos.x, pos.y, pos.z);
+        float size = 1.0f;
+        glPushMatrix();
+            cyclone::Vector3 pos = agents[i].get()->getPosition();
             glScalef(size, size, size);
+            glTranslatef(pos.x, pos.y, pos.z);
+            glutSolidSphere(0.25f, 16, 8);
+        glPopMatrix();
 
-            //glutSolidSphere(0.25f, 16, 8);
-            glutSolidIcosahedron();
-            glPopMatrix();
-        }
     }
+
+    glPushMatrix();
+
+    glTranslatef(0.0, 0.0, 0.0);
+    glColor3f(0.4f, 0.3f, 1.0f);
+    glutSolidSphere(0.1f, 16, 8);
+    //glutSolidIcosahedron();
+    glPopMatrix();
 
     glDisable(GL_LIGHTING);
     glDisable(GL_COLOR_MATERIAL);
@@ -318,13 +325,16 @@ void Environment::display()
 
     Application::drawDebug();
 
-    char buffer[255];
+  //  showText();
+}
+
+void Environment::showText() {
 
     std::vector<std::shared_ptr<Agent>> agents = EvolutionManager::getInstance()->getAgents();
     std::vector<std::shared_ptr<AgentController>> controllers = EvolutionManager::getInstance()->getAgentControllers();
 
+    char buffer[255];
     int aliveCount = EvolutionManager::getInstance()->agentsAliveCount;
-
     const int maxRows = 20;
     char *strText[maxRows];
 
@@ -335,25 +345,28 @@ void Environment::display()
         switch(i) {
 
             case maxRows-1:
-                sprintf(strText[i], "%d alive out of %d population", aliveCount, agents.size());
+                sprintf(strText[i], "%d alive out of %d population.", aliveCount, agents.size());
                 break;
             case maxRows-2:
-                sprintf(strText[i], "==========================================================================");
+                sprintf(strText[i], "%d generation out of %d generations.", EvolutionManager::getGeneticAlgorithm()->generationCount, RestartAfter);
                 break;
             case maxRows-3:
+                sprintf(strText[i], "==========================================================================");
+                break;
+            case maxRows-4:
                 sprintf(strText[i], "agent[0].timeSinceLastCheckpoint: %f", controllers[0]->getTimeSinceLastCheckpoint());
                 break;
 
-            case maxRows-4:
+            case maxRows-5:
                 sprintf(strText[i], "agent[0].x: %f", agents[0].get()->getPosition().x);
                 break;
-            case maxRows-5:
+            case maxRows-6:
                 sprintf(strText[i], "agent[0].y: %f", agents[0].get()->getPosition().y);
                 break;
-            case maxRows-6:
+            case maxRows-7:
                 sprintf(strText[i], "agent[0].z: %f", agents[0].get()->getPosition().z);
                 break;
-            case maxRows-7:
+            case maxRows-8:
                 sprintf(strText[i], "agent[0].evaluation: %f", agents[0]->genotype->evaluation);
                 break;
 
@@ -362,11 +375,9 @@ void Environment::display()
                 sprintf(strText[i], "");
                 break;
 
-
-
         }
 
-        this->renderText(5, 5 + (10 * i), strText[i], NULL);
+        renderText(5, 5 + (10 * i), strText[i], NULL);
 
         delete strText[i];
     }

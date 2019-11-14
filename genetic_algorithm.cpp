@@ -26,6 +26,7 @@ GeneticAlgorithm::~GeneticAlgorithm() {
 
 void GeneticAlgorithm::start() {
     // Init
+    generationCount = 1;
     running = true;
     initializePopulation(currentPopulation);
     evaluation(currentPopulation);
@@ -37,13 +38,7 @@ bool sortByGenotype(const Genotype* lhs, const Genotype* rhs) { return lhs->fitn
 void GeneticAlgorithm::evaluationFinished() {
     // Iterate through agent controllers and apply update
     std::vector<std::shared_ptr<AgentController>> controllers = EvolutionManager::getInstance()->getAgentControllers();
-/*
-    for (int i = 0; i < controllers.size(); i++) {
-        std::shared_ptr<AgentController> controller = controllers[i];
-        // Set agent evaluation (affects fitness calculation)
-        controller->setCurrentCompletionReward(1);
-    }
-*/
+
     // Calculate fitness from evaluation
     fitnessCalculationMethod(currentPopulation);
 
@@ -163,25 +158,7 @@ std::vector<Genotype*> *GeneticAlgorithm::defaultRecombinationOperator(std::vect
         auto end = std::next(intermediatePopulation.begin(), std::min(n, intermediatePopulation.size()));
         std::vector<Genotype*> b(intermediatePopulation.begin(), end);
 
-        Genotype *intermediatePopulation0;
-        Genotype *intermediatePopulation1;
-
-        int count = 0;
-        for (int i = 0; i < b.size(); i++) {
-
-//            intermediatePopulation->push_back(*it);
-            switch (count) {
-                case 0:
-                    intermediatePopulation0 = b[0];
-                    break;
-                case 1:
-                    intermediatePopulation1 = b[1];
-                    break;
-            }
-            count++;
-        }
-
-        completeCrossover(intermediatePopulation0, intermediatePopulation1, DefCrossSwapProb, offspring1, offspring2);
+        completeCrossover(b[0], b[1], DefCrossSwapProb, offspring1, offspring2);
 
         newPopulation->push_back(offspring1);
         if (newPopulation->size() < newPopulationSize) {
@@ -255,7 +232,7 @@ void GeneticAlgorithm::mutateGenotype(Genotype *genotype, float mutationProb, fl
 
 bool GeneticAlgorithm::defaultTermination(std::vector<Genotype*> currentPopulation) {
 
-    std::cout << "Generation count: " << EvolutionManager::getInstance()->getGenerationCount() << std::endl;
+    //std::cout << "Generation count: " << EvolutionManager::getInstance()->getGenerationCount() << std::endl;
 
     return (EvolutionManager::getInstance()->getGenerationCount() >= RestartAfter);
 }

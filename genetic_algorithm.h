@@ -90,7 +90,7 @@ public:
     int populationSize;
 
     // The amount of generations that have already passed.
-    int generationCount;
+    int generationCount = 1;
 
     // Whether the current population shall be sorted before calling the termination criterion operator.
     bool sortPopulation;

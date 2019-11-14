@@ -161,6 +161,12 @@ protected:
     /** Holds the contact resolver. */
     cyclone::ContactResolver resolver;
 
+    /** Holds the camera angle. */
+    float theta;
+
+    /** Holds the camera elevation. */
+    float phi;
+
     /** Holds the position of the mouse at the last frame of a drag. */
     int last_x, last_y;
 

@@ -75,7 +75,7 @@ void AgentController::update(float duration) {
 
     // Process sensor inputs through ffn
     double *controlInputs = this->agent->ffn->processInputs(sensorOutput);
-    // Apply inputs to agent movement
+    // Apply inputs to agent movement (two dimension array)
     this->movement->setInputs(controlInputs);
 
     // Agent timed out, death by timeout

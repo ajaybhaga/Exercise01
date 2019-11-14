@@ -7,13 +7,11 @@
 
 #include "shared_libs.h"
 
-Agent::Agent() {
-
-}
-
 // Initializes a new agent from given genotype, constructing a new feed-forward neural network from
 // the parameters of the genotype.
 Agent::Agent(Genotype *genotype, NeuralLayer::ActivationFunction defaultActivation, int *topology) {
+
+    this->colour = cyclone::Vector3(rd(), rd(), rd());
 
     alive = false;
     this->genotype = genotype;
@@ -115,5 +113,13 @@ const cyclone::Quaternion &Agent::getRotation() const {
 
 void Agent::setRotation(const cyclone::Quaternion &rotation) {
     Agent::rotation = rotation;
+}
+
+const cyclone::Vector3 &Agent::getColour() const {
+    return colour;
+}
+
+void Agent::setColour(const cyclone::Vector3 &colour) {
+    Agent::colour = colour;
 }
 

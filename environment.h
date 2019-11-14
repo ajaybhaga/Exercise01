@@ -19,9 +19,9 @@
  */
 class Environment : public Application
 {
+private:
     /** Tracks if a block has been hit. */
     bool hit;
-    bool ball_active;
     unsigned fracture_contact;
 
     /** Handle random numbers. */
@@ -44,6 +44,8 @@ class Environment : public Application
 
     /** Processes the physics. */
     virtual void update();
+
+    void showText();
 
 public:
     /** Creates a new demo object. */
