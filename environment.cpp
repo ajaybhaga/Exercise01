@@ -25,13 +25,14 @@ Environment::Environment() : Application()
     std::vector<std::shared_ptr<Agent>> agents = EvolutionManager::getInstance()->getAgents();
     for (int i = 0; i < agents.size(); i++) {
 
-        agents[i]->setPosition(cyclone::Vector3(rd(), rd(), rd()));
+        // Randomly place agents
+ //       agents[i]->setPosition(cyclone::Vector3(rd(), rd(), rd()));
+        agents[i]->setPosition(cyclone::Vector3(0.0, 0.0, 0.0));
 
         // Create agent -> collision sphere
         cyclone::CollisionSphere cs;
         cs.body = new cyclone::RigidBody();
         agentCollSpheres.emplace_back(cs);
-
 
         cs.radius = 0.25f;
         cs.body->setMass(5.0f);
@@ -274,14 +275,10 @@ void Environment::display()
     // Create the random number generator
     random_d rd{0.0, 1.0};
 
+
     for (int i = 0; i < agents.size(); i++) {
         glColor3f(agents[i].get()->getColour()[0], agents[i].get()->getColour()[1], agents[i].get()->getColour()[2]);
-        std::cout << "agents[i].get()->getColour()[0]:" << std::endl;
-        std::cout << agents[i].get()->getColour()[0];
-        std::cout << "agents[i].get()->getColour()[1]:" << std::endl;
-        std::cout << agents[i].get()->getColour()[1];
-        std::cout << "agents[i].get()->getColour()[2]:" << std::endl;
-        std::cout << agents[i].get()->getColour()[2];
+
 
         float size = 1.0f;
         glPushMatrix();
@@ -316,6 +313,20 @@ void Environment::display()
         }
         glEnd();
     }
+
+    // Draw some scale circles
+    glColor3f(0.75, 0.75, 0.75);
+    for (unsigned i = 1; i < 20; i++)
+    {
+        glBegin(GL_QUADS);
+        for (unsigned j = 0; j < 32; j++)
+        {
+            float theta = 3.1415926f * j / 16.0f;
+            glVertex3f(0.0,i*cosf(theta),i*sinf(theta));
+        }
+        glEnd();
+    }
+
     glBegin(GL_LINES);
     glVertex3f(-20,0,0);
     glVertex3f(20,0,0);
@@ -325,7 +336,21 @@ void Environment::display()
 
     Application::drawDebug();
 
-  //  showText();
+    showText();
+/*
+    glPushMatrix();
+    glBegin(GL_QUADS);
+    glColor3f(1.0, 1.0, 1.0);
+    glVertex4f(-1, -1, 0, 0);
+    glVertex4f(-1, 1, 0, 0);
+    glVertex4f(1, 1, 0, 0);
+    glVertex4f(1, -1, 0, 0);
+    glEnd();
+    glPopMatrix();
+*/
+
+
+
 }
 
 void Environment::showText() {

@@ -11,7 +11,7 @@
 // the parameters of the genotype.
 Agent::Agent(Genotype *genotype, NeuralLayer::ActivationFunction defaultActivation, int *topology) {
 
-    this->colour = cyclone::Vector3(rd(), rd(), rd());
+    this->colour = cyclone::Vector3(0.3, 0.95, 0.6);
 
     alive = false;
     this->genotype = genotype;

@@ -19,7 +19,7 @@ public:
     AgentMovement();
     ~AgentMovement();
 
-    void fixedUpdate(float deltaTime);
+    void update(float deltaTime);
     void checkInput();
     void applyInput(float deltaTime);
     void setInputs(double *input);

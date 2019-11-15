@@ -15,7 +15,7 @@ AgentMovement::~AgentMovement() {
 
 }
 
-void AgentMovement::fixedUpdate(float deltaTime) {
+void AgentMovement::update(float deltaTime) {
     checkInput();
     applyInput(deltaTime);
     applyVelocity(deltaTime);

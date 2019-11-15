@@ -36,7 +36,6 @@ public:
     const cyclone::Quaternion &getRotation() const;
     void setRotation(const cyclone::Quaternion &rotation);
 
-    random_d rd{0.0, 1.0};
 private:
     bool alive = false;
     cyclone::Vector3 position;

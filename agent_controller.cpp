@@ -16,6 +16,12 @@ AgentController::AgentController(Agent agent) {
     this->agent = std::make_shared<Agent>(agent);
     this->movement = std::make_shared<AgentMovement>();
     this->fsm = std::make_shared<AgentFSM>();
+
+    int numSensors = 3;
+    for (int i = 0; i < numSensors; i++) {
+        Sensor *s = new Sensor();
+        sensors.emplace_back(*s);
+    }
 }
 
 AgentController::~AgentController() {
@@ -70,6 +76,7 @@ void AgentController::update(float duration) {
     // Get readings from sensors
     double *sensorOutput = new double[sensors.size()];
     for (int i = 0; i < sensors.size(); i++) {
+        sensors[i].update();
         sensorOutput[i] = sensors[i].output;
     }
 
@@ -77,6 +84,7 @@ void AgentController::update(float duration) {
     double *controlInputs = this->agent->ffn->processInputs(sensorOutput);
     // Apply inputs to agent movement (two dimension array)
     this->movement->setInputs(controlInputs);
+    this->movement->update(duration);
 
     // Agent timed out, death by timeout
     if (timeSinceLastCheckpoint > MAX_CHECKPOINT_DELAY) {

@@ -19,7 +19,7 @@ public:
     ~Sensor();
 
     void start();
-    void fixedUpdate();
+    void update();
     void hide();
     void show();
 
