@@ -328,7 +328,8 @@ void Environment::display()
 
     Application::drawDebug();
 
-    showText();
+    if ((agents[0] != NULL) && (controllers[0] != NULL))
+        showText();
 /*
     glPushMatrix();
     glBegin(GL_QUADS);
@@ -375,14 +376,15 @@ void Environment::showText() {
                 break;
 
             case maxRows-5:
-                sprintf(strText[i], "agent[0].x: %f", agents[0]->getPosition().x);
+                sprintf(strText[i], "agent[0].x: %f, agent[0].y: %f, agent[0].z: %f", agents[0]->getPosition().x, agents[0]->getPosition().y, agents[0]->getPosition().z);
                 break;
             case maxRows-6:
-                sprintf(strText[i], "agent[0].y: %f", agents[0]->getPosition().y);
+                sprintf(strText[i], "agent[0].winX: %f, agent[0].winY: %f, agent[0].winZ: %f", agents[0]->getWinPos().x, agents[0]->getWinPos().y, agents[0]->getWinPos().z);
                 break;
             case maxRows-7:
-                sprintf(strText[i], "agent[0].z: %f", agents[0]->getPosition().z);
+                sprintf(strText[i], "", agents[0]->getPosition().z);
                 break;
+
             case maxRows-8:
                 sprintf(strText[i], "agent[0].evaluation: %f", agents[0]->genotype->evaluation);
                 break;
@@ -404,6 +406,12 @@ void Environment::showText() {
 
         delete strText[i];
     }
+
+    char *c = new char[80];
+    sprintf(c, "Agent:  %d", controllers[0]->getName().data());
+    renderText(agents[0]->getWinPos().x, agents[0]->getWinPos().y, c, NULL);
+    delete[] c;
+
 }
 
 /**

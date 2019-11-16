@@ -7,8 +7,11 @@
 
 #include "shared_libs.h"
 #include "agent_fsm.h"
+#include "math_helper.h"
 
 class EvolutionManager;
+//class MathHelper;
+//cyclone::Vector3 translateGLToWindowCoordinates(GLdouble x, GLdouble y, GLdouble z)
 
 int AgentController::idGenerator = 0;
 
@@ -86,11 +89,13 @@ void AgentController::update(float duration) {
     // Process sensor inputs through ffn
     double *controlInputs = this->agent->ffn->processInputs(sensorOutput);
 
-    std::cout << "controlInputs[0]:" << controlInputs[0] << "," << "controlInputs[1]:" << controlInputs[1] << std::endl;
+    //std::cout << "controlInputs[0]:" << controlInputs[0] << "," << "controlInputs[1]:" << controlInputs[1] << std::endl;
     // Apply inputs to agent movement (two dimension array)
     this->movement->setInputs(controlInputs);
     this->movement->update(duration);
 
+    // Update screen coordinates of agent
+    this->agent->setWinPos(MathHelper::translateGLToWindowCoordinates(this->agent->getPosition().x, this->agent->getPosition().y, this->agent->getPosition().z));
 
     // Agent timed out, death by timeout
     if (timeSinceLastCheckpoint > MAX_CHECKPOINT_DELAY) {
@@ -131,4 +136,8 @@ int AgentController::nextId() {
 
 float AgentController::getTimeSinceLastCheckpoint() const {
     return timeSinceLastCheckpoint;
+}
+
+const std::string &AgentController::getName() const {
+    return name;
 }

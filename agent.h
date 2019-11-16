@@ -39,6 +39,13 @@ public:
 private:
     bool alive = false;
     cyclone::Vector3 position;
+    cyclone::Vector3 winPos;
+public:
+    const cyclone::Vector3 &getWinPos() const;
+
+    void setWinPos(const cyclone::Vector3 &winPos);
+
+private:
     cyclone::Quaternion rotation;
     cyclone::Vector3 colour;
 public:

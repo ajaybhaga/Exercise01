@@ -38,3 +38,21 @@ double MathHelper::softSignFunction(double xValue) {
     return xValue / (1 + abs(xValue));
 
 }
+
+cyclone::Vector3 MathHelper::translateGLToWindowCoordinates(GLdouble x, GLdouble y, GLdouble z)
+{
+    GLdouble modelview[16];
+    GLdouble projection[16];
+    GLint viewport[4];
+
+    glGetDoublev(GL_MODELVIEW_MATRIX, modelview);
+    glGetDoublev(GL_PROJECTION_MATRIX, projection);
+    glGetIntegerv(GL_VIEWPORT, viewport);
+
+    cyclone::Vector3 outputCoord = cyclone::Vector3(0.0, 0.0, 0.0);
+
+    gluProject(x, y, z, modelview, projection, viewport, &outputCoord.x, &outputCoord.y, &outputCoord.z);
+
+    return outputCoord;
+}
+

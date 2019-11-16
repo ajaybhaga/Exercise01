@@ -268,6 +268,7 @@ void EvolutionManager::onAgentDied() {
 
 // Mutates all members of the new population with the default probability, while leaving the first 2 genotypes in the list.
 void EvolutionManager::mutateAllButBestTwo(std::vector<Genotype*> newPopulation) {
+    std::cout << "Mutating all population but best two.";
 
     int i = 0;
     for (int i = 2; i < newPopulation.size(); i++) {

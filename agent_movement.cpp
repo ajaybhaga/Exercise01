@@ -88,9 +88,10 @@ void AgentMovement::applyVelocity(float deltaTime) {
 
     static random_d rdx{-0.05, 0.05};
 
-    velocity[0] += rdx();
+/*    velocity[0] += rdx();
     velocity[1] += rdx();
     velocity[2] += rdx();
+*/
 
     // Update position
     this->agentController->agent->setPosition(cyclone::Vector3(this->agentController->agent->getPosition() + (velocity * deltaTime)));

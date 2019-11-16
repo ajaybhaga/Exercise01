@@ -126,3 +126,11 @@ void Agent::setColour(const cyclone::Vector3 &colour) {
     Agent::colour = colour;
 }
 
+const cyclone::Vector3 &Agent::getWinPos() const {
+    return winPos;
+}
+
+void Agent::setWinPos(const cyclone::Vector3 &winPos) {
+    Agent::winPos = winPos;
+}
+

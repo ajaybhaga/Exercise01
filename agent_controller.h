@@ -66,6 +66,8 @@ private:
     long lastTime = 0;
 
     std::string name;
+public:
+    const std::string &getName() const;
 };
 
 #endif //EANN_SIMPLE_AGENT_CONTROLLER_H

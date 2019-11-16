@@ -8,6 +8,8 @@
 #ifndef EANN_SIMPLE_MATH_HELPER_H
 #define EANN_SIMPLE_MATH_HELPER_H
 
+#include <cyclone/cyclone.h>
+#include "../ogl_headers.h"
 
 #include "random_d.h"
 
@@ -28,6 +30,9 @@ public:
     // The SoftSign function as proposed by Xavier Glorot and Yoshua Bengio (2010):
     // "Understanding the difficulty of training deep feed-forward neural networks."
     static double softSignFunction(double xValue);
+
+    static cyclone::Vector3 translateGLToWindowCoordinates(GLdouble x, GLdouble y, GLdouble z);
+
 };
 
 #endif //EANN_SIMPLE_MATH_HELPER_H
