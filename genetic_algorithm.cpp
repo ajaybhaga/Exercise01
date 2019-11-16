@@ -7,6 +7,9 @@
 
 #include "shared_libs.h"
 
+// Create the random number generator
+static random_d rd{0, 1};
+
 GeneticAlgorithm::GeneticAlgorithm(int genotypeParamCount, int populationSize) {
 
     this->populationSize = populationSize;
@@ -37,7 +40,7 @@ bool sortByGenotype(const Genotype* lhs, const Genotype* rhs) { return lhs->fitn
 
 void GeneticAlgorithm::evaluationFinished() {
     // Iterate through agent controllers and apply update
-    std::vector<std::shared_ptr<AgentController>> controllers = EvolutionManager::getInstance()->getAgentControllers();
+    std::vector<AgentController*> controllers = EvolutionManager::getInstance()->getAgentControllers();
 
     // Calculate fitness from evaluation
     fitnessCalculationMethod(currentPopulation);
@@ -171,9 +174,6 @@ std::vector<Genotype*> *GeneticAlgorithm::defaultRecombinationOperator(std::vect
 
 void GeneticAlgorithm::defaultMutationOperator(std::vector<Genotype*> newPopulation) {
 
-    // Create the random number generator
-    random_d rd{0, 1};
-
     for (std::vector<Genotype*>::iterator it = newPopulation.begin(); it != newPopulation.end(); ++it) {
 
 
@@ -188,9 +188,6 @@ void GeneticAlgorithm::defaultMutationOperator(std::vector<Genotype*> newPopulat
 
 void GeneticAlgorithm::completeCrossover(Genotype *parent1, Genotype *parent2, float swapChance, Genotype* &offspring1,
                                          Genotype* &offspring2) {
-
-    // Create the random number generator
-    random_d rd{0, 1};
 
     // Initialize new parameter vectors
     int parameterCount = parent1->getParameterCopy().size();
@@ -217,9 +214,6 @@ void GeneticAlgorithm::completeCrossover(Genotype *parent1, Genotype *parent2, f
 }
 
 void GeneticAlgorithm::mutateGenotype(Genotype *genotype, float mutationProb, float mutationAmount) {
-
-    // Create the random number generator
-    random_d rd{0, 1};
 
     for (int i = 0; i < genotype->getParameterCount(); i++) {
 

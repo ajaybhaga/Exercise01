@@ -25,7 +25,7 @@
 class AgentController {
 public:
 
-    AgentController(Agent agent);
+    AgentController(Agent *agent);
     ~AgentController();
 
     void awake();
@@ -39,9 +39,9 @@ public:
 
     int nextId();
 
-    std::shared_ptr<Agent> agent;
-    std::shared_ptr<AgentMovement> movement;
-    std::shared_ptr<AgentFSM> fsm;
+    Agent *agent;
+    AgentMovement *movement;
+    AgentFSM *fsm;
 
     bool useUserInput = false;
 

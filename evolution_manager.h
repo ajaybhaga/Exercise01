@@ -43,8 +43,8 @@ public:
     // Event for when all agents have died.
     Event allAgentsDied;
 
-    const std::vector<std::shared_ptr<Agent>> &getAgents() const;
-    const std::vector<std::shared_ptr<AgentController>> &getAgentControllers() const;
+    const std::vector<Agent*> &getAgents() const;
+    const std::vector<AgentController*> &getAgentControllers() const;
 
 private:
 
@@ -74,10 +74,10 @@ private:
     int* ffnTopology;
 
     // The current population agents.
-    std::vector<std::shared_ptr<Agent>> agents;
+    std::vector<Agent*> agents;
 
     // The current population agents.
-    std::vector<std::shared_ptr<AgentController>> agentControllers;
+    std::vector<AgentController*> agentControllers;
 
     GeneticAlgorithm *geneticAlgorithm;
 };

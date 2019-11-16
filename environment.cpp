@@ -11,23 +11,21 @@
 
 cyclone::Random global_random;
 
+// Create the random number generator
+static random_d rd{0.0, 1.0f};
+
 // Method definitions
 Environment::Environment() : Application()
 {
     std::cout << "Evolution Manager -> starting..." << std::endl;
     EvolutionManager::getInstance()->startEvolution();
 
-    // Create the random number generator
-    random_d rd{0.0, 10.0f};
-
-
     // Create shape for each agent
-    std::vector<std::shared_ptr<Agent>> agents = EvolutionManager::getInstance()->getAgents();
+    std::vector<Agent*> agents = EvolutionManager::getInstance()->getAgents();
     for (int i = 0; i < agents.size(); i++) {
 
         // Randomly place agents
  //       agents[i]->setPosition(cyclone::Vector3(rd(), rd(), rd()));
-        agents[i]->setPosition(cyclone::Vector3(0.0, 0.0, 0.0));
 
         // Create agent -> collision sphere
         cyclone::CollisionSphere cs;
@@ -218,18 +216,16 @@ void Environment::updateObjects(cyclone::real duration) {
 
 
     // Iterate through agent controllers and apply update
-    std::vector<std::shared_ptr<Agent>> agents = EvolutionManager::getInstance()->getAgents();
-    std::vector<std::shared_ptr<AgentController>> controllers = EvolutionManager::getInstance()->getAgentControllers();
-
-    // Create the random number generator
-    random_d rd{0.0, 1.0};
+    std::vector<Agent*> agents = EvolutionManager::getInstance()->getAgents();
+    std::vector<AgentController*> controllers = EvolutionManager::getInstance()->getAgentControllers();
 
     for (int i = 0; i < controllers.size(); i++) {
-        std::shared_ptr<AgentController> controller = controllers[i];
+        AgentController *controller = controllers[i];
         controller->update(duration);
         // Set agent evaluation (affects fitness calculation)
         controller->setCurrentCompletionReward(controller->getCurrentCompletionReward()+rd());
     }
+
 
 //    std::cout << "currentDateTime()=" << currentDateTime() << std::endl;
    // std::cout << "[" << currentDateTime() << "] -> environment update objects" << std::endl;
@@ -247,8 +243,8 @@ void Environment::updateObjects(cyclone::real duration) {
 
 void Environment::display()
 {
-    std::vector<std::shared_ptr<Agent>> agents = EvolutionManager::getInstance()->getAgents();
-    std::vector<std::shared_ptr<AgentController>> controllers = EvolutionManager::getInstance()->getAgentControllers();
+    std::vector<Agent*> agents = EvolutionManager::getInstance()->getAgents();
+    std::vector<AgentController*> controllers = EvolutionManager::getInstance()->getAgentControllers();
 
     const static GLfloat lightPosition[] = {0.7f,1,0.4f,0};
 
@@ -272,17 +268,13 @@ void Environment::display()
     glDisable(GL_NORMALIZE);
 */
 
-    // Create the random number generator
-    random_d rd{0.0, 1.0};
-
 
     for (int i = 0; i < agents.size(); i++) {
-        glColor3f(agents[i].get()->getColour()[0], agents[i].get()->getColour()[1], agents[i].get()->getColour()[2]);
-
+        glColor3f(agents[i]->getColour()[0], agents[i]->getColour()[1], agents[i]->getColour()[2]);
 
         float size = 1.0f;
         glPushMatrix();
-            cyclone::Vector3 pos = agents[i].get()->getPosition();
+            cyclone::Vector3 pos = agents[i]->getPosition();
             glScalef(size, size, size);
             glTranslatef(pos.x, pos.y, pos.z);
             glutSolidSphere(0.25f, 16, 8);
@@ -318,7 +310,7 @@ void Environment::display()
     glColor3f(0.75, 0.75, 0.75);
     for (unsigned i = 1; i < 20; i++)
     {
-        glBegin(GL_QUADS);
+        glBegin(GL_LINE_LOOP);
         for (unsigned j = 0; j < 32; j++)
         {
             float theta = 3.1415926f * j / 16.0f;
@@ -355,8 +347,8 @@ void Environment::display()
 
 void Environment::showText() {
 
-    std::vector<std::shared_ptr<Agent>> agents = EvolutionManager::getInstance()->getAgents();
-    std::vector<std::shared_ptr<AgentController>> controllers = EvolutionManager::getInstance()->getAgentControllers();
+    std::vector<Agent*> agents = EvolutionManager::getInstance()->getAgents();
+    std::vector<AgentController*> controllers = EvolutionManager::getInstance()->getAgentControllers();
 
     char buffer[255];
     int aliveCount = EvolutionManager::getInstance()->agentsAliveCount;
@@ -383,16 +375,22 @@ void Environment::showText() {
                 break;
 
             case maxRows-5:
-                sprintf(strText[i], "agent[0].x: %f", agents[0].get()->getPosition().x);
+                sprintf(strText[i], "agent[0].x: %f", agents[0]->getPosition().x);
                 break;
             case maxRows-6:
-                sprintf(strText[i], "agent[0].y: %f", agents[0].get()->getPosition().y);
+                sprintf(strText[i], "agent[0].y: %f", agents[0]->getPosition().y);
                 break;
             case maxRows-7:
-                sprintf(strText[i], "agent[0].z: %f", agents[0].get()->getPosition().z);
+                sprintf(strText[i], "agent[0].z: %f", agents[0]->getPosition().z);
                 break;
             case maxRows-8:
                 sprintf(strText[i], "agent[0].evaluation: %f", agents[0]->genotype->evaluation);
+                break;
+            case maxRows-9:
+                sprintf(strText[i], "agent[0].horizontalInput: %f", controllers[0]->movement->getHorizontalInput());
+                break;
+            case maxRows-10:
+                sprintf(strText[i], "agent[0].verticalInput: %f", controllers[0]->movement->getVerticalInput());
                 break;
 
 

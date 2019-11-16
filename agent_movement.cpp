@@ -7,8 +7,12 @@
 
 #include "shared_libs.h"
 
-AgentMovement::AgentMovement() {
+// Create the random number generator
+static random_d rd{0.0, 1.0};
 
+AgentMovement::AgentMovement(AgentController *agentController) {
+    //this->agentController.make_shared(agentController);
+    this->agentController = std::make_shared<AgentController>(*agentController);
 }
 
 AgentMovement::~AgentMovement() {
@@ -24,9 +28,6 @@ void AgentMovement::update(float deltaTime) {
 }
 
 void AgentMovement::checkInput() {
-    // Nothing to do right now
-    horizontalInput = 0.0f;
-    verticalInput = 0.0f;
 }
 
 void AgentMovement::applyInput(float deltaTime) {
@@ -44,7 +45,7 @@ void AgentMovement::applyInput(float deltaTime) {
     }
 
     // Agent can only accelerate further if velocity is lower than engineForce * MAX_VEL
-    bool canAccelerate = false;
+    bool canAccelerate = true;
     if (verticalInput < 0) {
         canAccelerate = velocity[1] > verticalInput * MAX_VEL;
     } else if (verticalInput > 0) {
@@ -85,13 +86,14 @@ void AgentMovement::applyVelocity(float deltaTime) {
     dirQ.addScaledVector(direction, 1.0);
     dirQ.rotateByVector(velocity * deltaTime);
 
-    cyclone::Matrix4 transform = cyclone::Matrix4();
-    transform.setOrientationAndPos(dirQ, this->agentController->agent->getPosition());
-//    this->agentController->agent->getPosition().
-    cyclone::Matrix4 position = cyclone::Matrix4();
-    position.transform(this->agentController->agent->getPosition());
-    position = transform * position;
-    this->agentController->agent->setPosition(position.getAxisVector(2));
+    static random_d rdx{-0.05, 0.05};
+
+    velocity[0] += rdx();
+    velocity[1] += rdx();
+    velocity[2] += rdx();
+
+    // Update position
+    this->agentController->agent->setPosition(cyclone::Vector3(this->agentController->agent->getPosition() + (velocity * deltaTime)));
 }
 
 // Apply some friction to the velocity.
@@ -118,4 +120,20 @@ void AgentMovement::applyFriction(float deltaTime) {
 void AgentMovement::stop() {
     velocity = cyclone::Vector3(0, 0, 0);
     rotation = cyclone::Quaternion(0, cyclone::Vector3(0, 0, 1));
+}
+
+double AgentMovement::getHorizontalInput() const {
+    return horizontalInput;
+}
+
+void AgentMovement::setHorizontalInput(double horizontalInput) {
+    AgentMovement::horizontalInput = horizontalInput;
+}
+
+double AgentMovement::getVerticalInput() const {
+    return verticalInput;
+}
+
+void AgentMovement::setVerticalInput(double verticalInput) {
+    AgentMovement::verticalInput = verticalInput;
 }

@@ -7,11 +7,15 @@
 
 #include "shared_libs.h"
 
+static random_d rd{-5.0, 5.0};
+
 // Initializes a new agent from given genotype, constructing a new feed-forward neural network from
 // the parameters of the genotype.
 Agent::Agent(Genotype *genotype, NeuralLayer::ActivationFunction defaultActivation, int *topology) {
 
-    this->colour = cyclone::Vector3(0.3, 0.95, 0.6);
+    this->position = cyclone::Vector3(rd(), rd(), rd());
+    this->rotation = cyclone::Quaternion();
+    this->colour = cyclone::Vector3(rd(), rd(), rd());
 
     alive = false;
     this->genotype = genotype;
@@ -63,7 +67,6 @@ void Agent::kill() {
 }
 
 int Agent::compareTo(Agent &other) {
-    // TODO: Implement agent genotype comparison
 
     bool match = true;
 

@@ -8,6 +8,8 @@
 #include "shared_libs.h"
 
 namespace fs = std::__fs::filesystem;
+// Create the random number generator
+static random_d rd{0.0, 1.0};
 
 bool directoryExists(const char *dname){
     DIR *di = opendir(dname); // open the directory
@@ -236,9 +238,9 @@ void EvolutionManager::restartAlgorithm(float wait) {
     for (int i = 0; i < currentPopulation.size(); i++) {
 
         Agent* agent = new Agent(currentPopulation[i], MathHelper::softSignFunction, getInstance()->ffnTopology);
-        AgentController *agentController = new AgentController(*agent);
-        getInstance()->agents.emplace_back(std::make_shared<Agent>(*agent));
-        getInstance()->agentControllers.emplace_back(std::make_shared<AgentController>(*agentController));
+        AgentController *agentController = new AgentController(agent);
+        getInstance()->agents.emplace_back(agent);
+        getInstance()->agentControllers.emplace_back(agentController);
         agentController->agent->agentDied += onAgentDied;
         getInstance()->agentsAliveCount++;
     }
@@ -266,8 +268,6 @@ void EvolutionManager::onAgentDied() {
 
 // Mutates all members of the new population with the default probability, while leaving the first 2 genotypes in the list.
 void EvolutionManager::mutateAllButBestTwo(std::vector<Genotype*> newPopulation) {
-    // Create the random number generator
-    random_d rd{0.0, 1.0};
 
     int i = 0;
     for (int i = 2; i < newPopulation.size(); i++) {
@@ -279,9 +279,6 @@ void EvolutionManager::mutateAllButBestTwo(std::vector<Genotype*> newPopulation)
 }
 
 void EvolutionManager::mutateAll(std::vector<Genotype*> newPopulation) {
-
-    // Create the random number generator
-    random_d rd{0.0, 1.0};
 
      for (int i = 0; i < newPopulation.size(); i++) {
          if (rd() < DefMutationProb) {
@@ -359,9 +356,6 @@ std::vector<Genotype*> *EvolutionManager::randomRecombination(std::vector<Genoty
 
 std::vector<Genotype*> *EvolutionManager::remainderStochasticSampling(std::vector<Genotype*> currentPopulation) {
 
-    // Create the random number generator
-    random_d rd{0.0, 1.0};
-
     std::vector<Genotype*> *intermediatePopulation = new std::vector<Genotype*>();
     // Put integer portion of genotypes into intermediatePopulation
     // Assumes that currentPopulation is already sorted
@@ -397,10 +391,10 @@ GeneticAlgorithm *EvolutionManager::getGeneticAlgorithm() {
     return getInstance()->geneticAlgorithm;
 }
 
-const std::vector<std::shared_ptr<Agent>> &EvolutionManager::getAgents() const {
+const std::vector<Agent*> &EvolutionManager::getAgents() const {
     return agents;
 }
 
-const std::vector<std::shared_ptr<AgentController>> &EvolutionManager::getAgentControllers() const {
+const std::vector<AgentController*> &EvolutionManager::getAgentControllers() const {
     return agentControllers;
 }

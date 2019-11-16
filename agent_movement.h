@@ -16,7 +16,7 @@ class AgentController;
 class AgentMovement {
 public:
 
-    AgentMovement();
+    AgentMovement(AgentController *agentController);
     ~AgentMovement();
 
     void update(float deltaTime);
@@ -47,6 +47,16 @@ private:
 
     // Horizontal = engine force
     double horizontalInput;
+public:
+    double getHorizontalInput() const;
+
+    void setHorizontalInput(double horizontalInput);
+
+    double getVerticalInput() const;
+
+    void setVerticalInput(double verticalInput);
+
+private:
 
     // Vertical = turning force
     double verticalInput;

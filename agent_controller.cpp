@@ -12,10 +12,13 @@ class EvolutionManager;
 
 int AgentController::idGenerator = 0;
 
-AgentController::AgentController(Agent agent) {
-    this->agent = std::make_shared<Agent>(agent);
-    this->movement = std::make_shared<AgentMovement>();
-    this->fsm = std::make_shared<AgentFSM>();
+// Create the random number generator
+static random_d rd{0.0, 1.0};
+
+AgentController::AgentController(Agent *agent) {
+    this->agent = agent;
+    this->movement = new AgentMovement(this);
+    this->fsm = new AgentFSM();
 
     int numSensors = 3;
     for (int i = 0; i < numSensors; i++) {
@@ -26,15 +29,15 @@ AgentController::AgentController(Agent agent) {
 
 AgentController::~AgentController() {
     if (this->agent) {
-        this->agent.reset();
+        delete[] this->agent;
     }
 
     if (this->movement) {
-        this->movement.reset();
+        delete[] this->movement;
     }
 
     if (this->fsm) {
-        this->fsm.reset();
+        delete[] this->fsm;
     }
 }
 
@@ -82,9 +85,12 @@ void AgentController::update(float duration) {
 
     // Process sensor inputs through ffn
     double *controlInputs = this->agent->ffn->processInputs(sensorOutput);
+
+    std::cout << "controlInputs[0]:" << controlInputs[0] << "," << "controlInputs[1]:" << controlInputs[1] << std::endl;
     // Apply inputs to agent movement (two dimension array)
     this->movement->setInputs(controlInputs);
     this->movement->update(duration);
+
 
     // Agent timed out, death by timeout
     if (timeSinceLastCheckpoint > MAX_CHECKPOINT_DELAY) {
