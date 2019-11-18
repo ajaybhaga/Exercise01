@@ -62,7 +62,7 @@ private:
     int genotypesSaved = 0;
 
     // Population size
-    int populationSize = 30;
+    int populationSize = 10;
 
     // After how many generations should the genetic algorithm be restarted (0 for never)
     int restartAfter = 100;

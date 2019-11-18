@@ -195,7 +195,7 @@ void Application::renderText(float x, float y, const char *text, void *font)
 void Application::renderPanel(float x, float y, float panelWidth, float panelHeight, const char *text)
 {
 
-    void *font = GLUT_BITMAP_9_BY_15;
+    void *font = GLUT_BITMAP_8_BY_13;
     glDisable(GL_DEPTH_TEST);
 
     // Temporarily set up the view in orthographic projection.
@@ -224,11 +224,6 @@ void Application::renderPanel(float x, float y, float panelWidth, float panelHei
     glVertex3f(wx, wy, 0);
     glEnd();
     glPopMatrix();
-
-    // Ensure we have a font
-    if (font == NULL) {
-        font = GLUT_BITMAP_HELVETICA_10;
-    }
 
     // Loop through characters displaying them.
     size_t len = strlen(text);
@@ -261,8 +256,12 @@ void Application::renderPanel(float x, float y, float panelWidth, float panelHei
 
 void Application::renderParameters(float x, float y, std::vector<float> parameters)
 {
+    if (parameters[0] == NULL) {
+        return;
+    }
+
     const char *text = "Weights:";
-    void *font = GLUT_BITMAP_HELVETICA_10;
+    void *font = GLUT_BITMAP_8_BY_13;
     glDisable(GL_DEPTH_TEST);
 
     // Temporarily set up the view in orthographic projection.
