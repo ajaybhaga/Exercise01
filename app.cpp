@@ -25,6 +25,8 @@ void Application::initGraphics()
     glClearColor(1.0f, 0.95f, 0.5f, 1.0f);
     glEnable(GL_DEPTH_TEST);
     glShadeModel(GL_SMOOTH);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     setView();
 }
@@ -40,6 +42,7 @@ void Application::setView()
 
 void Application::display()
 {
+
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glLoadIdentity();
     gluLookAt(18.0f, 0, 0,  0, 0, 0,  0, 1.0f, 0);
@@ -176,6 +179,148 @@ void Application::renderText(float x, float y, const char *text, void *font)
         if (*letter == '\n') {
             y -= 12.0f;
             glRasterPos2f(x, y);
+        }
+        glutBitmapCharacter(font, *letter);
+    }
+
+    // Pop the matrices to return to how we were before.
+    glPopMatrix();
+    glMatrixMode(GL_PROJECTION);
+    glPopMatrix();
+    glMatrixMode(GL_MODELVIEW);
+
+    glEnable(GL_DEPTH_TEST);
+}
+
+void Application::renderPanel(float x, float y, float panelWidth, float panelHeight, const char *text)
+{
+
+    void *font = GLUT_BITMAP_9_BY_15;
+    glDisable(GL_DEPTH_TEST);
+
+    // Temporarily set up the view in orthographic projection.
+    glMatrixMode(GL_PROJECTION);
+    glPushMatrix();
+    glLoadIdentity();
+    glOrtho(0.0, (double)width, 0.0, (double)height, -1.0, 1.0);
+
+    // Move to modelview mode.
+    glMatrixMode(GL_MODELVIEW);
+    glPushMatrix();
+    glLoadIdentity();
+
+    float px = panelWidth;
+    float py = panelHeight;
+    float wx = x;
+    float wy = y-py+10.0f;
+
+    glTranslatef(0,0,0); //the position of the element
+    glPushMatrix();
+    glBegin(GL_QUADS);
+    glColor4f(0.1, 0.9, 0.4, 0.6f);
+    glVertex3f(wx+px, wy, 0);
+    glVertex3f(wx+px, wy+py, 0);
+    glVertex3f(wx, wy+py, 0);
+    glVertex3f(wx, wy, 0);
+    glEnd();
+    glPopMatrix();
+
+    // Ensure we have a font
+    if (font == NULL) {
+        font = GLUT_BITMAP_HELVETICA_10;
+    }
+
+    // Loop through characters displaying them.
+    size_t len = strlen(text);
+
+    float tx, ty;
+    tx = x + 5.0f;
+    ty = y - 8.0f;
+    glColor3f(0.0, 0.0, 0.0);
+    glRasterPos2f(tx, ty);
+    for (const char *letter = text; letter < text+len; letter++) {
+
+        // If we meet a newline, then move down by the line-height
+        // TODO: Make the line-height a function of the font
+        if (*letter == '\n') {
+            ty -= (12.0f);
+            glRasterPos2f(tx, ty);
+            continue;
+        }
+        glutBitmapCharacter(font, *letter);
+    }
+
+    // Pop the matrices to return to how we were before.
+    glPopMatrix();
+    glMatrixMode(GL_PROJECTION);
+    glPopMatrix();
+    glMatrixMode(GL_MODELVIEW);
+
+    glEnable(GL_DEPTH_TEST);
+}
+
+void Application::renderParameters(float x, float y, std::vector<float> parameters)
+{
+    const char *text = "Weights:";
+    void *font = GLUT_BITMAP_HELVETICA_10;
+    glDisable(GL_DEPTH_TEST);
+
+    // Temporarily set up the view in orthographic projection.
+    glMatrixMode(GL_PROJECTION);
+    glPushMatrix();
+    glLoadIdentity();
+    glOrtho(0.0, (double)width, 0.0, (double)height, -1.0, 1.0);
+
+    // Move to modelview mode.
+    glMatrixMode(GL_MODELVIEW);
+    glPushMatrix();
+    glLoadIdentity();
+
+    float width = 2.0f;
+    float height = 20.0f;
+
+    float px = width;
+    float py = height;
+    float wx = x+2.0f;
+    float wy = y-py+10.0f;
+
+    for (int i = 0; i < parameters.size(); i++) {
+        glTranslatef(0, 0, 0); //the position of the element
+        glPushMatrix();
+        glBegin(GL_QUADS);
+
+        glColor4f(parameters[i], 0.0, 1-parameters[i], 0.8f);
+
+
+        glVertex3f((i*px)+wx + px, wy, 0);
+        glVertex3f((i*px)+wx + px, wy + py, 0);
+        glVertex3f((i*px)+wx, wy + py, 0);
+        glVertex3f((i*px)+wx, wy, 0);
+        glEnd();
+        glPopMatrix();
+    }
+
+    // Ensure we have a font
+    if (font == NULL) {
+        font = GLUT_BITMAP_HELVETICA_10;
+    }
+
+    // Loop through characters displaying them.
+    size_t len = strlen(text);
+
+    float tx, ty;
+    tx = x + 5.0f;
+    ty = y + 14.0f;
+    glColor3f(0.0, 0.0, 0.0);
+    glRasterPos2f(tx, ty);
+    for (const char *letter = text; letter < text+len; letter++) {
+
+        // If we meet a newline, then move down by the line-height
+        // TODO: Make the line-height a function of the font
+        if (*letter == '\n') {
+            ty -= (12.0f);
+            glRasterPos2f(tx, ty);
+            continue;
         }
         glutBitmapCharacter(font, *letter);
     }

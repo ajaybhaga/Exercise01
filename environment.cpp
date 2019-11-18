@@ -407,11 +407,11 @@ void Environment::showText() {
         delete strText[i];
     }
 
-    char *c = new char[80];
-    sprintf(c, "Agent:  %d", controllers[0]->getName().data());
-    renderText(agents[0]->getWinPos().x, agents[0]->getWinPos().y, c, NULL);
+    char *c = new char[200];
+    sprintf(c, "Agent:  %d\nagent[0].x: %f\nagent[0].y: %f\nagent[0].z: %f", controllers[0]->getName().data(), agents[0]->getPosition().x, agents[0]->getPosition().y, agents[0]->getPosition().z);
+    renderPanel(agents[0]->getWinPos().x, agents[0]->getWinPos().y, 200.0f, 100.0f, c);
+    renderParameters(agents[0]->getWinPos().x+2.0f, agents[0]->getWinPos().y-80.0f, agents[0]->genotype->getParameterCopy());
     delete[] c;
-
 }
 
 /**

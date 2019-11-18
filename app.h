@@ -148,6 +148,10 @@ public:
      */
     void renderText(float x, float y, const char *text, void* font=NULL);
 
+    void renderPanel(float x, float y, float panelWidth, float panelHeight, const char *text);
+
+    void renderParameters(float x, float y, std::vector<float> parameters);
+
 protected:
     /** Holds the maximum number of contacts. */
     const static unsigned maxContacts = 256;
