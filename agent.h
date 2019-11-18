@@ -19,6 +19,10 @@ public:
     void kill();
     int compareTo(Agent &other);
 
+    // Agent id
+    unsigned int id;
+    std::string name;
+
     // Underlying genotype of this agent.
     Genotype *genotype;
 
@@ -35,23 +39,19 @@ public:
     void setPosition(const cyclone::Vector3 &position);
     const cyclone::Quaternion &getRotation() const;
     void setRotation(const cyclone::Quaternion &rotation);
+    const cyclone::Vector3 &getWinPos() const;
+    void setWinPos(const cyclone::Vector3 &winPos);
+    const cyclone::Vector3 &getColour() const;
+    void setColour(const cyclone::Vector3 &colour);
+    const char* getName();
+    unsigned generateId();
 
 private:
     bool alive = false;
     cyclone::Vector3 position;
     cyclone::Vector3 winPos;
-public:
-    const cyclone::Vector3 &getWinPos() const;
-
-    void setWinPos(const cyclone::Vector3 &winPos);
-
-private:
     cyclone::Quaternion rotation;
     cyclone::Vector3 colour;
-public:
-    const cyclone::Vector3 &getColour() const;
-
-    void setColour(const cyclone::Vector3 &colour);
 };
 
 #endif //EANN_SIMPLE_AGENT_H

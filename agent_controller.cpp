@@ -13,8 +13,6 @@ class EvolutionManager;
 //class MathHelper;
 //cyclone::Vector3 translateGLToWindowCoordinates(GLdouble x, GLdouble y, GLdouble z)
 
-int AgentController::idGenerator = 0;
-
 // Create the random number generator
 static random_d rd{0.0, 1.0};
 
@@ -56,10 +54,6 @@ void AgentController::start() {
 
     // When agent controller hits wall -> die action
 //    this->movement->hitWall += die;
-
-    this->name += "Agent (";
-    this->name += this->nextId();
-    this->name += ")";
 
     auto start = std::chrono::high_resolution_clock::now();
 }
@@ -130,14 +124,6 @@ void AgentController::setCurrentCompletionReward(float reward) {
         agent->genotype->evaluation = reward;
 }
 
-int AgentController::nextId() {
-    return idGenerator++;
-}
-
 float AgentController::getTimeSinceLastCheckpoint() const {
     return timeSinceLastCheckpoint;
-}
-
-const std::string &AgentController::getName() const {
-    return name;
 }

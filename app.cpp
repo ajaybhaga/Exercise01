@@ -22,7 +22,7 @@
 
 void Application::initGraphics()
 {
-    glClearColor(1.0f, 0.95f, 0.5f, 1.0f);
+    glClearColor(1.0f, 0.95f, 0.8f, 1.0f);
     glEnable(GL_DEPTH_TEST);
     glShadeModel(GL_SMOOTH);
     glEnable(GL_BLEND);

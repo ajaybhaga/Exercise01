@@ -346,8 +346,6 @@ void Environment::display()
 
 }
 
-
-// TODO: Crashes often, needs more error checking
 void Environment::showText() {
 
     std::vector<Agent*> agents = EvolutionManager::getInstance()->getAgents();
@@ -359,8 +357,10 @@ void Environment::showText() {
     char *strText[maxRows];
 
     for (int i = 0; i < maxRows; i++) {
-
         strText[i] = new char[80];
+    }
+
+    for (int i = 0; i < maxRows; i++) {
 
         switch(i) {
 
@@ -407,18 +407,29 @@ void Environment::showText() {
         if (strText[i])
             renderText(5, 5 + (10 * i), strText[i], NULL);
 
+    }
+
+    for (int i = 0; i < maxRows; i++) {
         delete strText[i];
     }
 
+    char *c = new char[255];
     for (int i = 0; i < agents.size(); i++) {
-        char *c = new char[200];
-        sprintf(c, "Agent:  %d\nagent[%d].x: %f\nagent[%d].y: %f\nagent[%d].z: %f", controllers[i]->getName().data(), i,
-                agents[i]->getPosition().x, i, agents[i]->getPosition().y, i, agents[i]->getPosition().z);
+
+        sprintf(c, "Agent:  %s\nagent[%d].x: %f\nagent[%d].y: %f\nagent[%d].z: %f",
+                agents[i]->getName(),
+                i, agents[i]->getPosition().x,
+                i, agents[i]->getPosition().y,
+                i, agents[i]->getPosition().z);
+
         renderPanel(agents[i]->getWinPos().x, agents[i]->getWinPos().y, 200.0f, 100.0f, c);
-        renderParameters(agents[i]->getWinPos().x + 2.0f, agents[i]->getWinPos().y - 80.0f,
-                         agents[i]->genotype->getParameterCopy());
-        delete[] c;
+
+        if (agents[i]->genotype) {
+            renderParameters(agents[i]->getWinPos().x + 90.0f, agents[i]->getWinPos().y - 80.0f,
+                             agents[i]->genotype->getParameterCopy());
+        }
     }
+    delete[] c;
 }
 
 /**

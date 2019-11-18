@@ -13,7 +13,10 @@ static random_d rd{-5.0, 5.0};
 // the parameters of the genotype.
 Agent::Agent(Genotype *genotype, NeuralLayer::ActivationFunction defaultActivation, int *topology) {
 
-    this->position = cyclone::Vector3(rd(), rd(), rd());
+    id = this->generateId();
+    // Random position spread magnitude
+    float mag = 4.0f;
+    this->position = cyclone::Vector3(rd()*mag, rd()*mag, rd()*mag);
     this->rotation = cyclone::Quaternion();
     this->colour = cyclone::Vector3(rd(), rd(), rd());
 
@@ -134,3 +137,12 @@ void Agent::setWinPos(const cyclone::Vector3 &winPos) {
     Agent::winPos = winPos;
 }
 
+const char* Agent::getName() {
+    this->name = std::string("Agent ") + std::to_string(id);
+    return name.data();
+}
+
+unsigned Agent::generateId() {
+    static unsigned int idGenerator = 0;
+    return ++idGenerator;
+}

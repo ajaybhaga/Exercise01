@@ -37,8 +37,6 @@ public:
     float getCurrentCompletionReward();
     void setCurrentCompletionReward(float reward);
 
-    int nextId();
-
     Agent *agent;
     AgentMovement *movement;
     AgentFSM *fsm;
@@ -50,9 +48,6 @@ public:
 
 
 private:
-
-    static int idGenerator;
-
     // Maximum delay in seconds between the collection of two checkpoints until this agent dies.
     const float MAX_CHECKPOINT_DELAY = 7;
 
@@ -65,9 +60,6 @@ private:
     long startTime;
     long lastTime = 0;
 
-    std::string name;
-public:
-    const std::string &getName() const;
 };
 
 #endif //EANN_SIMPLE_AGENT_CONTROLLER_H
