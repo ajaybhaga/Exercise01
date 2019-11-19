@@ -15,7 +15,7 @@ Agent::Agent(Genotype *genotype, NeuralLayer::ActivationFunction defaultActivati
 
     id = this->generateId();
     // Random position spread magnitude
-    float mag = 4.0f;
+    float mag = 3.0f;
     this->position = cyclone::Vector3(rd()*mag, rd()*mag, rd()*mag);
     this->rotation = cyclone::Quaternion();
     this->colour = cyclone::Vector3(rd(), rd(), rd());
@@ -145,4 +145,20 @@ const char* Agent::getName() {
 unsigned Agent::generateId() {
     static unsigned int idGenerator = 0;
     return ++idGenerator;
+}
+
+bool Agent::isHit() const {
+    return hit;
+}
+
+void Agent::setHit(bool hit) {
+    Agent::hit = hit;
+}
+
+long Agent::getLastHit() const {
+    return lastHit;
+}
+
+void Agent::setLastHit(long lastHit) {
+    Agent::lastHit = lastHit;
 }

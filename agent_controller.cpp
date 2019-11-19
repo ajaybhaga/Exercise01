@@ -23,10 +23,35 @@ AgentController::AgentController(Agent *agent) {
 
     int numSensors = 3;
     for (int i = 0; i < numSensors; i++) {
-        Sensor *s = new Sensor();
+        Sensor *s = new Sensor(agent);
         sensors.emplace_back(*s);
     }
-}
+
+    sensors[0].setOffset(cyclone::Vector3(0.0f, 0.0f, 0.0f));
+    sensors[0].setDirection(cyclone::Vector3(cyclone::Vector3(0.2f, 0.0f, 0.0f)));
+
+    sensors[1].setOffset(cyclone::Vector3(0.0f, 0.0f, 0.0f));
+    sensors[1].setDirection(cyclone::Vector3(cyclone::Vector3(0.0f, 0.2f, 0.0f)));
+
+    sensors[2].setOffset(cyclone::Vector3(0.0f, 0.0f, 0.0f));
+    sensors[2].setDirection(cyclone::Vector3(cyclone::Vector3(0.0f, 0.0f, 0.2f)));
+
+    /*
+    sensors[1].setCenter(cyclone::Vector3(agent->getPosition()+cyclone::Vector3(0.1f, 0.0f, 0.0f)));
+    sensors[1].setTarget(cyclone::Vector3(sensors[1].getCenter()+cyclone::Vector3(0.0f, 0.1f, 0.0f)));
+
+    sensors[2].setCenter(cyclone::Vector3(agent->getPosition()+cyclone::Vector3(0.1f, 0.0f, 0.0f)));
+    sensors[2].setTarget(cyclone::Vector3(sensors[2].getCenter()+cyclone::Vector3(0.1f, 0.0f, 0.1f)));
+*/
+
+/*
+    sensors[1].setTarget(cyclone::Vector3(agent->getPosition()+cyclone::Vector3(0.0f, 1.0f, 0.0f)));
+    sensors[2].setTarget(cyclone::Vector3(agent->getPosition()+cyclone::Vector3(0.0f, 0.0f, 1.0f)));
+    sensors[3].setTarget(cyclone::Vector3(agent->getPosition()+cyclone::Vector3(-1.0f, 0.0f, 0.0f)));
+    sensors[4].setTarget(cyclone::Vector3(agent->getPosition()+cyclone::Vector3(0.0f, -1.0f, 0.0f)));
+    sensors[5].setTarget(cyclone::Vector3(agent->getPosition()+cyclone::Vector3(0.0f, 0.0f, -1.0f)));
+*/
+ }
 
 AgentController::~AgentController() {
     if (this->agent) {
@@ -126,4 +151,8 @@ void AgentController::setCurrentCompletionReward(float reward) {
 
 float AgentController::getTimeSinceLastCheckpoint() const {
     return timeSinceLastCheckpoint;
+}
+
+const std::vector<Sensor> &AgentController::getSensors() const {
+    return sensors;
 }

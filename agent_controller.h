@@ -22,6 +22,10 @@
 #include "agent_movement.h"
 #include "shared_libs.h"
 
+// Forward declaration
+class Agent;
+class Sensor;
+
 class AgentController {
 public:
 
@@ -36,27 +40,23 @@ public:
     void checkpointCaptured();
     float getCurrentCompletionReward();
     void setCurrentCompletionReward(float reward);
+    const std::vector<Sensor> &getSensors() const;
 
     Agent *agent;
     AgentMovement *movement;
     AgentFSM *fsm;
 
     bool useUserInput = false;
+    float getTimeSinceLastCheckpoint() const;
 
     // Event for when all agents have died.
 //    Event allAgentsDied;
 
-
 private:
     // Maximum delay in seconds between the collection of two checkpoints until this agent dies.
     const float MAX_CHECKPOINT_DELAY = 7;
-
     std::vector<Sensor> sensors;
     float timeSinceLastCheckpoint = 0.0;
-public:
-    float getTimeSinceLastCheckpoint() const;
-
-private:
     long startTime;
     long lastTime = 0;
 

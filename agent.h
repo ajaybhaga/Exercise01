@@ -45,9 +45,19 @@ public:
     void setColour(const cyclone::Vector3 &colour);
     const char* getName();
     unsigned generateId();
+    bool isHit() const;
+    void setHit(bool hit);
 
 private:
     bool alive = false;
+    bool hit = false;
+    long lastHit = 0;
+public:
+    long getLastHit() const;
+
+    void setLastHit(long lastHit);
+
+private:
     cyclone::Vector3 position;
     cyclone::Vector3 winPos;
     cyclone::Quaternion rotation;

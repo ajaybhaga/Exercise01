@@ -270,20 +270,45 @@ void Environment::display()
 
 
     for (int i = 0; i < agents.size(); i++) {
+
+
+        // Draw agents
         glColor3f(agents[i]->getColour()[0], agents[i]->getColour()[1], agents[i]->getColour()[2]);
+
+        if (agents[i]->isHit()) {
+            glColor3f(1.0, 0.0, 0.0);
+        }
 
         float size = 1.0f;
         glPushMatrix();
             cyclone::Vector3 pos = agents[i]->getPosition();
             glScalef(size, size, size);
             glTranslatef(pos.x, pos.y, pos.z);
-            glutSolidSphere(0.25f, 16, 8);
+            glutSolidSphere(2.0f, 16, 8);
         glPopMatrix();
 
+        // Draw sensors
+        for (int j = 0; j < controllers[i]->getSensors().size(); j++) {
+            glColor3f(0.0, 1.0, 0.0);
+            glPushMatrix();
+            glTranslatef(controllers[i]->getSensors()[j].getCenter().x, controllers[i]->getSensors()[j].getCenter().y,
+                         controllers[i]->getSensors()[j].getCenter().z);
+            glutSolidSphere(0.4f, 16, 8);
+            glPopMatrix();
+
+            glColor3f(0.0, 0.0, 1.0);
+            glBegin(GL_LINES);
+            glVertex3f(controllers[i]->getSensors()[j].getCenter().x, controllers[i]->getSensors()[j].getCenter().y,
+                       controllers[i]->getSensors()[j].getCenter().z);
+
+            glVertex3f(controllers[i]->getSensors()[j].getTarget().x, controllers[i]->getSensors()[j].getTarget().y,
+                       controllers[i]->getSensors()[j].getTarget().z);
+
+            glEnd();
+        }
     }
 
     glPushMatrix();
-
     glTranslatef(0.0, 0.0, 0.0);
     glColor3f(0.4f, 0.3f, 1.0f);
     glutSolidSphere(0.1f, 16, 8);
