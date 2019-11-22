@@ -257,6 +257,7 @@ void Environment::display()
     glLightfv(GL_LIGHT0, GL_POSITION, lightPosition);
     glColorMaterial(GL_FRONT_AND_BACK, GL_DIFFUSE);
     glEnable(GL_COLOR_MATERIAL);
+    glLineWidth(3);
 
 
     /*
@@ -284,7 +285,7 @@ void Environment::display()
             cyclone::Vector3 pos = agents[i]->getPosition();
             glScalef(size, size, size);
             glTranslatef(pos.x, pos.y, pos.z);
-            glutSolidSphere(2.0f, 16, 8);
+            glutSolidSphere(0.5f, 16, 8);
         glPopMatrix();
 
         // Draw sensors
@@ -297,7 +298,13 @@ void Environment::display()
             glPopMatrix();
 
             glColor3f(0.0, 0.0, 1.0);
+
+            if (controllers[i]->getSensors()[i].isHit()) {
+                glColor3f(1.0, 0.0, 0.0);
+            }
+
             glBegin(GL_LINES);
+            glColor3f(1.0, 0.0, 1.0);
             glVertex3f(controllers[i]->getSensors()[j].getCenter().x, controllers[i]->getSensors()[j].getCenter().y,
                        controllers[i]->getSensors()[j].getCenter().z);
 
@@ -317,6 +324,7 @@ void Environment::display()
 
     glDisable(GL_LIGHTING);
     glDisable(GL_COLOR_MATERIAL);
+    glLineWidth(1);
 
     // Draw some scale circles
     glColor3f(0.75, 0.75, 0.75);

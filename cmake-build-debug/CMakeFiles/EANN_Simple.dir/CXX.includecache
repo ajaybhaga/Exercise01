@@ -128,14 +128,6 @@ gl/glut.h
 shared_libs.h
 /Users/badzindagi/dev/MayaBrain/shared_libs.h
 
-/Users/badzindagi/dev/MayaBrain/agent_controller.cpp
-shared_libs.h
-/Users/badzindagi/dev/MayaBrain/shared_libs.h
-agent_fsm.h
-/Users/badzindagi/dev/MayaBrain/agent_fsm.h
-math_helper.h
-/Users/badzindagi/dev/MayaBrain/math_helper.h
-
 /Users/badzindagi/dev/MayaBrain/agent_controller.h
 cyclone.h
 -
@@ -255,6 +247,12 @@ mutex
 -
 condition_variable
 -
+
+/Users/badzindagi/dev/MayaBrain/sensor.cpp
+sensor.h
+/Users/badzindagi/dev/MayaBrain/sensor.h
+evolution_manager.h
+/Users/badzindagi/dev/MayaBrain/evolution_manager.h
 
 /Users/badzindagi/dev/MayaBrain/sensor.h
 string

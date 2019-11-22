@@ -47,21 +47,19 @@ public:
     unsigned generateId();
     bool isHit() const;
     void setHit(bool hit);
+    long getLastHit() const;
+    void setLastHit(long lastHit);
 
 private:
     bool alive = false;
     bool hit = false;
     long lastHit = 0;
-public:
-    long getLastHit() const;
 
-    void setLastHit(long lastHit);
-
-private:
     cyclone::Vector3 position;
     cyclone::Vector3 winPos;
     cyclone::Quaternion rotation;
     cyclone::Vector3 colour;
+
 };
 
 #endif //EANN_SIMPLE_AGENT_H

@@ -30,8 +30,15 @@ public:
     void setDirection(const cyclone::Vector3 &direction);
     const cyclone::Vector3 &getTarget() const;
     const cyclone::Vector3 &getCenter() const;
-
     void setCenter(const cyclone::Vector3 &center);
+    cyclone::CollisionSphere getCollisionSphere(const cyclone::Vector3 &position,
+                                                        const cyclone::Vector3 &extents);
+
+    bool isHit() const;
+    void setHit(bool hit);
+    long getLastHit() const;
+    void setLastHit(long lastHit);
+
     // The current sensor readings in percent of maximum distance.
     float output;
 
@@ -52,6 +59,11 @@ private:
     Agent *agent;
     // Sensor direction
     cyclone::Vector3 direction;
+
+    cyclone::Vector3 halfSize;
+
+    bool hit = false;
+    long lastHit = 0;
 
 };
 
