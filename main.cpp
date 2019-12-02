@@ -1,5 +1,5 @@
 //
-// MayaBrain - built on EANN
+// MunvoAgentSim - built on EANN
 //
 // C++ Implementation by Ajay Bhaga
 //
@@ -7,11 +7,11 @@
 // Based on design of Samuel Arzt (March 2017)
 //
 
-// MayaBrain shared libs
+// MunvoAgentSim shared libs
 #include "shared_libs.h"
 
 // Include appropriate OpenGL headers.
-#include "ogl_headers.h"
+#include "gl/ogl_headers.h"
 
 // Include the general application structure.
 #include "app.h"
@@ -109,7 +109,7 @@ void motion(int x, int y)
  */
 int main(int argc, char** argv)
 {
-    std::cout << "MayaBrain v0.1" << std::endl;
+    std::cout << "Munvo AgentSim Demo v0.1" << std::endl;
 
     // Set up GLUT and the timers
     glutInit(&argc, argv);

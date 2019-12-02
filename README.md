@@ -1,6 +1,6 @@
-MayaBrain
-Evolutionary Artificial Neural Network Library
-C++ Implementation by Ajay Bhaga (ajay.bhaga@gmail.com)
+Munvo Agent Simulator
+Implementation of Evolutionary Artificial Neural Network
+C++ Implementation by Ajay Bhaga (ajay.bhaga@munvo.com)
 ------------------------------------------------------------------------------------------------------------------------
 MIT License
 

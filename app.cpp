@@ -11,9 +11,9 @@
  */
 #include <cstring>
 #include <iostream>
-#include "ogl_headers.h"
+#include "gl/ogl_headers.h"
 #include "app.h"
-#include "timing.h"
+#include "cyclone/timing.h"
 
 #include <GLKit/GLKMathUtils.h>
 #include <GLKit/GLKVector3.h>
@@ -54,7 +54,7 @@ void Application::display()
 
 const char* Application::getTitle()
 {
-    return "MayaBrain Demo";
+    return "Munvo AgentSim Demo v0.1";
 }
 
 void Application::deinit()

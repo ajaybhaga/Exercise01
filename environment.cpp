@@ -2,7 +2,7 @@
 // C++ Implementation by Ajay Bhaga
 //
 
-// MayaBrain shared libs
+// MunvoAgentSim shared libs
 #include "environment.h"
 #include <iostream>
 #include <string>
@@ -80,7 +80,7 @@ Environment::Environment() : Application()
 
 const char* Environment::getTitle()
 {
-    return "MayaBrain Demo";
+    return "Munvo AgentSim Demo v0.1";
 }
 
 void Environment::generateContacts() {

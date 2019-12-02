@@ -26,17 +26,17 @@
 #include <dirent.h>
 #include <cyclone.h>
 
-#include "random_d.h"
-#include "event.h"
-#include "genotype.h"
-#include "neural_layer.h"
-#include "genetic_algorithm.h"
-#include "neural_network.h"
-#include "sensor.h"
-#include "agent.h"
+#include "util/random_d.h"
+#include "util/event.h"
+#include "ai/genotype.h"
+#include "ai/neural_layer.h"
+#include "ai/genetic_algorithm.h"
+#include "ai/neural_network.h"
+#include "ai/sensor.h"
+#include "ai/agent.h"
 //#include "agent_movement.h"
 //#include "agent_controller.h"
-#include "evolution_manager.h"
+#include "ai/evolution_manager.h"
 
 //#include "evolution_manager.h"
 

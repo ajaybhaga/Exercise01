@@ -46,6 +46,7 @@
 				<Compiler>
 					<Add directory="/System/Library/Frameworks/OpenGL.framework"/>
 					<Add directory="/System/Library/Frameworks/GLUT.framework/Headers"/>
+					<Add directory="/Developer/Headers/FlatCarbon"/>
 					<Add directory="/Users/badzindagi/dev/MayaBrain"/>
 					<Add directory="/Users/badzindagi/dev/MayaBrain/cyclone"/>
 					<Add directory="/Users/badzindagi/dev/MayaBrain/glut"/>
@@ -72,6 +73,7 @@
 				<Compiler>
 					<Add directory="/System/Library/Frameworks/OpenGL.framework"/>
 					<Add directory="/System/Library/Frameworks/GLUT.framework/Headers"/>
+					<Add directory="/Developer/Headers/FlatCarbon"/>
 					<Add directory="/Users/badzindagi/dev/MayaBrain"/>
 					<Add directory="/Users/badzindagi/dev/MayaBrain/cyclone"/>
 					<Add directory="/Users/badzindagi/dev/MayaBrain/glut"/>
@@ -90,28 +92,76 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/badzindagi/dev/MayaBrain/agent.cpp">
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/ai/agent.cpp">
 			<Option target="EANN_Simple"/>
 		</Unit>
-		<Unit filename="/Users/badzindagi/dev/MayaBrain/agent.h">
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/ai/agent.h">
 			<Option target="EANN_Simple"/>
 		</Unit>
-		<Unit filename="/Users/badzindagi/dev/MayaBrain/agent_controller.cpp">
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/ai/agent_controller.cpp">
 			<Option target="EANN_Simple"/>
 		</Unit>
-		<Unit filename="/Users/badzindagi/dev/MayaBrain/agent_controller.h">
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/ai/agent_controller.h">
 			<Option target="EANN_Simple"/>
 		</Unit>
-		<Unit filename="/Users/badzindagi/dev/MayaBrain/agent_fsm.cpp">
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/ai/agent_fsm.cpp">
 			<Option target="EANN_Simple"/>
 		</Unit>
-		<Unit filename="/Users/badzindagi/dev/MayaBrain/agent_fsm.h">
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/ai/agent_fsm.h">
 			<Option target="EANN_Simple"/>
 		</Unit>
-		<Unit filename="/Users/badzindagi/dev/MayaBrain/agent_movement.cpp">
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/ai/agent_movement.cpp">
 			<Option target="EANN_Simple"/>
 		</Unit>
-		<Unit filename="/Users/badzindagi/dev/MayaBrain/agent_movement.h">
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/ai/agent_movement.h">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/ai/evolution_manager.cpp">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/ai/evolution_manager.h">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/ai/fsm.cpp">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/ai/fsm.h">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/ai/fsm_event_data.cpp">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/ai/fsm_event_data.h">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/ai/genetic_algorithm.cpp">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/ai/genetic_algorithm.h">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/ai/genotype.cpp">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/ai/genotype.h">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/ai/neural_layer.cpp">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/ai/neural_layer.h">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/ai/neural_network.cpp">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/ai/neural_network.h">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/ai/sensor.cpp">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/ai/sensor.h">
 			<Option target="EANN_Simple"/>
 		</Unit>
 		<Unit filename="/Users/badzindagi/dev/MayaBrain/app.cpp">
@@ -201,6 +251,12 @@
 		<Unit filename="/Users/badzindagi/dev/MayaBrain/cyclone/random.h">
 			<Option target="EANN_Simple"/>
 		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/cyclone/timing.cpp">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/cyclone/timing.h">
+			<Option target="EANN_Simple"/>
+		</Unit>
 		<Unit filename="/Users/badzindagi/dev/MayaBrain/cyclone/world.cpp">
 			<Option target="EANN_Simple"/>
 		</Unit>
@@ -213,97 +269,43 @@
 		<Unit filename="/Users/badzindagi/dev/MayaBrain/environment.h">
 			<Option target="EANN_Simple"/>
 		</Unit>
-		<Unit filename="/Users/badzindagi/dev/MayaBrain/event.cpp">
-			<Option target="EANN_Simple"/>
-		</Unit>
-		<Unit filename="/Users/badzindagi/dev/MayaBrain/event.h">
-			<Option target="EANN_Simple"/>
-		</Unit>
-		<Unit filename="/Users/badzindagi/dev/MayaBrain/evolution_manager.cpp">
-			<Option target="EANN_Simple"/>
-		</Unit>
-		<Unit filename="/Users/badzindagi/dev/MayaBrain/evolution_manager.h">
-			<Option target="EANN_Simple"/>
-		</Unit>
-		<Unit filename="/Users/badzindagi/dev/MayaBrain/fsm.cpp">
-			<Option target="EANN_Simple"/>
-		</Unit>
-		<Unit filename="/Users/badzindagi/dev/MayaBrain/fsm.h">
-			<Option target="EANN_Simple"/>
-		</Unit>
-		<Unit filename="/Users/badzindagi/dev/MayaBrain/fsm_event_data.cpp">
-			<Option target="EANN_Simple"/>
-		</Unit>
-		<Unit filename="/Users/badzindagi/dev/MayaBrain/fsm_event_data.h">
-			<Option target="EANN_Simple"/>
-		</Unit>
-		<Unit filename="/Users/badzindagi/dev/MayaBrain/genetic_algorithm.cpp">
-			<Option target="EANN_Simple"/>
-		</Unit>
-		<Unit filename="/Users/badzindagi/dev/MayaBrain/genetic_algorithm.h">
-			<Option target="EANN_Simple"/>
-		</Unit>
-		<Unit filename="/Users/badzindagi/dev/MayaBrain/genotype.cpp">
-			<Option target="EANN_Simple"/>
-		</Unit>
-		<Unit filename="/Users/badzindagi/dev/MayaBrain/genotype.h">
-			<Option target="EANN_Simple"/>
-		</Unit>
 		<Unit filename="/Users/badzindagi/dev/MayaBrain/gl/glut.h">
-			<Option target="EANN_Simple"/>
-		</Unit>
-		<Unit filename="/Users/badzindagi/dev/MayaBrain/grid.cpp">
-			<Option target="EANN_Simple"/>
-		</Unit>
-		<Unit filename="/Users/badzindagi/dev/MayaBrain/grid.h">
-			<Option target="EANN_Simple"/>
-		</Unit>
-		<Unit filename="/Users/badzindagi/dev/MayaBrain/listener.cpp">
-			<Option target="EANN_Simple"/>
-		</Unit>
-		<Unit filename="/Users/badzindagi/dev/MayaBrain/listener.h">
 			<Option target="EANN_Simple"/>
 		</Unit>
 		<Unit filename="/Users/badzindagi/dev/MayaBrain/main.cpp">
 			<Option target="EANN_Simple"/>
 		</Unit>
-		<Unit filename="/Users/badzindagi/dev/MayaBrain/math_helper.cpp">
-			<Option target="EANN_Simple"/>
-		</Unit>
-		<Unit filename="/Users/badzindagi/dev/MayaBrain/math_helper.h">
-			<Option target="EANN_Simple"/>
-		</Unit>
-		<Unit filename="/Users/badzindagi/dev/MayaBrain/neural_layer.cpp">
-			<Option target="EANN_Simple"/>
-		</Unit>
-		<Unit filename="/Users/badzindagi/dev/MayaBrain/neural_layer.h">
-			<Option target="EANN_Simple"/>
-		</Unit>
-		<Unit filename="/Users/badzindagi/dev/MayaBrain/neural_network.cpp">
-			<Option target="EANN_Simple"/>
-		</Unit>
-		<Unit filename="/Users/badzindagi/dev/MayaBrain/neural_network.h">
-			<Option target="EANN_Simple"/>
-		</Unit>
-		<Unit filename="/Users/badzindagi/dev/MayaBrain/random_d.h">
-			<Option target="EANN_Simple"/>
-		</Unit>
-		<Unit filename="/Users/badzindagi/dev/MayaBrain/semaphore.h">
-			<Option target="EANN_Simple"/>
-		</Unit>
-		<Unit filename="/Users/badzindagi/dev/MayaBrain/sensor.cpp">
-			<Option target="EANN_Simple"/>
-		</Unit>
-		<Unit filename="/Users/badzindagi/dev/MayaBrain/sensor.h">
-			<Option target="EANN_Simple"/>
-		</Unit>
 		<Unit filename="/Users/badzindagi/dev/MayaBrain/shared_libs.h">
 			<Option target="EANN_Simple"/>
 		</Unit>
-		<Unit filename="/Users/badzindagi/dev/MayaBrain/timing.cpp">
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/util/event.cpp">
 			<Option target="EANN_Simple"/>
 		</Unit>
-		<Unit filename="/Users/badzindagi/dev/MayaBrain/timing.h">
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/util/event.h">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/util/grid.cpp">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/util/grid.h">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/util/listener.cpp">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/util/listener.h">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/util/math_helper.cpp">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/util/math_helper.h">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/util/random_d.h">
+			<Option target="EANN_Simple"/>
+		</Unit>
+		<Unit filename="/Users/badzindagi/dev/MayaBrain/util/semaphore.h">
 			<Option target="EANN_Simple"/>
 		</Unit>
 		<Unit filename="/Users/badzindagi/dev/MayaBrain/CMakeLists.txt">

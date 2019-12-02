@@ -6,12 +6,12 @@
 #define EANN_SIMPLE_ENVIRONMENT_H
 
 #include <cyclone/cyclone.h>
-#include "../ogl_headers.h"
+#include "gl/ogl_headers.h"
 #include "../app.h"
-#include "../timing.h"
+#include "cyclone/timing.h"
 #include "block.h"
 
-// MayaBrain shared libs
+// MunvoAgentSim shared libs
 #include "shared_libs.h"
 
 /**
